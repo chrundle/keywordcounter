@@ -1,2 +1,0 @@
-/* Program for determining the n most popular keywords used in a 
-   search engine */
