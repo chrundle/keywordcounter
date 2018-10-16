@@ -36,8 +36,8 @@ class Node {
         /* Set parent pointer to NULL */
         parent = NULL ;
         /* Set left and right sibling pointers to each other */
-        lsibling = rsibling ;
-        rsibling = lsibling ;
+        lsibling = this ;
+        rsibling = this ;
         /* Set child pointer to NULL */
         child = NULL ;
         /* Set degree to zero */
