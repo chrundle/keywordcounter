@@ -71,6 +71,64 @@ class FibonacciHeap {
   private:
     Node       *max ; /* Pointer to node containing the max key */
 
+    /* -------------------------------------------------------------- */
+    /* ----------------------- only_child() ------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Boolean function which checks if node has any siblings.       
+       Returns TRUE if given node is only child
+               FALSE if given node has at least one sibling           */
+    bool only_child(Node *nd) {
+        return (nd->rsibling == nd) ;
+    }
+
+    /* -------------------------------------------------------------- */
+    /* ------------------------- orphan() --------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Function which checks if node has a parent.       
+       If given node has a parent, it returns the child pointer from
+       the parent. If the given node has no parent, it returns NULL.  */
+    Node *orphan(Node *nd) {
+        /* Initialize varibles */
+        Node *t ;
+
+        /* Check if given node has no siblings */
+        if (only_child(nd)) {/* Given node has no siblings */
+            /* Check if parent pointer is NULL */
+            if (nd->parent != NULL) {/* Parent pointer is not NULL */
+                /* Return pointer to given node */
+                return nd ;
+            else {/* Parent pointer is NULL */
+                /* Return NULL pointer */
+                return NULL ;
+            }
+        }
+
+        /* Set t to right sibling of given node */
+        t = nd->rsibling ;
+
+        /* Loop through sibling list and check if each one has parent */
+        while (t != nd) {
+            /* Check if parent pointer is not NULL */
+            if (t->parent != NULL) {
+                /* Return pointer of current child */
+                return t ;
+            }
+            else {
+                /* Set t to next sibling in linked list */
+                t = t->rsibling ;
+            }
+        }
+        /* Every other parent pointer was NULL. Check if parent pointer 
+           is NULL */
+        if (nd->parent != NULL) {/* Parent pointer is not NULL */
+            /* Return pointer to given node */
+            return nd ;
+        else {/* Parent pointer is NULL */
+            /* Return NULL pointer */
+            return NULL ;
+        }
+    }
+
   /* -------------------- Public members of heap -------------------- */
   public:
     unordered_map<string, Node*> hashmap ; /* Hash table for keywords
@@ -90,7 +148,7 @@ class FibonacciHeap {
     /* -------------------------------------------------------------- */
     /* ------------------------ find_max() -------------------------- */
     /* -------------------------------------------------------------- */
-    /* Find and return maximum value in heap */
+    /* Find and return maximum value in heap. */
     Node *find_max() {
         return max ;
     }
@@ -98,7 +156,7 @@ class FibonacciHeap {
     /* -------------------------------------------------------------- */
     /* ------------------------- insert() --------------------------- */
     /* -------------------------------------------------------------- */
-    /* Insert node into heap */
+    /* Insert node into heap. */
     void insert(string keyword, long int frequency) {
         /* Create new node with data equal to number of queries */
         hashmap[keyword] = new Node(keyword, frequency) ;
@@ -112,6 +170,73 @@ class FibonacciHeap {
         if(max->data < hashmap[keyword]->data) {
             /* Set max pointer to pointer of new node */
             max = hashmap[keyword] ;
+        }
+    }
+
+#if 0
+    /* The remove and remove_max functions are not required for this
+       exercise */
+
+    /* -------------------------------------------------------------- */
+    /* ----------------------- remove_max() ------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Remove max node from heap. */
+    /* This function is required for the increase_key() function.     */
+    void remove_max() {
+        /* Check if nd has no siblings */
+        if (only_child(max)) {/* max has no siblings */
+            /* Remove min */
+        }
+        else {/* max has at least one sibling */
+            /* Remove min */
+        }
+    }
+
+    /* -------------------------------------------------------------- */
+    /* ------------------------- remove() --------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Remove node from heap given pointer to node. */
+    /* This function is required for the increase_key() function.     */
+    void remove(Node *nd) {
+        /* Check if node contains maximum key */
+        if (nd == max) {/* Node to remove contains max key */
+            /* Perform remove max */
+            remove_max() ;
+        }
+        else {/* Node to remove does not contain max key */
+
+        }
+    }
+#endif
+
+    /* -------------------------------------------------------------- */
+    /* ---------------------- increase_key() ------------------------ */
+    /* -------------------------------------------------------------- */
+    /* Given a node, increase its key value by a given amount. */
+    void increase_key(Node *nd, long int amount) {
+        /* Initialize variables */
+        Node *t ;
+
+        /* Check if given node is orphan and store output in t */
+        t = orphan(nd) ;
+
+        if (t == nd) {/* Given node points to parent */
+            /* Remove subtree rooted at nd and add to top level */
+        }
+        else if (t != NULL) {/* Given node does not point to parent */
+            /* ---- Remove subtree rooted at given node ---- */
+            /* Set parent child pointer to NULL */
+        }
+        else {/* Given node does not have parent */
+            /* Nothing to do */
+        }
+
+        /* Increase nd key value by given amount */
+        nd->data += amount ;
+        /* Check if max pointer needs to be updated */
+        if(max->data < nd->data) {
+            /* Set max pointer to pointer of new node */
+            max = nd ;
         }
     }
 } ;
