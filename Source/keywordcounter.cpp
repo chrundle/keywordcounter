@@ -13,6 +13,7 @@ void PrintKeysAndQueries(FibonacciHeap fheap) {
 
     /* Print max node keyword and query */
     cout << endl ;
+    cout << "Total number of nodes: " << fheap.number_of_nodes() << endl ;
     cout << "Printing all root nodes passing through right siblings: " << endl ;
     cout << "Max: " << max->keyword << ", " << max->data << endl ;
 

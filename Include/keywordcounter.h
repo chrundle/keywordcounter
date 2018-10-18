@@ -1,3 +1,4 @@
+#include <math.h>
 #include <climits>
 #include <iostream>
 #include <string.h>
@@ -10,7 +11,7 @@ class Node {
   public:
     /* -------- Integer values -------- */
     long int   data ; /* Data in node (keyword frequencies) */
-    long int degree ; /* Degree of node */
+    long int degree ; /* Degree of node (number of children) */
 
     /* -------- String values -------- */
     string  keyword ; /* Keyword at node (search keyword) */
@@ -70,6 +71,7 @@ class FibonacciHeap {
   /* -------------------- Private members of heap ------------------- */
   private:
     Node       *max ; /* Pointer to node containing the max key */
+    long int      n ; /* Number of nodes in fibonacci heap */
 
     /* -------------------------------------------------------------- */
     /* ----------------------- only_child() ------------------------- */
@@ -88,57 +90,34 @@ class FibonacciHeap {
        Returns TRUE if given node has no children 
                FALSE if given node has at least one child             */
     bool barren(Node *nd) {
-        return (nd->child == NULL) ;
+        return (nd->degree == 0) ;
     }
 
     /* -------------------------------------------------------------- */
     /* ------------------------- orphan() --------------------------- */
     /* -------------------------------------------------------------- */
     /* Function which checks if node has a parent.       
-       If given node has a parent, it returns the child pointer from
-       the parent. If the given node has no parent, it returns NULL.  */
+       If the given node has no parent, it returns NULL. If given 
+       node has a parent, it returns the pointer nd->parent->child.   */
     Node *orphan(Node *nd) {
-        /* Initialize varibles */
-        Node *t ;
-
-        /* Check if given node has no siblings */
-        if (only_child(nd)) {/* Given node has no siblings */
-            /* Check if parent pointer is NULL */
-            if (nd->parent != NULL) {/* Parent pointer is not NULL */
-                /* Return pointer to given node */
-                return nd ;
-            }
-            else {/* Parent pointer is NULL */
-                /* Return NULL pointer */
-                return NULL ;
-            }
-        }
-
-        /* Set t to right sibling of given node */
-        t = nd->rsibling ;
-
-        /* Loop through sibling list and check if each one has parent */
-        while (t != nd) {
-            /* Check if parent pointer is not NULL */
-            if (t->parent != NULL) {
-                /* Return pointer of current child */
-                return t ;
-            }
-            else {
-                /* Set t to next sibling in linked list */
-                t = t->rsibling ;
-            }
-        }
-        /* Every other parent pointer was NULL. Check if parent pointer 
-           is NULL */
-        if (nd->parent != NULL) {/* Parent pointer is not NULL */
-            /* Return pointer to given node */
-            return nd ;
-        }
-        else {/* Parent pointer is NULL */
+        /* Check if parent pointer is NULL */
+        if (nd->parent == NULL) {/* nd has no parent */
             /* Return NULL pointer */
             return NULL ;
         }
+        else {/* nd has a parent */
+            /* Return nd's parent's child pointer */
+            return nd->parent->child ;
+        }
+    }
+
+    /* -------------------------------------------------------------- */
+    /* ----------------------- rank_bound() ------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Compute bound on rank based on current number of nodes.        */       
+    long int rank_bound() {
+        /* Rank of heap bounded by log_{phi}(n), where phi ~ 1.618. */
+        return (long int)(log(n) / log(1.62)) ;
     }
 
   /* -------------------- Public members of heap -------------------- */
@@ -155,6 +134,16 @@ class FibonacciHeap {
         hashmap[keyword] = new Node(keyword, frequency) ;
         /* Use hashmap to associate keyword with pointer to new node */
         max = hashmap[keyword] ;
+        /* Set number of nodes in heap to 1 */
+        n = 1 ;
+    }
+
+    /* -------------------------------------------------------------- */
+    /* --------------------- number_of_nodes() ---------------------- */
+    /* -------------------------------------------------------------- */
+    /* Return number of nodes in heap. */
+    long int number_of_nodes() {
+        return n ;
     }
 
     /* -------------------------------------------------------------- */
@@ -185,6 +174,8 @@ class FibonacciHeap {
             /* Set max pointer to pointer of new node */
             max = hashmap[keyword] ;
         }
+        /* Increase number of nodes in heap */
+        n += 1 ;
     }
 
     /* -------------------------------------------------------------- */
@@ -195,6 +186,7 @@ class FibonacciHeap {
        requested queries.                                             */
     void remove_max() {
         /* Initialize variables */
+        long int k ;
         Node *t, *s ;
 
         #ifdef DBUG_PRINT
@@ -274,6 +266,8 @@ class FibonacciHeap {
                 t->lsibling->rsibling = t ;
             }
         }
+        /* Decrease total number of nodes by 1 since max has been removed */
+        n -= 1 ;
 
         /* ------ Step 2: Determine new max ------ */
         #ifdef DBUG_PRINT
@@ -294,10 +288,27 @@ class FibonacciHeap {
             /* Set t to next sibling in linked list */
             t = t->rsibling ;
         }
+
+#if 0
+        /* ---- Step 3: Consolidate trees so no two roots have same rank ---- */
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::remove_max(): Consolidate trees" << endl ;
+        #endif
+        /* -- Initialize array to hold node pointers by rank -- */
+        k = rank_bound() + 1 ; /* bound on rank */
+        Node **rank_tree[k] ;
+        /* Set all pointers in rank_tree array to null */
+        for (i = 0; i < k; i++) {
+            rank_tree[i] = NULL ;
+        }
+        /* Move through all roots and merge trees of same rank */
+#endif
+
+
     }
 
 #if 0
-    /* The remove function is not required for this exercise */
+    /* The arbitrary remove function is not required for this exercise */
 
     /* -------------------------------------------------------------- */
     /* ------------------------- remove() --------------------------- */
@@ -344,6 +355,13 @@ class FibonacciHeap {
             /* Set max pointer to pointer of new node */
             max = nd ;
         }
+    }
+
+    /* -------------------------------------------------------------- */
+    /* -------------------------- meld() ---------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Meld two fibonacci heaps at top level. */
+    void meld(FibonacciHeap fheap) {
     }
 #endif
 } ;
