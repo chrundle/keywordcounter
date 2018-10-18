@@ -49,5 +49,29 @@ int main() {
 
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
+
+    /* Delete max */
+    fheap.remove_max() ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    /* Delete max */
+    fheap.remove_max() ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    /* Insert into FibonacciHeap */
+    fheap.insert("firefox", 2) ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    /* Delete max */
+    fheap.remove_max() ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
 }
 

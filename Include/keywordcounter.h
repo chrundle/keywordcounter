@@ -82,6 +82,16 @@ class FibonacciHeap {
     }
 
     /* -------------------------------------------------------------- */
+    /* ------------------------- barren() --------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Boolean function which checks if node has any children.       
+       Returns TRUE if given node has no children 
+               FALSE if given node has at least one child             */
+    bool barren(Node *nd) {
+        return (nd->child == NULL) ;
+    }
+
+    /* -------------------------------------------------------------- */
     /* ------------------------- orphan() --------------------------- */
     /* -------------------------------------------------------------- */
     /* Function which checks if node has a parent.       
@@ -97,6 +107,7 @@ class FibonacciHeap {
             if (nd->parent != NULL) {/* Parent pointer is not NULL */
                 /* Return pointer to given node */
                 return nd ;
+            }
             else {/* Parent pointer is NULL */
                 /* Return NULL pointer */
                 return NULL ;
@@ -123,6 +134,7 @@ class FibonacciHeap {
         if (nd->parent != NULL) {/* Parent pointer is not NULL */
             /* Return pointer to given node */
             return nd ;
+        }
         else {/* Parent pointer is NULL */
             /* Return NULL pointer */
             return NULL ;
@@ -173,24 +185,87 @@ class FibonacciHeap {
         }
     }
 
-#if 0
-    /* The remove and remove_max functions are not required for this
-       exercise */
-
     /* -------------------------------------------------------------- */
     /* ----------------------- remove_max() ------------------------- */
     /* -------------------------------------------------------------- */
     /* Remove max node from heap. */
-    /* This function is required for the increase_key() function.     */
+    /* This function is required when we want to determine most 
+       requested queries.                                             */
     void remove_max() {
-        /* Check if nd has no siblings */
+        /* Initialize variables */
+        Node *t, *s ;
+
+        /* ------ Step 1: Delete max from heap ------ */
+        /* Check if max has no siblings */
         if (only_child(max)) {/* max has no siblings */
-            /* Remove min */
+            if (barren(max)) {/* max has no children */
+                /* In this case, heap was single max node */
+                /* FIX: NEED TO DEAL WITH THIS CASE */
+                return ;
+            }
+            else {/* max has at least one child */
+                /* Set max pointer to any child of current max */
+                max = max->child ;
+            }
         }
         else {/* max has at least one sibling */
-            /* Remove min */
+            /* Check if max has children */
+            if (barren(max)) {/* max has no children */
+                /* Set t to right sibling of max */
+                t = max->rsibling ;
+                /* Set s to left sibling of max */
+                s = max->lsibling ;
+
+                /* -- Remove max by changing sibling pointers -- */
+                /* Set right sibling of s to t */
+                s->rsibling = t ;
+                /* Set left sibling of t to s */
+                t->lsibling = s ;
+
+                /* Set max pointer to any sibling of current max */
+                max = t ;
+            }
+            else {/* max has at least one child */
+                /* ---- Add children to root linked list ---- */
+                /* Set t to child of max */
+                t = max->child ;
+                /* Set s to t's left sibling */
+                s = t->lsibling ;
+    
+                /* -- Meld of right endpoint -- */
+                /* Set right sibling of s to right sibling of max node */
+                s->rsibling = max->rsibling ;
+                /* Close right end of meld by linking back to s */
+                s->rsibling->lsibling = s ;
+    
+                /* -- Meld of left endpoint -- */
+                /* Set left sibling of t to left sibling of max node */
+                t->lsibling = max->lsibling ;
+                /* Close left end of meld by linking back to t */
+                t->lsibling->rsibling = t ;
+            }
+        }
+
+        /* ------ Step 2: Determine new max ------ */
+        /* Set s to current max */
+        s = max ;
+        /* Set t to right sibling of max */
+        t = s->rsibling ;
+
+        /* Loop through sibling list and check if each one is max */
+        while (t != s) {
+            /* Check if data at t is larger than max data */
+            if (max->data < t->data) {
+                /* Set max to t */
+                max = t ;
+            }
+            /* Set t to next sibling in linked list */
+            t = t->rsibling ;
         }
     }
+
+#if 0
+    /* The remove function is not required for this exercise */
 
     /* -------------------------------------------------------------- */
     /* ------------------------- remove() --------------------------- */
@@ -207,7 +282,6 @@ class FibonacciHeap {
 
         }
     }
-#endif
 
     /* -------------------------------------------------------------- */
     /* ---------------------- increase_key() ------------------------ */
@@ -239,4 +313,5 @@ class FibonacciHeap {
             max = nd ;
         }
     }
+#endif
 } ;
