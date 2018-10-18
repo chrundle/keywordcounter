@@ -1,4 +1,6 @@
 #include "keywordcounter.h"
+#include <thread>
+#include <chrono>
 
 /* Test function to print all top level keywords and queries for unit tests */
 void PrintKeysAndQueries(FibonacciHeap fheap) {
@@ -11,6 +13,7 @@ void PrintKeysAndQueries(FibonacciHeap fheap) {
 
     /* Print max node keyword and query */
     cout << endl ;
+    cout << "Printing all root nodes passing through right siblings: " << endl ;
     cout << "Max: " << max->keyword << ", " << max->data << endl ;
 
     /* Print all top level values */
@@ -45,7 +48,19 @@ int main() {
     PrintKeysAndQueries(fheap) ;
 
     /* Insert into FibonacciHeap */
+    fheap.insert("edge", 3) ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    /* Insert into FibonacciHeap */
     fheap.insert("firefox", 100) ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    /* Delete max */
+    fheap.remove_max() ;
 
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
@@ -64,6 +79,12 @@ int main() {
 
     /* Insert into FibonacciHeap */
     fheap.insert("firefox", 2) ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    /* Delete max */
+    fheap.remove_max() ;
 
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;

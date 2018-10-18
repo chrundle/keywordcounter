@@ -174,6 +174,8 @@ class FibonacciHeap {
         hashmap[keyword] = new Node(keyword, frequency) ;
         /* Set right sibling of new node to right sibling to max node */
         hashmap[keyword]->rsibling = max->rsibling ;
+        /* Set right sibling's left sibling of max node to new node */
+        max->rsibling->lsibling = hashmap[keyword] ;
         /* Set left sibling of new node to max node */
         hashmap[keyword]->lsibling = max ;
         /* Set right sibling of max node to new node */
@@ -195,22 +197,45 @@ class FibonacciHeap {
         /* Initialize variables */
         Node *t, *s ;
 
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::remove_max(): In remove_max()" << endl ;
+        #endif
+
         /* ------ Step 1: Delete max from heap ------ */
         /* Check if max has no siblings */
         if (only_child(max)) {/* max has no siblings */
+            #ifdef DBUG_PRINT
+            cout << "DEBUG: max node has no siblings" << endl ;
+            #endif
+
             if (barren(max)) {/* max has no children */
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::remove_max(): max node has no children" << endl ;
+                #endif
+
                 /* In this case, heap was single max node */
                 /* FIX: NEED TO DEAL WITH THIS CASE */
                 return ;
             }
             else {/* max has at least one child */
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::remove_max(): max has at least one child" << endl ;
+                #endif
                 /* Set max pointer to any child of current max */
                 max = max->child ;
             }
         }
         else {/* max has at least one sibling */
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::remove_max(): max has at least one sibling" << endl ;
+            #endif
+
             /* Check if max has children */
             if (barren(max)) {/* max has no children */
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::remove_max(): max has no children" << endl ;
+                #endif
+
                 /* Set t to right sibling of max */
                 t = max->rsibling ;
                 /* Set s to left sibling of max */
@@ -226,6 +251,10 @@ class FibonacciHeap {
                 max = t ;
             }
             else {/* max has at least one child */
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::remove_max(): max has at least one child" << endl ;
+                #endif
+
                 /* ---- Add children to root linked list ---- */
                 /* Set t to child of max */
                 t = max->child ;
@@ -247,6 +276,9 @@ class FibonacciHeap {
         }
 
         /* ------ Step 2: Determine new max ------ */
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::remove_max(): Determine new max" << endl ;
+        #endif
         /* Set s to current max */
         s = max ;
         /* Set t to right sibling of max */
