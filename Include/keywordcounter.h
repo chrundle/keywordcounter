@@ -7,6 +7,29 @@ using namespace std;
 
 /* Node struct used for nodes in Fibonacci heap implementation */
 class Node {
+  /* ------------------- Private members of node -------------------- */
+  private:
+    /* -------------------------------------------------------------- */
+    /* ------------------------- merge() ---------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Void function which merges two trees of same degree, the 
+       result is rooted at current node and the tree rooted at the 
+       given node becomes a subtree.                                  */
+    void merge(Node *nd) {
+        /* Check if degrees of two nodes are different */
+        if (degree != nd->degree) {
+            /* Print error message */
+            cout << "NODE::merge(): degrees of trees are not the same. " ;
+            cout << "Cannot perform merge(). Exiting function. " << endl ;
+
+            /* Exit function */
+            return ;
+        }
+        /* Initialize variables */
+        long int i ;
+
+        /* Move down tree and combine chilren to circular linked list */ 
+    }
   /* -------------------- Public members of node -------------------- */
   public:
     /* -------- Integer values -------- */
@@ -186,8 +209,8 @@ class FibonacciHeap {
        requested queries.                                             */
     void remove_max() {
         /* Initialize variables */
-        long int k ;
-        Node *t, *s ;
+        long int i, k, degree ;
+        Node *t, *s, *ndmin ;
 
         #ifdef DBUG_PRINT
         cout << "DEBUG::remove_max(): In remove_max()" << endl ;
@@ -289,7 +312,6 @@ class FibonacciHeap {
             t = t->rsibling ;
         }
 
-#if 0
         /* ---- Step 3: Consolidate trees so no two roots have same rank ---- */
         #ifdef DBUG_PRINT
         cout << "DEBUG::remove_max(): Consolidate trees" << endl ;
@@ -301,8 +323,49 @@ class FibonacciHeap {
         for (i = 0; i < k; i++) {
             rank_tree[i] = NULL ;
         }
-        /* Move through all roots and merge trees of same rank */
-#endif
+        /* -- Move through all roots and merge trees of same rank -- */
+        /* Add degree of max node to rank tree */
+        rank_tree[max->degree] = max ;
+        /* Use s to keep track of current node */
+        s = max->rsibling ;
+        /* Move through roots in node and merge trees of same rank */
+        while (s != max) {
+            /* Set current degree */
+            degree = s->degree ;
+
+            /* Check if degree of current node is not in rank_tree */
+            if (rank_tree[degree] == NULL) {/* degree of s not in rank_tree */
+                /* Add degree of s to rank tree */
+                rank_tree[degree] = s ;
+            }
+            else {/* degree of s already in rank_tree */
+                /* -- consolidate s with rank_tree[degree] -- */
+                /* Compare root values to determine largest */
+                if (rank_tree[degree]->data < s->data) {/* larger root at s */
+                    /* Set t = s */
+                    t = s ;
+                    /* Set ndmin = rank_tree[degree] */
+                    ndmin = rank_tree[degree] ;
+                }
+                else {/* larger root at rank_tree[degree] */
+                    /* Set t = rank_tree[degree] */
+                    t = rank_tree[degree] ;
+                    /* Set ndmin = s */
+                    ndmin = s ;
+                }
+
+                /* Consolidate t with ndmin using t as root */
+                /* WRITING node.merge() FUNCTION */
+
+                /* Set rank_tree[degree] = NULL */
+                rank_tree[degree] = NULL ;
+                /* Set rank_tree[degree+1] = t */
+                rank_tree[degree+1] = t ;
+            }
+
+            /* Update node s to next right sibling in root list */
+            s = s->rsibling ;
+        }
 
 
     }
