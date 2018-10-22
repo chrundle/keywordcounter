@@ -1,6 +1,4 @@
 #include "keywordcounter.h"
-#include <thread>
-#include <chrono>
 
 /* Test function to print all top level keywords and queries for unit tests */
 void PrintKeysAndQueries(FibonacciHeap fheap) {
@@ -21,6 +19,10 @@ void PrintKeysAndQueries(FibonacciHeap fheap) {
     node = max->rsibling ;
     while(node != max) {
         cout << "     " << node->keyword << ", " << node->data << std::endl ; 
+#if 0
+        std::chrono::seconds dura( 1);
+        std::this_thread::sleep_for( dura );
+#endif
         node = node->rsibling ;
     }
 }
@@ -78,7 +80,6 @@ int main() {
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
 
-#if 0
     cout << endl ;
     cout << "Calling remove_max()." << endl ;
 
@@ -111,6 +112,7 @@ int main() {
 
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
+#if 0
 #endif
 }
 

@@ -3,6 +3,10 @@
 #include <iostream>
 #include <string.h>
 #include <unordered_map>
+
+#include <thread>
+#include <chrono>
+
 using namespace std;
 
 /* Node struct used for nodes in Fibonacci heap implementation */
@@ -207,6 +211,8 @@ class FibonacciHeap {
         node = max->rsibling ;
         while(node != max) {
             cout << "     " << node->keyword << ", " << node->data << std::endl ; 
+            std::chrono::seconds dura( 1);
+            std::this_thread::sleep_for( dura );
             node = node->rsibling ;
         }
     }
@@ -354,7 +360,7 @@ class FibonacciHeap {
                 /* Set right sibling of max's left sibling to s */
                 max->lsibling->rsibling = s ;
                 /* Set left sibling of s to left sibling of max node */
-                s->rsibling = max->rsibling ;
+                s->lsibling = max->lsibling ;
 
                 /* Set max pointer to any sibling of current max */
                 max = t ;

@@ -27,7 +27,7 @@ $(OBJ): $(INCLUDE)
 #----------------------------------------------------------
 
 keywordcounter: $(INCLUDE) Source/keywordcounter.cpp
-	$(C) $(FLAGS) -o keywordcounter Source/keywordcounter.cpp
+	$(C) -o keywordcounter Source/keywordcounter.cpp
 
 #----------------------------------------------------------
 # PURGE
