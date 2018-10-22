@@ -7,7 +7,12 @@
 #include <thread>
 #include <chrono>
 
+#define FALSE 0
+#define TRUE 1
+
 using namespace std;
+
+
 
 /* Node struct used for nodes in Fibonacci heap implementation */
 class Node {
@@ -49,6 +54,8 @@ class Node {
         child = NULL ;
         /* Set degree to zero */
         degree = 0 ;
+        /* Set childcut to FALSE */
+        childcut = FALSE ;
     }
     /* -------------------------------------------------------------- */
     /* ------------------ Parametrized Constructor ------------------ */
@@ -71,6 +78,21 @@ class Node {
         data = d ;
     }
     /* -------------------------------------------------------------- */
+    /* -------------------------- meld() ---------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Meld subtree at root level.                                    */
+    void meld(Node *nd) {
+        /* ---- Insert nd into linked list with 'this' node ---- */
+        nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
+        /* -- Insert nd to right of 'this' node -- */
+        this->rsibling->lsibling = nd ; /* Insert nd to right of this */
+        nd->rsibling = this->rsibling ; /* Insert nd to right of this */
+        nd->lsibling = this ; /* Insert nd to right of this */
+        this->rsibling = nd ; /* Insert nd to right of this */
+        /* -- Set childcut to FALSE for given node as it is now in root -- */
+        nd->childcut = FALSE ; 
+    }
+    /* -------------------------------------------------------------- */
     /* ------------------------- merge() ---------------------------- */
     /* -------------------------------------------------------------- */
     /* Void function which merges two trees of same degree, the 
@@ -91,7 +113,6 @@ class Node {
             return ;
         }
         /* Initialize variables */
-        long int i ;
         Node *t ;
 
         /* Check if degree of root is 0 */ 
@@ -495,7 +516,7 @@ class FibonacciHeap {
     }
 
 #if 0
-    /* The arbitrary remove function is not required for this exercise */
+    /* The arbitrary remove is required for increase_key() */
 
     /* -------------------------------------------------------------- */
     /* ------------------------- remove() --------------------------- */
@@ -512,6 +533,42 @@ class FibonacciHeap {
 
         }
     }
+    /* -------------------------------------------------------------- */
+    /* -------------------------- meld() ---------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Meld subtree at root level. Updates childcut of input parent
+       node.
+       Returns FALSE if childcut was not changed from TRUE
+               TRUE  if childcut was changed from TRUE                */
+    bool meld(Node *nd) {
+        /* Initialize variables */
+        bool output ;
+        Node *par ;
+
+        /* ---- Insert nd into linked list with 'this' node ---- */
+        par = nd->parent ;    /* Store parent pointer of nd */
+        nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
+        /* -- Insert nd to right of 'this' node -- */
+        this->rsibling->lsibling = nd ; /* Insert nd to right of this */
+        nd->rsibling = this->rsibling ; /* Insert nd to right of this */
+        nd->lsibling = this ; /* Insert nd to right of this */
+        this->rsibling = nd ; /* Insert nd to right of this */
+        /* -- Set childcut to FALSE for given node as it is now in root -- */
+        nd->childcut = FALSE ; 
+        /* -- Decrease value of degree for parent node by 1 -- */
+        par->degree -= 1 ;
+        /* -- Update value of childcut for 'this' node -- */
+        /* Store output value */
+        output = childcut ;
+        /* Check if 'this' node is not at root level */
+        if (par->parent != NULL) {/* Parent node is not at root level */
+            /* Flip boolean value of childcut */
+            par->childcut = !output ; 
+        }
+        /* Return output */
+        return output ;
+    }
+#endif
 
     /* -------------------------------------------------------------- */
     /* ---------------------- increase_key() ------------------------ */
@@ -519,36 +576,39 @@ class FibonacciHeap {
     /* Given a node, increase its key value by a given amount. */
     void increase_key(Node *nd, long int amount) {
         /* Initialize variables */
-        Node *t ;
+        Node *t, *s ;
 
         /* Check if given node is orphan and store output in t */
         t = orphan(nd) ;
 
-        if (t == nd) {/* Given node points to parent */
+        /* Increase nd key value by given amount */
+        nd->data += amount ;
+
+        if (t == NULL) {/* Given node is at root level */
+            /* Check if max pointer needs to be updated */
+            if(max->data < nd->data) {
+                /* Set max pointer to pointer of new node */
+                max = nd ;
+            }
+            /* Exit program */
+            return ;
+        }
+        else {/* Given node is not at root level */
+            /* Set s to parent of input node */
+            s = nd->parent ;
+            /* Check if nd data is less than parent data */
+            if(nd->data < s->data) {
+                /* Nothing else to be done. Exit program. */
+                return ;
+            }
+        }
+
+        if (t == nd) {/* Given node is child of parent */
             /* Remove subtree rooted at nd and add to top level */
         }
-        else if (t != NULL) {/* Given node does not point to parent */
+        else {/* Given node is not child of parent */
             /* ---- Remove subtree rooted at given node ---- */
             /* Set parent child pointer to NULL */
         }
-        else {/* Given node does not have parent */
-            /* Nothing to do */
-        }
-
-        /* Increase nd key value by given amount */
-        nd->data += amount ;
-        /* Check if max pointer needs to be updated */
-        if(max->data < nd->data) {
-            /* Set max pointer to pointer of new node */
-            max = nd ;
-        }
     }
-
-    /* -------------------------------------------------------------- */
-    /* -------------------------- meld() ---------------------------- */
-    /* -------------------------------------------------------------- */
-    /* Meld two fibonacci heaps at top level. */
-    void meld(FibonacciHeap fheap) {
-    }
-#endif
 } ;
