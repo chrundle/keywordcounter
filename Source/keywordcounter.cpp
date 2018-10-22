@@ -60,17 +60,27 @@ int main() {
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
 
-    /* Delete max */
-    fheap.remove_max() ;
-
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
+    cout << endl ;
+    cout << "Calling remove_max()." << endl ;
 
     /* Delete max */
     fheap.remove_max() ;
 
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
+
+    cout << endl ;
+    cout << "Calling remove_max()." << endl ;
+
+    /* Delete max */
+    fheap.remove_max() ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+#if 0
+    cout << endl ;
+    cout << "Calling remove_max()." << endl ;
 
     /* Delete max */
     fheap.remove_max() ;
@@ -84,16 +94,23 @@ int main() {
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
 
-    /* Delete max */
-    fheap.remove_max() ;
-
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
+    cout << endl ;
+    cout << "Calling remove_max()." << endl ;
 
     /* Delete max */
     fheap.remove_max() ;
 
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
+
+    cout << endl ;
+    cout << "Calling remove_max()." << endl ;
+
+    /* Delete max */
+    fheap.remove_max() ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+#endif
 }
 

@@ -9,27 +9,6 @@ using namespace std;
 class Node {
   /* ------------------- Private members of node -------------------- */
   private:
-    /* -------------------------------------------------------------- */
-    /* ------------------------- merge() ---------------------------- */
-    /* -------------------------------------------------------------- */
-    /* Void function which merges two trees of same degree, the 
-       result is rooted at current node and the tree rooted at the 
-       given node becomes a subtree.                                  */
-    void merge(Node *nd) {
-        /* Check if degrees of two nodes are different */
-        if (degree != nd->degree) {
-            /* Print error message */
-            cout << "NODE::merge(): degrees of trees are not the same. " ;
-            cout << "Cannot perform merge(). Exiting function. " << endl ;
-
-            /* Exit function */
-            return ;
-        }
-        /* Initialize variables */
-        long int i ;
-
-        /* Move down tree and combine chilren to circular linked list */ 
-    }
   /* -------------------- Public members of node -------------------- */
   public:
     /* -------- Integer values -------- */
@@ -87,6 +66,73 @@ class Node {
         /* Set data to input d */
         data = d ;
     }
+    /* -------------------------------------------------------------- */
+    /* ------------------------- merge() ---------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Void function which merges two trees of same degree, the 
+       result is rooted at current node and the tree rooted at the 
+       given node becomes a subtree.                                  */
+    void merge(Node *nd) {
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::merge(): In merge()" << endl ;
+        #endif
+
+        /* Check if degrees of two nodes are different */
+        if (degree != nd->degree) {
+            /* Print error message */
+            cout << "NODE::merge(): degrees of trees are not the same. " ;
+            cout << "Cannot perform merge(). Exiting function. " << endl ;
+
+            /* Exit function */
+            return ;
+        }
+        /* Initialize variables */
+        long int i ;
+        Node *t ;
+
+        /* Check if degree of root is 0 */ 
+        if (degree == 0) {
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::merge(): Degree of this node = 0" << endl ;
+            #endif
+
+            /* -- Remove nd from root linked list -- */
+            nd->lsibling->rsibling = nd->rsibling ;
+            nd->rsibling->lsibling = nd->lsibling ;
+            /* ---- Insert nd into linked list below 'this' node ---- */
+            nd->parent = this ;   /* Set parent pointer of nd to this */
+            this->child = nd  ;   /* Set child pointer of this to nd */
+            /* -- Set sibling pointers of nd to itself -- */
+            nd->rsibling = nd ; 
+            nd->lsibling = nd ; 
+            /* -- Update degree of root node -- */
+            degree += 1 ;
+        }
+        else if (degree >= 1) {/* Merge one level down if degree >= 1 */
+            /* -- Remove nd from root linked list -- */
+            nd->lsibling->rsibling = nd->rsibling ;
+            nd->rsibling->lsibling = nd->lsibling ;
+            /* ---- Insert nd into linked list below 'this' node ---- */
+            nd->parent = this ;   /* Set parent pointer of nd to this */
+            /* -- Insert nd to right of child of 'this' -- */
+            t = this->child ;   /* Set t to child of this node */
+            t->rsibling->lsibling = nd ; /* Insert nd to right of t */
+            nd->rsibling = t->rsibling ; /* Insert nd to right of t */
+            nd->lsibling = t ; /* Insert nd to right of t */
+            t->rsibling = nd ; /* Insert nd to right of t */
+            /* -- Update degree of root node -- */
+            degree += 1 ;
+        }
+        else {/* Degree was somehow set to negative which is illegal */
+            /* Print error message */
+            cout << "NODE::merge(): degree of root negative, must be >=0. " ;
+            cout << "Cannot perform merge(). Exiting function. " << endl ;
+        }
+
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::merge(): Program completed successfully." << endl ;
+        #endif
+    }
 } ;
 
 /* FibonacciHeap class used for Fibonacci max heap implementation */
@@ -141,6 +187,28 @@ class FibonacciHeap {
     long int rank_bound() {
         /* Rank of heap bounded by log_{phi}(n), where phi ~ 1.618. */
         return (long int)(log(n) / log(1.62)) ;
+    }
+
+    /* -------------------------------------------------------------- */
+    /* ----------------------- PrintRoot() -------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Compute bound on rank based on current number of nodes.        */       
+    void PrintRoot() {
+        /* Node for checking find_max */
+        Node *node = new Node() ;
+    
+        /* Print max node keyword and query */
+        cout << endl ;
+        cout << "Total number of nodes: " << n << endl ;
+        cout << "Printing all root nodes passing through right siblings: " << endl ;
+        cout << "Max: " << max->keyword << ", " << max->data << endl ;
+    
+        /* Print all top level values */
+        node = max->rsibling ;
+        while(node != max) {
+            cout << "     " << node->keyword << ", " << node->data << std::endl ; 
+            node = node->rsibling ;
+        }
     }
 
   /* -------------------- Public members of heap -------------------- */
@@ -273,20 +341,23 @@ class FibonacciHeap {
                 /* ---- Add children to root linked list ---- */
                 /* Set t to child of max */
                 t = max->child ;
-                /* Set s to t's left sibling */
-                s = t->lsibling ;
+                /* Set s to t's right sibling */
+                s = t->rsibling ;
     
                 /* -- Meld of right endpoint -- */
-                /* Set right sibling of s to right sibling of max node */
-                s->rsibling = max->rsibling ;
-                /* Close right end of meld by linking back to s */
-                s->rsibling->lsibling = s ;
+                /* Set left sibling of max's right sibling to t */
+                max->rsibling->lsibling = t ;
+                /* Set right sibling of t to right sibling of max node */
+                t->rsibling = max->rsibling ;
     
                 /* -- Meld of left endpoint -- */
-                /* Set left sibling of t to left sibling of max node */
-                t->lsibling = max->lsibling ;
-                /* Close left end of meld by linking back to t */
-                t->lsibling->rsibling = t ;
+                /* Set right sibling of max's left sibling to s */
+                max->lsibling->rsibling = s ;
+                /* Set left sibling of s to left sibling of max node */
+                s->rsibling = max->rsibling ;
+
+                /* Set max pointer to any sibling of current max */
+                max = t ;
             }
         }
         /* Decrease total number of nodes by 1 since max has been removed */
@@ -318,7 +389,12 @@ class FibonacciHeap {
         #endif
         /* -- Initialize array to hold node pointers by rank -- */
         k = rank_bound() + 1 ; /* bound on rank */
-        Node **rank_tree[k] ;
+        Node *rank_tree[k] ;
+
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::remove_max(): rank_bound = " << k << endl ;
+        #endif
+
         /* Set all pointers in rank_tree array to null */
         for (i = 0; i < k; i++) {
             rank_tree[i] = NULL ;
@@ -328,46 +404,88 @@ class FibonacciHeap {
         rank_tree[max->degree] = max ;
         /* Use s to keep track of current node */
         s = max->rsibling ;
+
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::remove_max(): Move through rank_tree" << endl ;
+        #endif
+
         /* Move through roots in node and merge trees of same rank */
         while (s != max) {
             /* Set current degree */
             degree = s->degree ;
 
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::remove_max(): Current degree = " << degree << endl ;
+            #endif
+
             /* Check if degree of current node is not in rank_tree */
             if (rank_tree[degree] == NULL) {/* degree of s not in rank_tree */
                 /* Add degree of s to rank tree */
                 rank_tree[degree] = s ;
+
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::remove_max(): Added pointer to rank_tree[" << degree << "]" << endl ;
+                #endif
             }
             else {/* degree of s already in rank_tree */
-                /* -- consolidate s with rank_tree[degree] -- */
-                /* Compare root values to determine largest */
-                if (rank_tree[degree]->data < s->data) {/* larger root at s */
-                    /* Set t = s */
-                    t = s ;
-                    /* Set ndmin = rank_tree[degree] */
-                    ndmin = rank_tree[degree] ;
-                }
-                else {/* larger root at rank_tree[degree] */
-                    /* Set t = rank_tree[degree] */
-                    t = rank_tree[degree] ;
-                    /* Set ndmin = s */
-                    ndmin = s ;
+                while (rank_tree[degree] != NULL) {
+                    /* -- consolidate s with rank_tree[degree] -- */
+                    /* Compare root values to determine largest */
+                    if (rank_tree[degree]->data < s->data) {/* larger root at s */
+                        /* Set ndmin = rank_tree[degree] */
+                        ndmin = rank_tree[degree] ;
+                    }
+                    else {/* larger root at rank_tree[degree] */
+                        /* Set ndmin = s */
+                        ndmin = s ;
+                        /* Set s = rank_tree[degree] */
+                        s = rank_tree[degree] ;
+                    }
+    
+                    #ifdef DBUG_PRINT
+                    cout << "DEBUG::remove_max(): Keyword at top merge node: " ;
+                    cout << s->keyword << endl ;
+                    cout << "DEBUG::remove_max(): Keyword at bottom merge node: " ;
+                    cout << ndmin->keyword << endl ;
+                    #endif
+    
+                    /* Consolidate t with ndmin using t as root */
+                    s->merge(ndmin) ;
+    
+                    #ifdef DBUG_PRINT
+                    cout << "DEBUG::remove_max(): Root after merge" << endl ;
+                    PrintRoot() ;
+                    #endif
+    
+                    /* Update pointers in rank_tree as ranks have changed */
+                    /* Set rank_tree[degree] = NULL */
+                    rank_tree[degree] = NULL ;
+
+                    #ifdef DBUG_PRINT
+                    cout << "DEBUG::remove_max(): Updated rank_tree[" ;
+                    cout << degree << "] to NULL" << endl ;
+                    #endif
+                   
+                    /* Increase degree by one  */
+                    degree += 1 ;
                 }
 
-                /* Consolidate t with ndmin using t as root */
-                /* WRITING node.merge() FUNCTION */
-
-                /* Set rank_tree[degree] = NULL */
-                rank_tree[degree] = NULL ;
-                /* Set rank_tree[degree+1] = t */
-                rank_tree[degree+1] = t ;
+                /* Set rank_tree[degree] = s */
+                rank_tree[degree] = s ;
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::remove_max(): Updated rank_tree[" ;
+                cout << degree << "] to " << s->keyword << endl ;
+                #endif
             }
 
             /* Update node s to next right sibling in root list */
             s = s->rsibling ;
         }
 
-
+        /* ---- Finished merging trees of same rank. Exit program ---- */
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::remove_max(): Exiting program" << endl ;
+        #endif
     }
 
 #if 0
