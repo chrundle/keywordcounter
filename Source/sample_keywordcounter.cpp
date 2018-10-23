@@ -1,5 +1,4 @@
 #include "keywordcounter.h"
-#include <fstream>
 
 /* Test function to print all top level keywords and queries for unit tests */
 void PrintKeysAndQueries(FibonacciHeap fheap) {
@@ -32,53 +31,10 @@ void PrintKeysAndQueries(FibonacciHeap fheap) {
 }
 
 /* Program for determining the n most popular keywords used in search engine */
-int main(int argc, char *argv[]) {
-    /* Initialize variables */
-    int exit_status ;
-    ifstream qfile ;
-    string line ;
+int main() {
+    /* Node for checking find_max */
+    Node *node = new Node() ;
 
-    /* Check if number of input arguments is correct */
-    if (argc != 2) {
-        /* Program requires file of queries to run */
-        cout << "keywordcounter::Error: Problem file containing queries " ;
-        cout << "not provided. Terminating program." << endl ;
-        /* Set exit status to 1 */
-        exit_status = 1 ;
-        /* Exit program */
-        return exit_status ;
-    }
-
-    /* Initialize exit_status to 0 (indicating no errors) */
-    exit_status = 0 ;
-
-    #ifdef DEBUG_MAIN
-    /* Print name of input file */
-    cout << "main::DEBUG: Input file provided: " << argv[1] << endl ;
-    #endif
-
-    /* Open input file */
-    qfile.open (argv[1]) ;
-
-    /* Check if file was unable to be opened */
-    if (!qfile.is_open()) {/* File unable to be opened succefully */
-        /* Set exit status to 2 */
-        exit_status = 2 ;
-        /* Exit program */
-        return exit_status ;
-    }
-
-    /* Pass through input file extracting current line at each pass */
-    while (getline (qfile, line)) {
-        #ifdef DEBUG_MAIN
-        /* Print current line in input file */
-        cout << "main::DEBUG: Current line in file: " << line << endl ;
-        #endif
-
-        /* Check if current line contains update or request query */
-    }
-
-#if 0
     /* Initialize FibonacciHeap */
     FibonacciHeap fheap("facebook", 5) ;
 
@@ -124,6 +80,14 @@ int main(int argc, char *argv[]) {
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
 
+#if 0
+    /* Increase number of queries for facebook */
+    fheap.increase_key("facebook", 22) ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+#endif
+
     /* Increase number of queries for facebook */
     fheap.increase_key("facebook", 12) ;
 
@@ -136,14 +100,48 @@ int main(int argc, char *argv[]) {
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
 
-    /* Close file and free file pointer */
-    fclose(fp) ;
+#if 0
+    cout << endl ;
+    cout << "Calling remove_max()." << endl ;
+
+    /* Delete max */
+    fheap.remove_max() ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    cout << endl ;
+    cout << "Calling remove_max()." << endl ;
+
+    /* Delete max */
+    fheap.remove_max() ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    /* Insert into FibonacciHeap */
+    fheap.insert("firefox", 2) ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    cout << endl ;
+    cout << "Calling remove_max()." << endl ;
+
+    /* Delete max */
+    fheap.remove_max() ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    cout << endl ;
+    cout << "Calling remove_max()." << endl ;
+
+    /* Delete max */
+    fheap.remove_max() ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
 #endif
-
-    /* Close file */
-    qfile.close() ;
-
-    /* Exit program and return exit status */
-    return exit_status ;
 }
 
