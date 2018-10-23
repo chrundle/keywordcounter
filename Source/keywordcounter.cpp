@@ -12,13 +12,16 @@ void PrintKeysAndQueries(FibonacciHeap fheap) {
     /* Print max node keyword and query */
     cout << endl ;
     cout << "Total number of nodes: " << fheap.number_of_nodes() << endl ;
-    cout << "Printing all root nodes passing through right siblings: " << endl ;
-    cout << "Max: " << max->keyword << ", " << max->data << endl ;
+    cout << "Printing root keys, queries, degrees, and childcut " ;
+    cout << "thru right siblings: " << endl ;
+    cout << "Max: " << max->keyword << ", " << max->data ;
+    cout << ", " << max->degree << ", " << max->childcut << endl ;
 
     /* Print all top level values */
     node = max->rsibling ;
     while(node != max) {
-        cout << "     " << node->keyword << ", " << node->data << std::endl ; 
+        cout << "     " << node->keyword << ", " << node->data ; 
+        cout << ", " << node->degree << ", " << node->childcut << endl ;
 #if 0
         std::chrono::seconds dura( 1);
         std::this_thread::sleep_for( dura );
@@ -86,7 +89,13 @@ int main() {
 #endif
 
     /* Increase number of queries for facebook */
-    fheap.increase_key("duckduckgo", 40) ;
+    fheap.increase_key("facebook", 12) ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+    /* Increase number of queries for facebook */
+    fheap.increase_key("dog-pictures", 10) ;
 
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;

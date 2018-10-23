@@ -88,6 +88,11 @@ class Node {
         cout << "DEBUG::merge(): In merge()" << endl ;
         #endif
 
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::merge(): Degree at beginning of merge() = " ;
+        cout << degree << endl ;
+        #endif
+
         /* Check if degrees of two nodes are different */
         if (degree != nd->degree) {
             /* Print error message */
@@ -138,6 +143,11 @@ class Node {
             cout << "NODE::merge(): degree of root negative, must be >=0. " ;
             cout << "Cannot perform merge(). Exiting function. " << endl ;
         }
+
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::merge(): Degree at end of merge() = " ;
+        cout << degree << endl ;
+        #endif
 
         #ifdef DBUG_PRINT
         cout << "DEBUG::merge(): Program completed successfully." << endl ;
@@ -419,6 +429,11 @@ class FibonacciHeap {
             t = t->rsibling ;
         }
 
+        #ifdef DBUG_PRINT
+        cout << endl << "DEBUG::remove_max(): Root after removing max" ;
+        PrintRoot() ;
+        #endif
+
         /* ---- Step 3: Consolidate trees so no two roots have same rank ---- */
         #ifdef DBUG_PRINT
         cout << "DEBUG::remove_max(): Consolidate trees" << endl ;
@@ -595,6 +610,10 @@ class FibonacciHeap {
         Node *t, *s, *nd ;
         bool childcut ;
 
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::increase_key(): In increase_key()" << endl ;
+        #endif
+
         /* Initialize nd */
         nd = hashmap[keyword] ;
 
@@ -604,7 +623,17 @@ class FibonacciHeap {
         /* Increase nd key value by given amount */
         nd->data += amount ;
 
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::increase_key(): " << nd->keyword ;
+        cout << "->data = " << nd->data << endl ;
+        #endif
+
         if (t == NULL) {/* Given node is at root level */
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::increase_key(): " << nd->keyword ;
+            cout << " has no parent" << endl ;
+            #endif
+
             /* Check if max pointer needs to be updated */
             if(max->data < nd->data) {
                 /* Set max pointer to pointer of new node */
@@ -614,6 +643,11 @@ class FibonacciHeap {
             return ;
         }
         else {/* Given node is not at root level */
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::increase_key(): " << nd->keyword ;
+            cout << " has parent " << nd->parent->keyword << endl ;
+            #endif
+
             /* Check if nd data is less than parent data */
             if(nd->data < nd->parent->data) {
                 /* Nothing else to be done. Exit program. */
