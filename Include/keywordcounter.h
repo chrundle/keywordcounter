@@ -78,21 +78,6 @@ class Node {
         data = d ;
     }
     /* -------------------------------------------------------------- */
-    /* -------------------------- meld() ---------------------------- */
-    /* -------------------------------------------------------------- */
-    /* Meld subtree at root level.                                    */
-    void meld(Node *nd) {
-        /* ---- Insert nd into linked list with 'this' node ---- */
-        nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
-        /* -- Insert nd to right of 'this' node -- */
-        this->rsibling->lsibling = nd ; /* Insert nd to right of this */
-        nd->rsibling = this->rsibling ; /* Insert nd to right of this */
-        nd->lsibling = this ; /* Insert nd to right of this */
-        this->rsibling = nd ; /* Insert nd to right of this */
-        /* -- Set childcut to FALSE for given node as it is now in root -- */
-        nd->childcut = FALSE ; 
-    }
-    /* -------------------------------------------------------------- */
     /* ------------------------- merge() ---------------------------- */
     /* -------------------------------------------------------------- */
     /* Void function which merges two trees of same degree, the 
@@ -212,6 +197,30 @@ class FibonacciHeap {
     long int rank_bound() {
         /* Rank of heap bounded by log_{phi}(n), where phi ~ 1.618. */
         return (long int)(log(n) / log(1.62)) ;
+    }
+
+    /* -------------------------------------------------------------- */
+    /* -------------------------- meld() ---------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Meld subtree at root level.                                    */
+    void meld(Node *nd) {
+        /* ---- Insert nd into linked list with max node ---- */
+#if 0
+    /* This operation is done in remove() */
+        nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
+#endif
+        /* -- Insert nd to right of max node -- */
+        max->rsibling->lsibling = nd ; /* Insert nd to right of max */
+        nd->rsibling = max->rsibling ; /* Insert nd to right of max */
+        nd->lsibling = max ; /* Insert nd to right of max */
+        max->rsibling = nd ; /* Insert nd to right of max */
+        /* -- Set childcut to FALSE for given node as it is now in root -- */
+        nd->childcut = FALSE ; 
+        /* -- Check if max pointer needs to be updated -- */
+        if(max->data < nd->data) {
+            /* Set max pointer to pointer of new node */
+            max = nd ;
+        }
     }
 
     /* -------------------------------------------------------------- */
@@ -515,68 +524,79 @@ class FibonacciHeap {
         #endif
     }
 
-#if 0
-    /* The arbitrary remove is required for increase_key() */
-
     /* -------------------------------------------------------------- */
     /* ------------------------- remove() --------------------------- */
     /* -------------------------------------------------------------- */
-    /* Remove node from heap given pointer to node. */
-    /* This function is required for the increase_key() function.     */
-    void remove(Node *nd) {
-        /* Check if node contains maximum key */
-        if (nd == max) {/* Node to remove contains max key */
-            /* Perform remove max */
-            remove_max() ;
-        }
-        else {/* Node to remove does not contain max key */
-
-        }
-    }
-    /* -------------------------------------------------------------- */
-    /* -------------------------- meld() ---------------------------- */
-    /* -------------------------------------------------------------- */
-    /* Meld subtree at root level. Updates childcut of input parent
-       node.
+    /* Remove node from heap given pointer to node. Updates childcut 
+       of input parent node.
        Returns FALSE if childcut was not changed from TRUE
                TRUE  if childcut was changed from TRUE                */
-    bool meld(Node *nd) {
+    /* This function is required for the increase_key() function.     */
+    bool remove(Node *nd) {
         /* Initialize variables */
         bool output ;
         Node *par ;
 
-        /* ---- Insert nd into linked list with 'this' node ---- */
-        par = nd->parent ;    /* Store parent pointer of nd */
-        nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
-        /* -- Insert nd to right of 'this' node -- */
-        this->rsibling->lsibling = nd ; /* Insert nd to right of this */
-        nd->rsibling = this->rsibling ; /* Insert nd to right of this */
-        nd->lsibling = this ; /* Insert nd to right of this */
-        this->rsibling = nd ; /* Insert nd to right of this */
-        /* -- Set childcut to FALSE for given node as it is now in root -- */
-        nd->childcut = FALSE ; 
-        /* -- Decrease value of degree for parent node by 1 -- */
-        par->degree -= 1 ;
-        /* -- Update value of childcut for 'this' node -- */
-        /* Store output value */
-        output = childcut ;
-        /* Check if 'this' node is not at root level */
-        if (par->parent != NULL) {/* Parent node is not at root level */
-            /* Flip boolean value of childcut */
-            par->childcut = !output ; 
+        /* Check if node contains maximum key */
+        if (nd == max) {/* Node to remove contains max key */
+            /* Perform remove max */
+            remove_max() ;
+            /* Exit function */
+            return FALSE ;
         }
-        /* Return output */
-        return output ;
-    }
+        else {/* Node to remove does not contain max key */
+            /* ---- Insert nd into linked list with 'this' node ---- */
+            par = nd->parent ;    /* Store parent pointer of nd */
+            nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
+#if 0
+    /* This operation is performed in meld() */
+            /* -- Set childcut to FALSE for given node as it is now in root -- */
+            nd->childcut = FALSE ; 
 #endif
+            /* -- Decrease value of degree for parent node by 1 -- */
+            par->degree -= 1 ;
+
+            /* -- Update child pointer for par node -- */
+            /* Check if nd is child of nd parent */
+            if (par->child == nd) {/* nd == nd->parent->child */
+                /* Check if nd has siblings */
+                if (nd->rsibling == nd) {/* nd has no siblings */
+                    /* Set child pointer to NULL */
+                    par->child = NULL ;
+                }
+                else {/* nd has at least one sibling */
+                    /* Set child pointer to right sibling of nd */
+                    par->child = nd->rsibling ;
+                }
+            }
+            else {/* nd != nd->parent->child */
+                /* Nothing to be done */
+            }
+
+            /* -- Update value of childcut for 'this' node -- */
+            /* Store output value */
+            output = par->childcut ;
+            /* Check if 'this' node is not at root level */
+            if (par->parent != NULL) {/* Parent node is not at root level */
+                /* Flip boolean value of childcut */
+                par->childcut = !output ; 
+            }
+            /* Return output */
+            return output ;
+        }
+    }
 
     /* -------------------------------------------------------------- */
     /* ---------------------- increase_key() ------------------------ */
     /* -------------------------------------------------------------- */
     /* Given a node, increase its key value by a given amount. */
-    void increase_key(Node *nd, long int amount) {
+    void increase_key(string keyword, long int amount) {
         /* Initialize variables */
-        Node *t, *s ;
+        Node *t, *s, *nd ;
+        bool childcut ;
+
+        /* Initialize nd */
+        nd = hashmap[keyword] ;
 
         /* Check if given node is orphan and store output in t */
         t = orphan(nd) ;
@@ -594,21 +614,27 @@ class FibonacciHeap {
             return ;
         }
         else {/* Given node is not at root level */
-            /* Set s to parent of input node */
-            s = nd->parent ;
             /* Check if nd data is less than parent data */
-            if(nd->data < s->data) {
+            if(nd->data < nd->parent->data) {
                 /* Nothing else to be done. Exit program. */
                 return ;
             }
-        }
 
-        if (t == nd) {/* Given node is child of parent */
-            /* Remove subtree rooted at nd and add to top level */
-        }
-        else {/* Given node is not child of parent */
-            /* ---- Remove subtree rooted at given node ---- */
-            /* Set parent child pointer to NULL */
+            /* Set s to nd (necessary for beginning of while loop) */
+            s = nd ;
+            /* Initialize childcut to TRUE (necessary to enter while loop) */
+            childcut = TRUE ;
+            /* Move up subtree from nd until childcut is FALSE */
+            while (childcut) {
+                /* Set t to s */
+                t = s ;
+                /* Set s to t->parent */
+                s = t->parent ;
+                /* Remove node nd from fibonacci heap */
+                childcut = remove(t) ;
+                /* Insert subtree with nd at root level */
+                meld(t) ;
+            }
         }
     }
 } ;

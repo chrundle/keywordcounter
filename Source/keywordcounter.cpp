@@ -35,26 +35,32 @@ int main() {
     /* Initialize FibonacciHeap */
     FibonacciHeap fheap("facebook", 5) ;
 
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
-
     /* Insert into FibonacciHeap */
     fheap.insert("google", 20) ;
 
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
+    /* Increase number of queries for facebook */
+    fheap.increase_key("facebook", 2) ;
 
     /* Insert into FibonacciHeap */
     fheap.insert("duckduckgo", 1) ;
 
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
+    /* Insert into FibonacciHeap */
+    fheap.insert("pinterest", 32) ;
+
+    /* Insert into FibonacciHeap */
+    fheap.insert("dog-pictures", 12) ;
+
+    /* Insert into FibonacciHeap */
+    fheap.insert("weather", 17) ;
 
     /* Insert into FibonacciHeap */
     fheap.insert("edge", 3) ;
 
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
+    /* Insert into FibonacciHeap */
+    fheap.insert("reddit", 6) ;
+
+    /* Insert into FibonacciHeap */
+    fheap.insert("hogwarts", 10) ;
 
     /* Insert into FibonacciHeap */
     fheap.insert("firefox", 100) ;
@@ -71,6 +77,21 @@ int main() {
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
 
+#if 0
+    /* Increase number of queries for facebook */
+    fheap.increase_key("facebook", 22) ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+#endif
+
+    /* Increase number of queries for facebook */
+    fheap.increase_key("duckduckgo", 40) ;
+
+    /* Print top level nodes */
+    PrintKeysAndQueries(fheap) ;
+
+#if 0
     cout << endl ;
     cout << "Calling remove_max()." << endl ;
 
@@ -112,7 +133,6 @@ int main() {
 
     /* Print top level nodes */
     PrintKeysAndQueries(fheap) ;
-#if 0
 #endif
 }
 
