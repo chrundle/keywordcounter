@@ -12,3 +12,4 @@ $firefox 100
 1
 $facebook 12
 $dog 10
+stop
