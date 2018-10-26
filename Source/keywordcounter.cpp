@@ -89,9 +89,7 @@ int main(int argc, char *argv[]) {
     #endif
 
     /* Initialize FibonacciHeap */
-#if 0
-    FibonacciHeap fheap("facebook", 5) ;
-#endif
+    FibonacciHeap fheap ;
 
     /* Get first line from qfile */
     getline (qfile, line) ;
@@ -119,10 +117,8 @@ int main(int argc, char *argv[]) {
             cout << "main::DEBUG: Current keyword, frequency: " ;
             cout << keyword << ", " << frequency << endl ;
 
-#if 0
             /* Update keyword and frequency in heap */
             fheap.insert(keyword, frequency) ;
-#endif
         }
         else {/* Received query request */
             /* Extract query request from line and convert to int */
@@ -133,15 +129,17 @@ int main(int argc, char *argv[]) {
             #endif
             cout << "main::DEBUG: Current query: " << query << endl ;
 
-#if 0
             /* -- Remove requested number of elements from fheap and print -- */
             while (query > 1) {
                 /* Find maximum value in heap */
                 max = fheap.find_max() ;
+                /* Remove maximum value from heap */
+                fheap.remove_max() ;
                 /* Print 'keyword,' to output file */
                 outfile << max->keyword << "," ;
                 /* Meld node to separate fibonacci heap */
-             
+/* PICK UP HERE */             
+
                 /* Decrease query by one */
                 query-- ;
             }
@@ -149,6 +147,8 @@ int main(int argc, char *argv[]) {
             /* Repeat operations for final query */
             /* Find maximum value in heap */
             max = fheap.find_max() ;
+            /* Remove maximum value from heap */
+            fheap.remove_max() ;
             /* Print 'keyword' to output file and endline */
             outfile << max->keyword << endl ;
             /* Meld node to separate fibonacci heap */
@@ -156,7 +156,7 @@ int main(int argc, char *argv[]) {
 
             /* -- Insert removed elements back into fheap -- */
             /* Merge separate fibonacci heap with fheap */
-#endif
+/* PICK UP HERE */             
 
         }
 

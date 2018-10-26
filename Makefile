@@ -10,7 +10,7 @@ C = g++ -std=c++11 $(I)
 
 INCLUDE = Include/keywordcounter.h
 
-FLAGS = -DDBUG_PRINT
+FLAGS = -DDBUG_PRINT -DDEBUG_MAIN
 
 #----------------------------------------------------------
 # OBJECTS

@@ -264,6 +264,16 @@ class FibonacciHeap {
                                               nodes                   */
 
     /* -------------------------------------------------------------- */
+    /* -------------------- Default Constructor --------------------- */
+    /* -------------------------------------------------------------- */
+    FibonacciHeap() {
+        /* Set max pointer to NULL */
+        max = NULL ;
+        /* Set number of nodes in heap to 0 */
+        n = 0 ;
+    }
+
+    /* -------------------------------------------------------------- */
     /* ------------------ Parametrized Constructor ------------------ */
     /* -------------------------------------------------------------- */
     FibonacciHeap(string keyword, long int frequency) {
@@ -296,18 +306,51 @@ class FibonacciHeap {
     /* -------------------------------------------------------------- */
     /* Insert node into heap. */
     void insert(string keyword, long int frequency) {
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::insert(): In insert()." << endl ;
+        #endif
+
+        /* ---- Check if keyword is already in heap ---- */
+        if (hashmap[keyword] != NULL) {/* keyword in heap */
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::insert(): Given keyword already in heap." << endl ;
+            #endif
+
+            /* Call increase_key instead */
+            increase_key(keyword, frequency) ;
+
+            /* Exit program */
+            return ;
+        }
+
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::insert(): Given keyword not in heap." << endl ;
+        #endif
+
+        /* ---- If keyword is not in heap add it to heap ---- */
         /* Create new node with data equal to number of queries */
         hashmap[keyword] = new Node(keyword, frequency) ;
-        /* Set right sibling of new node to right sibling to max node */
-        hashmap[keyword]->rsibling = max->rsibling ;
-        /* Set right sibling's left sibling of max node to new node */
-        max->rsibling->lsibling = hashmap[keyword] ;
-        /* Set left sibling of new node to max node */
-        hashmap[keyword]->lsibling = max ;
-        /* Set right sibling of max node to new node */
-        max->rsibling = hashmap[keyword] ;
-        /* Check if max pointer needs to be updated */
-        if(max->data < hashmap[keyword]->data) {
+        /* Check if heap already has nodes in it */
+        if(n > 0) {/* Heap has at least one node */
+            /* Set right sibling of new node to right sibling to max node */
+            hashmap[keyword]->rsibling = max->rsibling ;
+            /* Set right sibling's left sibling of max node to new node */
+            max->rsibling->lsibling = hashmap[keyword] ;
+            /* Set left sibling of new node to max node */
+            hashmap[keyword]->lsibling = max ;
+            /* Set right sibling of max node to new node */
+            max->rsibling = hashmap[keyword] ;
+            /* Check if max pointer needs to be updated */
+            if(max->data < hashmap[keyword]->data) {
+                /* Set max pointer to pointer of new node */
+                max = hashmap[keyword] ;
+            }
+        }
+        else {
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::insert(): No nodes in heap." ;
+            cout << "Setting max to new pointer." << endl ;
+            #endif
             /* Set max pointer to pointer of new node */
             max = hashmap[keyword] ;
         }
@@ -329,6 +372,14 @@ class FibonacciHeap {
         #ifdef DBUG_PRINT
         cout << "DEBUG::remove_max(): In remove_max()" << endl ;
         #endif
+
+        /* Check if number of nodes in heap is zero */
+        if (n == 0) {/* No nodes in heap */
+            /* Print error message */
+            cout << "remove_max(): Given heap has zero elements." << endl ;
+            /* Exit program */
+            return ;
+        }
 
         /* ------ Step 1: Delete max from heap ------ */
         /* Check if max has no siblings */
@@ -413,6 +464,15 @@ class FibonacciHeap {
         #ifdef DBUG_PRINT
         cout << "DEBUG::remove_max(): Determine new max" << endl ;
         #endif
+
+        /* Check if number of nodes in heap is now zero */
+        if (n == 0) {/* No nodes left in heap */
+            /* Set max equal to NULL pointer */
+            max = NULL ;
+            /* Exit program */
+            return ;
+        }
+
         /* Set s to current max */
         s = max ;
         /* Set t to right sibling of max */
