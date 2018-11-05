@@ -1,5 +1,7 @@
 #include "keywordcounter.h"
 #include <fstream>
+#include <queue>
+#include <utility>
 
 /* Test function to print all top level keywords and queries for unit tests */
 void PrintKeysAndQueries(FibonacciHeap fheap) {
@@ -13,16 +15,28 @@ void PrintKeysAndQueries(FibonacciHeap fheap) {
     /* Print max node keyword and query */
     cout << endl ;
     cout << "Total number of nodes: " << fheap.number_of_nodes() << endl ;
-    cout << "Printing root keys, queries, degrees, and childcut " ;
+    cout << "Printing root keys, queries, degrees, childcut, and parent " ;
     cout << "thru right siblings: " << endl ;
     cout << "Max: " << max->keyword << ", " << max->data ;
-    cout << ", " << max->degree << ", " << max->childcut << endl ;
+    cout << ", " << max->degree << ", " << max->childcut ;
+    if (max->parent == NULL) {
+        cout << ", No parent" << endl ;
+    }
+    else {
+        cout << ", " << max->parent->keyword << endl ;
+    }
 
     /* Print all top level values */
     node = max->rsibling ;
     while(node != max) {
         cout << "     " << node->keyword << ", " << node->data ; 
-        cout << ", " << node->degree << ", " << node->childcut << endl ;
+        cout << ", " << node->degree << ", " << node->childcut ;
+        if (node->parent == NULL) {
+            cout << ", No parent" << endl ;
+        }
+        else {
+            cout << ", " << node->parent->keyword << endl ;
+        }
 #if 0
         std::chrono::seconds dura( 1);
         std::this_thread::sleep_for( dura );
@@ -35,7 +49,9 @@ void PrintKeysAndQueries(FibonacciHeap fheap) {
 int main(int argc, char *argv[]) {
     /* Initialize variables */
     int exit_status, space_num ;
-    long int frequency, query ;
+    long int frequency, query, data ;
+    queue < pair<string, long int> > removed_pairs ;
+    pair <string, long int> key_query_pair ;
     ifstream qfile ;
     ofstream outfile ;
     string line, keyword ;
@@ -88,8 +104,8 @@ int main(int argc, char *argv[]) {
     cout << "main::DEBUG: Output file successfully opened." << endl ;
     #endif
 
-    /* Initialize FibonacciHeap */
-    FibonacciHeap fheap ;
+    /* Initialize main FibonacciHeap and backup */
+    FibonacciHeap fheap, temp_heap ;
 
     /* Get first line from qfile */
     getline (qfile, line) ;
@@ -135,11 +151,22 @@ int main(int argc, char *argv[]) {
                 max = fheap.find_max() ;
                 /* Remove maximum value from heap */
                 fheap.remove_max() ;
+                /* Set keyword to current keyword */
+                keyword = max->keyword ;
+#if 0
+                /* Set data to data at current max */
+                data = max->data ;
+                /* Make pair of keyword and data */
+                key_query_pair = make_pair(keyword, data) ;
+#endif
                 /* Print 'keyword,' to output file */
-                outfile << max->keyword << "," ;
-                /* Meld node to separate fibonacci heap */
-/* PICK UP HERE */             
-
+                outfile << keyword << "," ;
+                /* Insert keyword and query into FIFO queue */
+                removed_pairs.push(make_pair(keyword, data)) ;
+#if 0
+                /* Insert node in separate fibonacci heap */
+                temp_heap.insert(max->keyword, max->data) ;
+#endif
                 /* Decrease query by one */
                 query-- ;
             }
@@ -149,16 +176,42 @@ int main(int argc, char *argv[]) {
             max = fheap.find_max() ;
             /* Remove maximum value from heap */
             fheap.remove_max() ;
-            /* Print 'keyword' to output file and endline */
-            outfile << max->keyword << endl ;
-            /* Meld node to separate fibonacci heap */
+            /* Set keyword to current keyword */
+            keyword = max->keyword ;
+#if 0
+            /* Set data to data at current max */
+            data = max->data ;
+            /* Make pair of keyword and data */
+            key_query_pair = make_pair(keyword, data) ;
+#endif
+            /* Print 'keyword,' to output file */
+            outfile << keyword << "," ;
+            /* Insert keyword and query into FIFO queue */
+            removed_pairs.push(make_pair(keyword, data)) ;
+#if 0
+            /* Insert node in separate fibonacci heap */
+            temp_heap.insert(max->keyword, max->data) ;
+#endif
+
+            PrintKeysAndQueries(fheap) ;
              
-
             /* -- Insert removed elements back into fheap -- */
-            /* Merge separate fibonacci heap with fheap */
-/* PICK UP HERE */             
-
+            while (!removed_pairs.empty()) {
+                /* Extract keyword,query pair from FIFO queue */
+                key_query_pair = removed_pairs.front() ;
+                /* Insert element into fheap */
+                fheap.insert(key_query_pair.first, key_query_pair.second) ;
+                /* Pop keyword,query pair from FIFO queue */
+                removed_pairs.pop() ;
+            }
+#if 0
+            /* Meld separate fibonacci heap with fheap */
+            max = temp_heap.find_max() ;
+            fheap.combine(max, temp_heap.number_of_nodes()) ;
+#endif
         }
+
+        PrintKeysAndQueries(fheap) ;
 
         /* Get next line and break if no next line */
         if (!getline (qfile, line)) {/* Error occured in getline */

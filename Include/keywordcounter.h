@@ -212,7 +212,7 @@ class FibonacciHeap {
     /* -------------------------------------------------------------- */
     /* -------------------------- meld() ---------------------------- */
     /* -------------------------------------------------------------- */
-    /* Meld subtree at root level.                                    */
+    /* Meld single node at root level.                                */
     void meld(Node *nd) {
         /* ---- Insert nd into linked list with max node ---- */
 #if 0
@@ -234,6 +234,31 @@ class FibonacciHeap {
     }
 
     /* -------------------------------------------------------------- */
+    /* ------------------------ meld_list() ------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Meld list of nodes at root level.                              */
+    void meld_list(Node *nd) {
+        /* ---- Insert nd into linked list with max node ---- */
+#if 0
+    /* This operation is done in remove() */
+        nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
+#endif
+        /* -- Insert nd to right of max node -- */
+        max->rsibling->lsibling = nd->lsibling ; /* Set nd lsib right of max */
+        nd->lsibling->rsibling = max->rsibling ; /* Set nd lsib right of max */
+        nd->lsibling = max ; /* Insert nd to right of max */
+        max->rsibling = nd ; /* Insert nd to right of max */
+        /* -- Set childcut to FALSE for given node as it is now in root -- */
+        nd->childcut = FALSE ; 
+            /* TODO: NEED TO SET ALL childcut VALUES TO FALSE FROM MELDED HEAP */
+        /* -- Check if max pointer needs to be updated -- */
+        if(max->data < nd->data) {
+            /* Set max pointer to pointer of new node */
+            max = nd ;
+        }
+    }
+
+    /* -------------------------------------------------------------- */
     /* ----------------------- PrintRoot() -------------------------- */
     /* -------------------------------------------------------------- */
     /* Compute bound on rank based on current number of nodes.        */       
@@ -244,15 +269,32 @@ class FibonacciHeap {
         /* Print max node keyword and query */
         cout << endl ;
         cout << "Total number of nodes: " << n << endl ;
-        cout << "Printing all root nodes passing through right siblings: " << endl ;
-        cout << "Max: " << max->keyword << ", " << max->data << endl ;
+        cout << "Printing root keys, queries, degrees, childcut, and parent " ;
+        cout << "thru right siblings: " << endl ;
+        cout << "Max: " << max->keyword << ", " << max->data ;
+        cout << ", " << max->degree << ", " << max->childcut ;
+        if (max->parent == NULL) {
+            cout << ", No parent" << endl ;
+        }
+        else {
+            cout << ", " << max->parent->keyword << endl ;
+        }
     
         /* Print all top level values */
         node = max->rsibling ;
         while(node != max) {
-            cout << "     " << node->keyword << ", " << node->data << std::endl ; 
+            cout << "     " << node->keyword << ", " << node->data ;
+            cout << ", " << node->degree << ", " << node->childcut ;
+            if (node->parent == NULL) {
+                cout << ", No parent" << endl ;
+            }
+            else {
+                cout << ", " << node->parent->keyword << endl ;
+            }
+#if 0
             std::chrono::seconds dura( 1);
             std::this_thread::sleep_for( dura );
+#endif
             node = node->rsibling ;
         }
     }
@@ -401,8 +443,26 @@ class FibonacciHeap {
                 #ifdef DBUG_PRINT
                 cout << "DEBUG::remove_max(): max has at least one child" << endl ;
                 #endif
+                /* Set t to child of max */
+                t = max->child ;
+                /* Set parent of t to NULL */
+                t->parent = NULL ;
+                /* Set s to t's right sibling */
+                s = t->rsibling ;
+
+                /* ---- Change parent pointers of all children to NULL ---- */
+                while (s != t) {
+                    /* Set parent of s to NULL */
+                    s->parent = NULL ;
+                    /* Set s to s's right sibling */
+                    s = s->rsibling ;
+                }
+
+                /* Erase max element from hashmap */
+                hashmap.erase(max->keyword) ;
+
                 /* Set max pointer to any child of current max */
-                max = max->child ;
+                max = t ;
             }
         }
         else {/* max has at least one sibling */
@@ -427,6 +487,9 @@ class FibonacciHeap {
                 /* Set left sibling of t to s */
                 t->lsibling = s ;
 
+                /* Erase max element from hashmap */
+                hashmap.erase(max->keyword) ;
+
                 /* Set max pointer to any sibling of current max */
                 max = t ;
             }
@@ -435,9 +498,26 @@ class FibonacciHeap {
                 cout << "DEBUG::remove_max(): max has at least one child" << endl ;
                 #endif
 
-                /* ---- Add children to root linked list ---- */
                 /* Set t to child of max */
                 t = max->child ;
+                /* Set parent of t to NULL */
+                t->parent = NULL ;
+                /* Set s to t's right sibling */
+                s = t->rsibling ;
+
+                /* ---- Change parent pointers of all children to NULL ---- */
+                while (s != t) {
+                    /* Set parent of s to NULL */
+                    s->parent = NULL ;
+                    /* Set s to s's right sibling */
+                    s = s->rsibling ;
+                }
+
+                /* ---- Add children to root linked list ---- */
+#if 0
+                /* Set t to child of max */
+                t = max->child ;
+#endif
                 /* Set s to t's right sibling */
                 s = t->rsibling ;
     
@@ -453,7 +533,10 @@ class FibonacciHeap {
                 /* Set left sibling of s to left sibling of max node */
                 s->lsibling = max->lsibling ;
 
-                /* Set max pointer to any sibling of current max */
+                /* Erase max element from hashmap */
+                hashmap.erase(max->keyword) ;
+
+                /* Set max pointer to any child of current max */
                 max = t ;
             }
         }
@@ -730,5 +813,16 @@ class FibonacciHeap {
                 meld(t) ;
             }
         }
+    }
+
+    /* -------------------------------------------------------------- */
+    /* ------------------------- combine() -------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Given a fib heap, combine its top level with this fib heap. */
+    void combine(Node *fheap, long int size) {
+        /* Meld root level of given heap to current heap */
+        this->meld_list(fheap) ;
+        /* Increase number of elements in current heap */
+        n += size ;
     }
 } ;

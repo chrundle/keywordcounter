@@ -1,0 +1,23 @@
+$facebook 5
+$google 20
+$facebook 2
+$duckduckgo 1
+$pinterest 32
+$dog 12
+$weather 17
+$edge 3
+$reddit 6
+$hogwarts 10
+$firefox 100
+2
+$facebook 12
+$dog 10
+$happy 5
+$sad 20
+$excited 2
+$what 1
+$pranking 32
+4
+$whatisiti 12
+$downtoclown 17
+stop
