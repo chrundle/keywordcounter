@@ -1,8 +1,11 @@
 #include "keywordcounter.h"
 #include <fstream>
+#include <queue>
+#include <utility>
+
 
 /* Test function to print all top level keywords and queries for unit tests */
-void PrintKeysAndQueries(FibonacciHeap fheap) {
+void PrintKeysAndQueriesLtoR(FibonacciHeap fheap) {
     /* Node for checking find_max */
     Node *node = new Node() ;
     Node *max = new Node() ;
@@ -13,16 +16,28 @@ void PrintKeysAndQueries(FibonacciHeap fheap) {
     /* Print max node keyword and query */
     cout << endl ;
     cout << "Total number of nodes: " << fheap.number_of_nodes() << endl ;
-    cout << "Printing root keys, queries, degrees, and childcut " ;
+    cout << "Printing root keys, queries, degrees, childcut, and parent " ;
     cout << "thru right siblings: " << endl ;
     cout << "Max: " << max->keyword << ", " << max->data ;
-    cout << ", " << max->degree << ", " << max->childcut << endl ;
+    cout << ", " << max->degree << ", " << max->childcut ;
+    if (max->parent == NULL) {
+        cout << ", No parent" << endl ;
+    }
+    else {
+        cout << ", " << max->parent->keyword << endl ;
+    }
 
     /* Print all top level values */
     node = max->rsibling ;
     while(node != max) {
         cout << "     " << node->keyword << ", " << node->data ; 
-        cout << ", " << node->degree << ", " << node->childcut << endl ;
+        cout << ", " << node->degree << ", " << node->childcut ;
+        if (node->parent == NULL) {
+            cout << ", No parent" << endl ;
+        }
+        else {
+            cout << ", " << node->parent->keyword << endl ;
+        }
 #if 0
         std::chrono::seconds dura( 1);
         std::this_thread::sleep_for( dura );
@@ -31,11 +46,55 @@ void PrintKeysAndQueries(FibonacciHeap fheap) {
     }
 }
 
+/* Test function to print all top level keywords and queries for unit tests */
+void PrintKeysAndQueriesRtoL(FibonacciHeap fheap) {
+    /* Node for checking find_max */
+    Node *node = new Node() ;
+    Node *max = new Node() ;
+
+    /* Find maximum value in heap */
+    max = fheap.find_max() ;
+
+    /* Print max node keyword and query */
+    cout << endl ;
+    cout << "Total number of nodes: " << fheap.number_of_nodes() << endl ;
+    cout << "Printing root keys, queries, degrees, childcut, and parent " ;
+    cout << "thru left siblings: " << endl ;
+    cout << "Max: " << max->keyword << ", " << max->data ;
+    cout << ", " << max->degree << ", " << max->childcut ;
+    if (max->parent == NULL) {
+        cout << ", No parent" << endl ;
+    }
+    else {
+        cout << ", " << max->parent->keyword << endl ;
+    }
+
+    /* Print all top level values */
+    node = max->lsibling ;
+    while(node != max) {
+        cout << "     " << node->keyword << ", " << node->data ; 
+        cout << ", " << node->degree << ", " << node->childcut ;
+        if (node->parent == NULL) {
+            cout << ", No parent" << endl ;
+        }
+        else {
+            cout << ", " << node->parent->keyword << endl ;
+        }
+#if 0
+        std::chrono::seconds dura( 1);
+        std::this_thread::sleep_for( dura );
+#endif
+        node = node->lsibling ;
+    }
+}
+
 /* Program for determining the n most popular keywords used in search engine */
 int main(int argc, char *argv[]) {
     /* Initialize variables */
     int exit_status, space_num ;
-    long int frequency, query ;
+    long int frequency, query, data ;
+    queue < pair<string, long int> > removed_pairs ;
+    pair <string, long int> key_query_pair ;
     ifstream qfile ;
     ofstream outfile ;
     string line, keyword ;
@@ -88,8 +147,8 @@ int main(int argc, char *argv[]) {
     cout << "main::DEBUG: Output file successfully opened." << endl ;
     #endif
 
-    /* Initialize FibonacciHeap */
-    FibonacciHeap fheap ;
+    /* Initialize main FibonacciHeap and backup */
+    FibonacciHeap fheap, temp_heap ;
 
     /* Get first line from qfile */
     getline (qfile, line) ;
@@ -113,9 +172,9 @@ int main(int argc, char *argv[]) {
 
             #ifdef DEBUG_MAIN
             /* Print current keyword and frequency */
-            #endif
             cout << "main::DEBUG: Current keyword, frequency: " ;
             cout << keyword << ", " << frequency << endl ;
+            #endif
 
             /* Update keyword and frequency in heap */
             fheap.insert(keyword, frequency) ;
@@ -126,8 +185,8 @@ int main(int argc, char *argv[]) {
 
             #ifdef DEBUG_MAIN
             /* Print current query number */
-            #endif
             cout << "main::DEBUG: Current query: " << query << endl ;
+            #endif
 
             /* -- Remove requested number of elements from fheap and print -- */
             while (query > 1) {
@@ -135,11 +194,12 @@ int main(int argc, char *argv[]) {
                 max = fheap.find_max() ;
                 /* Remove maximum value from heap */
                 fheap.remove_max() ;
+                /* Set keyword to current keyword */
+                keyword = max->keyword ;
                 /* Print 'keyword,' to output file */
-                outfile << max->keyword << "," ;
-                /* Meld node to separate fibonacci heap */
-/* PICK UP HERE */             
-
+                outfile << keyword << "," ;
+                /* Insert keyword and query into FIFO queue */
+                removed_pairs.push(make_pair(keyword, max->data)) ;
                 /* Decrease query by one */
                 query-- ;
             }
@@ -149,16 +209,41 @@ int main(int argc, char *argv[]) {
             max = fheap.find_max() ;
             /* Remove maximum value from heap */
             fheap.remove_max() ;
-            /* Print 'keyword' to output file and endline */
-            outfile << max->keyword << endl ;
-            /* Meld node to separate fibonacci heap */
+            /* Set keyword to current keyword */
+            keyword = max->keyword ;
+            /* Print 'keyword\n' to output file */
+            outfile << keyword << endl ;
+            /* Insert keyword and query into FIFO queue */
+            removed_pairs.push(make_pair(keyword, max->data)) ;
+
+            #ifdef DEBUG_MAIN
+            /* Print Keys and Queries */
+            PrintKeysAndQueriesLtoR(fheap) ;
+            #endif
              
-
             /* -- Insert removed elements back into fheap -- */
-            /* Merge separate fibonacci heap with fheap */
-/* PICK UP HERE */             
+            while (!removed_pairs.empty()) {
+                /* Extract keyword,query pair from FIFO queue */
+                key_query_pair = removed_pairs.front() ;
 
+                #ifdef DEBUG_MAIN
+                /* Print pair to be reinserted */
+                cout << "main::DEBUG: Reinserting keyword, query pair: " ;
+		cout << key_query_pair.first << ", " ;
+                cout << key_query_pair.second << endl ;
+                #endif
+
+                /* Insert element into fheap */
+                fheap.insert(key_query_pair.first, key_query_pair.second) ;
+                /* Pop keyword,query pair from FIFO queue */
+                removed_pairs.pop() ;
+            }
         }
+
+        #ifdef DEBUG_MAIN
+        /* Print Keys and Queries */
+        PrintKeysAndQueriesLtoR(fheap) ;
+        #endif
 
         /* Get next line and break if no next line */
         if (!getline (qfile, line)) {/* Error occured in getline */
@@ -167,74 +252,10 @@ int main(int argc, char *argv[]) {
         }
     }
 
-
     #ifdef DEBUG_MAIN
-    /* Print current line in input file */
+    /* Print to console that stop command was received */
     cout << "main::DEBUG: Received 'stop' command." << endl ;
-    cout << "main::DEBUG: Current line in file: " << line << endl ;
     #endif
-
-#if 0
-    /* Initialize FibonacciHeap */
-    FibonacciHeap fheap("facebook", 5) ;
-
-    /* Insert into FibonacciHeap */
-    fheap.insert("google", 20) ;
-
-    /* Increase number of queries for facebook */
-    fheap.increase_key("facebook", 2) ;
-
-    /* Insert into FibonacciHeap */
-    fheap.insert("duckduckgo", 1) ;
-
-    /* Insert into FibonacciHeap */
-    fheap.insert("pinterest", 32) ;
-
-    /* Insert into FibonacciHeap */
-    fheap.insert("dog-pictures", 12) ;
-
-    /* Insert into FibonacciHeap */
-    fheap.insert("weather", 17) ;
-
-    /* Insert into FibonacciHeap */
-    fheap.insert("edge", 3) ;
-
-    /* Insert into FibonacciHeap */
-    fheap.insert("reddit", 6) ;
-
-    /* Insert into FibonacciHeap */
-    fheap.insert("hogwarts", 10) ;
-
-    /* Insert into FibonacciHeap */
-    fheap.insert("firefox", 100) ;
-
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
-
-    cout << endl ;
-    cout << "Calling remove_max()." << endl ;
-
-    /* Delete max */
-    fheap.remove_max() ;
-
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
-
-    /* Increase number of queries for facebook */
-    fheap.increase_key("facebook", 12) ;
-
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
-
-    /* Increase number of queries for facebook */
-    fheap.increase_key("dog-pictures", 10) ;
-
-    /* Print top level nodes */
-    PrintKeysAndQueries(fheap) ;
-
-    /* Close file and free file pointer */
-    fclose(fp) ;
-#endif
 
     /* Close files */
     qfile.close() ;

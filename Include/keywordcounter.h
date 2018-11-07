@@ -105,18 +105,18 @@ class Node {
         /* Initialize variables */
         Node *t ;
 
+        #ifdef DBUG_PRINT
+        cout << "DEBUG::merge(): Degree of this node = " << degree << endl ;
+        #endif
+
         /* Check if degree of root is 0 */ 
         if (degree == 0) {
-            #ifdef DBUG_PRINT
-            cout << "DEBUG::merge(): Degree of this node = 0" << endl ;
-            #endif
-
             /* -- Remove nd from root linked list -- */
             nd->lsibling->rsibling = nd->rsibling ;
             nd->rsibling->lsibling = nd->lsibling ;
             /* ---- Insert nd into linked list below 'this' node ---- */
             nd->parent = this ;   /* Set parent pointer of nd to this */
-            this->child = nd  ;   /* Set child pointer of this to nd */
+            child = nd  ;   /* Set child pointer of this to nd */
             /* -- Set sibling pointers of nd to itself -- */
             nd->rsibling = nd ; 
             nd->lsibling = nd ; 
@@ -130,7 +130,13 @@ class Node {
             /* ---- Insert nd into linked list below 'this' node ---- */
             nd->parent = this ;   /* Set parent pointer of nd to this */
             /* -- Insert nd to right of child of 'this' -- */
-            t = this->child ;   /* Set t to child of this node */
+            t = child ;   /* Set t to child of this node */
+
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::merge(): Child: " << t->keyword << endl ;
+            cout << "DEBUG::merge(): Rsib of child: " << t->rsibling->keyword << endl ;
+            #endif
+
             t->rsibling->lsibling = nd ; /* Insert nd to right of t */
             nd->rsibling = t->rsibling ; /* Insert nd to right of t */
             nd->lsibling = t ; /* Insert nd to right of t */
@@ -147,9 +153,6 @@ class Node {
         #ifdef DBUG_PRINT
         cout << "DEBUG::merge(): Degree at end of merge() = " ;
         cout << degree << endl ;
-        #endif
-
-        #ifdef DBUG_PRINT
         cout << "DEBUG::merge(): Program completed successfully." << endl ;
         #endif
     }
@@ -212,7 +215,7 @@ class FibonacciHeap {
     /* -------------------------------------------------------------- */
     /* -------------------------- meld() ---------------------------- */
     /* -------------------------------------------------------------- */
-    /* Meld subtree at root level.                                    */
+    /* Meld single node at root level.                                */
     void meld(Node *nd) {
         /* ---- Insert nd into linked list with max node ---- */
 #if 0
@@ -234,26 +237,131 @@ class FibonacciHeap {
     }
 
     /* -------------------------------------------------------------- */
-    /* ----------------------- PrintRoot() -------------------------- */
+    /* ------------------------ meld_list() ------------------------- */
     /* -------------------------------------------------------------- */
-    /* Compute bound on rank based on current number of nodes.        */       
-    void PrintRoot() {
+    /* Meld list of nodes at root level.                              */
+    void meld_list(Node *nd) {
+        /* ---- Insert nd into linked list with max node ---- */
+#if 0
+    /* This operation is done in remove() */
+        nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
+#endif
+        /* -- Insert nd to right of max node -- */
+        max->rsibling->lsibling = nd->lsibling ; /* Set nd lsib right of max */
+        nd->lsibling->rsibling = max->rsibling ; /* Set nd lsib right of max */
+        nd->lsibling = max ; /* Insert nd to right of max */
+        max->rsibling = nd ; /* Insert nd to right of max */
+        /* -- Set childcut to FALSE for given node as it is now in root -- */
+        nd->childcut = FALSE ; 
+            /* TODO: NEED TO SET ALL childcut VALUES TO FALSE FROM MELDED HEAP */
+        /* -- Check if max pointer needs to be updated -- */
+        if(max->data < nd->data) {
+            /* Set max pointer to pointer of new node */
+            max = nd ;
+        }
+    }
+
+    /* -------------------------------------------------------------- */
+    /* --------------------- PrintRootLtoR() ------------------------ */
+    /* -------------------------------------------------------------- */
+    /* Print root level nodes starting with max and moving to right.  */       
+    void PrintRootLtoR() {
         /* Node for checking find_max */
         Node *node = new Node() ;
     
         /* Print max node keyword and query */
         cout << endl ;
         cout << "Total number of nodes: " << n << endl ;
-        cout << "Printing all root nodes passing through right siblings: " << endl ;
-        cout << "Max: " << max->keyword << ", " << max->data << endl ;
+        cout << "Printing root keys, queries, degrees, childcut, parent, " ;
+        cout << "and child thru right siblings: " << endl ;
+        cout << "Max: " << max->keyword << ", " << max->data ;
+        cout << ", " << max->degree << ", " << max->childcut ;
+        if (max->parent == NULL) {
+            cout << ", No parent" ;
+        }
+        else {
+            cout << ", " << max->parent->keyword ;
+        }
+        if (max->child == NULL) {
+            cout << ", No child" << endl ;
+        }
+        else {
+            cout << ", " << max->child->keyword << endl ;
+        }
     
         /* Print all top level values */
         node = max->rsibling ;
         while(node != max) {
-            cout << "     " << node->keyword << ", " << node->data << std::endl ; 
-            std::chrono::seconds dura( 1);
+            cout << "     " << node->keyword << ", " << node->data ;
+            cout << ", " << node->degree << ", " << node->childcut ;
+            if (node->parent == NULL) {
+                cout << ", No parent" ;
+            }
+            else {
+                cout << ", " << node->parent->keyword ;
+            }
+            if (node->child == NULL) {
+                cout << ", No child" << endl ;
+            }
+            else {
+                cout << ", " << node->child->keyword << endl ;
+            }
+
+            std::chrono::milliseconds dura( 50);
             std::this_thread::sleep_for( dura );
             node = node->rsibling ;
+        }
+    }
+
+    /* -------------------------------------------------------------- */
+    /* --------------------- PrintRootRtoL() ------------------------ */
+    /* -------------------------------------------------------------- */
+    /* Print root level nodes starting with max and moving to left.   */       
+    void PrintRootRtoL() {
+        /* Node for checking find_max */
+        Node *node = new Node() ;
+    
+        /* Print max node keyword and query */
+        cout << endl ;
+        cout << "Total number of nodes: " << n << endl ;
+        cout << "Printing root keys, queries, degrees, childcut, parent, " ;
+        cout << "and child thru left siblings: " << endl ;
+        cout << "Max: " << max->keyword << ", " << max->data ;
+        cout << ", " << max->degree << ", " << max->childcut ;
+        if (max->parent == NULL) {
+            cout << ", No parent" ;
+        }
+        else {
+            cout << ", " << max->parent->keyword ;
+        }
+        if (max->child == NULL) {
+            cout << ", No child" << endl ;
+        }
+        else {
+            cout << ", " << max->child->keyword << endl ;
+        }
+    
+        /* Print all top level values */
+        node = max->lsibling ;
+        while(node != max) {
+            cout << "     " << node->keyword << ", " << node->data ;
+            cout << ", " << node->degree << ", " << node->childcut ;
+            if (node->parent == NULL) {
+                cout << ", No parent" ;
+            }
+            else {
+                cout << ", " << node->parent->keyword ;
+            }
+            if (node->child == NULL) {
+                cout << ", No child" << endl ;
+            }
+            else {
+                cout << ", " << node->child->keyword << endl ;
+            }
+
+            std::chrono::milliseconds dura( 50);
+            std::this_thread::sleep_for( dura );
+            node = node->lsibling ;
         }
     }
 
@@ -367,7 +475,7 @@ class FibonacciHeap {
     void remove_max() {
         /* Initialize variables */
         long int i, k, degree ;
-        Node *t, *s, *ndmin ;
+        Node *t, *s, *ndmin, *ndmax ;
 
         #ifdef DBUG_PRINT
         cout << "DEBUG::remove_max(): In remove_max()" << endl ;
@@ -401,8 +509,26 @@ class FibonacciHeap {
                 #ifdef DBUG_PRINT
                 cout << "DEBUG::remove_max(): max has at least one child" << endl ;
                 #endif
+                /* Set t to child of max */
+                t = max->child ;
+                /* Set parent of t to NULL */
+                t->parent = NULL ;
+                /* Set s to t's right sibling */
+                s = t->rsibling ;
+
+                /* ---- Change parent pointers of all children to NULL ---- */
+                while (s != t) {
+                    /* Set parent of s to NULL */
+                    s->parent = NULL ;
+                    /* Set s to s's right sibling */
+                    s = s->rsibling ;
+                }
+
+                /* Erase max element from hashmap */
+                hashmap.erase(max->keyword) ;
+
                 /* Set max pointer to any child of current max */
-                max = max->child ;
+                max = t ;
             }
         }
         else {/* max has at least one sibling */
@@ -427,6 +553,9 @@ class FibonacciHeap {
                 /* Set left sibling of t to s */
                 t->lsibling = s ;
 
+                /* Erase max element from hashmap */
+                hashmap.erase(max->keyword) ;
+
                 /* Set max pointer to any sibling of current max */
                 max = t ;
             }
@@ -435,9 +564,26 @@ class FibonacciHeap {
                 cout << "DEBUG::remove_max(): max has at least one child" << endl ;
                 #endif
 
-                /* ---- Add children to root linked list ---- */
                 /* Set t to child of max */
                 t = max->child ;
+                /* Set parent of t to NULL */
+                t->parent = NULL ;
+                /* Set s to t's right sibling */
+                s = t->rsibling ;
+
+                /* ---- Change parent pointers of all children to NULL ---- */
+                while (s != t) {
+                    /* Set parent of s to NULL */
+                    s->parent = NULL ;
+                    /* Set s to s's right sibling */
+                    s = s->rsibling ;
+                }
+
+                /* ---- Add children to root linked list ---- */
+#if 0
+                /* Set t to child of max */
+                t = max->child ;
+#endif
                 /* Set s to t's right sibling */
                 s = t->rsibling ;
     
@@ -453,7 +599,10 @@ class FibonacciHeap {
                 /* Set left sibling of s to left sibling of max node */
                 s->lsibling = max->lsibling ;
 
-                /* Set max pointer to any sibling of current max */
+                /* Erase max element from hashmap */
+                hashmap.erase(max->keyword) ;
+
+                /* Set max pointer to any child of current max */
                 max = t ;
             }
         }
@@ -491,7 +640,7 @@ class FibonacciHeap {
 
         #ifdef DBUG_PRINT
         cout << endl << "DEBUG::remove_max(): Root after removing max" ;
-        PrintRoot() ;
+        PrintRootLtoR() ;
         #endif
 
         /* ---- Step 3: Consolidate trees so no two roots have same rank ---- */
@@ -535,37 +684,46 @@ class FibonacciHeap {
                 rank_tree[degree] = s ;
 
                 #ifdef DBUG_PRINT
-                cout << "DEBUG::remove_max(): Added pointer to rank_tree[" << degree << "]" << endl ;
+                cout << "DEBUG::remove_max(): Added pointer for " ;
+                cout << s->keyword << " to rank_tree[" << degree << "]" << endl ;
                 #endif
+
+                /* Update node s to next right sibling in root list */
+                s = s->rsibling ;
             }
             else {/* degree of s already in rank_tree */
+                /* Initialize ndmax to s */
+                ndmax = s ;
+                /* Update node s to next right sibling in root list before merging */
+                s = s->rsibling ;
+
                 while (rank_tree[degree] != NULL) {
                     /* -- consolidate s with rank_tree[degree] -- */
                     /* Compare root values to determine largest */
-                    if (rank_tree[degree]->data < s->data) {/* larger root at s */
+                    if (rank_tree[degree]->data < ndmax->data) {/* larger root at s */
                         /* Set ndmin = rank_tree[degree] */
                         ndmin = rank_tree[degree] ;
                     }
                     else {/* larger root at rank_tree[degree] */
                         /* Set ndmin = s */
-                        ndmin = s ;
+                        ndmin = ndmax ;
                         /* Set s = rank_tree[degree] */
-                        s = rank_tree[degree] ;
+                        ndmax = rank_tree[degree] ;
                     }
     
                     #ifdef DBUG_PRINT
                     cout << "DEBUG::remove_max(): Keyword at top merge node: " ;
-                    cout << s->keyword << endl ;
+                    cout << ndmax->keyword << endl ;
                     cout << "DEBUG::remove_max(): Keyword at bottom merge node: " ;
                     cout << ndmin->keyword << endl ;
                     #endif
     
                     /* Consolidate t with ndmin using t as root */
-                    s->merge(ndmin) ;
+                    ndmax->merge(ndmin) ;
     
                     #ifdef DBUG_PRINT
                     cout << "DEBUG::remove_max(): Root after merge" << endl ;
-                    PrintRoot() ;
+                    PrintRootLtoR() ;
                     #endif
     
                     /* Update pointers in rank_tree as ranks have changed */
@@ -582,15 +740,17 @@ class FibonacciHeap {
                 }
 
                 /* Set rank_tree[degree] = s */
-                rank_tree[degree] = s ;
+                rank_tree[degree] = ndmax ;
                 #ifdef DBUG_PRINT
                 cout << "DEBUG::remove_max(): Updated rank_tree[" ;
-                cout << degree << "] to " << s->keyword << endl ;
+                cout << degree << "] to " << ndmax->keyword << endl ;
                 #endif
             }
 
-            /* Update node s to next right sibling in root list */
-            s = s->rsibling ;
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::remove_max(): Current node: " ;
+            cout << s->keyword << "\n" << endl ;
+            #endif
         }
 
         /* ---- Finished merging trees of same rank. Exit program ---- */
@@ -730,5 +890,16 @@ class FibonacciHeap {
                 meld(t) ;
             }
         }
+    }
+
+    /* -------------------------------------------------------------- */
+    /* ------------------------- combine() -------------------------- */
+    /* -------------------------------------------------------------- */
+    /* Given a fib heap, combine its top level with this fib heap. */
+    void combine(Node *fheap, long int size) {
+        /* Meld root level of given heap to current heap */
+        this->meld_list(fheap) ;
+        /* Increase number of elements in current heap */
+        n += size ;
     }
 } ;
