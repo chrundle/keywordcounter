@@ -191,28 +191,69 @@ int main(int argc, char *argv[]) {
             #endif
 
             #ifdef GENERATE_SOLUTION
+                #ifdef DEBUG_MAIN
+                /* Print current keyword and frequency */
+                cout << "main::GS: Current keyword, frequency: " ;
+                cout << keyword << ", " << frequency << endl ;
+                #endif
+
             /* Set node pointer */
             GS_node = fheap.hashmap[keyword] ;
             /* Check if keyword already in map */
             if (GS_node != NULL) {/* keyword in map */
+                    #ifdef DEBUG_MAIN
+                    /* Print current keyword already in map */
+                    cout << "  main::GS: keyword = " ;
+                    cout << keyword << " already in map" << endl ;
+                    #endif
+
                 /* Set current frequency of keyword in fheap */
                 GS_data = GS_node->data ;
+
                 /* Determine position and length of string */
                 GS_position = GS_sol_map[GS_data].find(keyword) ;
-                GS_str_len = GS_sol_map[GS_data].length() + 1 ;
+                GS_str_len = keyword.length() + 1 ;
+
+                    #ifdef DEBUG_MAIN
+                    /* Print position and length of keyword */
+                    cout << "    main::GS: GS_position = " ;
+                    cout << GS_position << endl ;
+                    cout << "    main::GS: GS_str_len = " ;
+                    cout << GS_str_len << endl ;
+                    #endif
+
                 /* Remove string from map with current frequency */
                 GS_sol_map[GS_data].erase(GS_position,GS_str_len) ;
+
                 /* If string is empty remove from map */
                 if (GS_sol_map[GS_data].empty()) {/* string is empty */
+                        #ifdef DEBUG_MAIN
+                        /* Print keyword to be removed from string in map */
+                        cout << "    main::GS: Removing " << keyword ;
+                        cout << " from string" << endl ;
+                        #endif
+
                     /* Remove element from map that has empty string */
                     GS_sol_map.erase(GS_data) ;
                 }
                 /* Update value in map */
-                GS_sol_map[frequency + GS_node->data] += keyword + " " ;
+                GS_sol_map[frequency + GS_data] = keyword + " " + GS_sol_map[frequency + GS_data] ;
+                    #ifdef DEBUG_MAIN
+                    /* Print updated position of keyword in map */
+                    cout << "    main::GS: GS_sol_map[" ;
+                    cout << frequency + GS_data << "] = " ;
+                    cout << GS_sol_map[frequency + GS_data] << endl ;
+                    #endif
             }
             else {
                 /* Update keyword in map */
-                GS_sol_map[frequency] += keyword + " " ;
+                GS_sol_map[frequency] = keyword + " " + GS_sol_map[frequency] ;
+
+                    #ifdef DEBUG_MAIN
+                    /* Print updated position of keyword in map */
+                    cout << "    main::GS: GS_sol_map[" << frequency << "] = " ;
+                    cout << GS_sol_map[frequency] << endl ;
+                    #endif
             }
             #endif
 
