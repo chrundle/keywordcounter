@@ -103,9 +103,15 @@ int main(int argc, char *argv[]) {
 
     #ifdef GENERATE_SOLUTION
     /* Initialize map to store keyword, query pairs in order */
-    map<string, long int> sol_map ;
-    map<string, long int>::iterator it ;
-    map<string, long int>::reverse_iterator rit ;
+    map<long int, string> GS_sol_map ;
+    map<long int, string>::reverse_iterator GS_rit ;
+    size_t GS_position, GS_str_len ;
+    Node *GS_node ;
+    long int GS_data ;
+    int GS_query_num ;
+
+    /* Initialize number of queries to zero */
+    GS_query_num = 0 ;
     #endif
 
     /* Check if number of input arguments is correct */
@@ -184,21 +190,35 @@ int main(int argc, char *argv[]) {
             cout << keyword << ", " << frequency << endl ;
             #endif
 
+            #ifdef GENERATE_SOLUTION
+            /* Set node pointer */
+            GS_node = fheap.hashmap[keyword] ;
+            /* Check if keyword already in map */
+            if (GS_node != NULL) {/* keyword in map */
+                /* Set current frequency of keyword in fheap */
+                GS_data = GS_node->data ;
+                /* Determine position and length of string */
+                GS_position = GS_sol_map[GS_data].find(keyword) ;
+                GS_str_len = GS_sol_map[GS_data].length() + 1 ;
+                /* Remove string from map with current frequency */
+                GS_sol_map[GS_data].erase(GS_position,GS_str_len) ;
+                /* If string is empty remove from map */
+                if (GS_sol_map[GS_data].empty()) {/* string is empty */
+                    /* Remove element from map that has empty string */
+                    GS_sol_map.erase(GS_data) ;
+                }
+                /* Update value in map */
+                GS_sol_map[frequency + GS_node->data] += keyword + " " ;
+            }
+            else {
+                /* Update keyword in map */
+                GS_sol_map[frequency] += keyword + " " ;
+            }
+            #endif
+
             /* Update keyword and frequency in heap */
             fheap.insert(keyword, frequency) ;
 
-            #ifdef GENERATE_SOLUTION
-            /* Check if keyword already in map */
-            it = sol_map.find(keyword) ;
-            if (it != sol_map.end()) {/* keyword already in map */
-                /* Update key value in map */
-                sol_map[keyword] += query ;
-            }
-            else {/* keyword not in map */
-                /* Insert keyword, query pair in map */
-                sol_map[keyword] = query ;
-            }
-            #endif
         }
         else {/* Received query request */
             /* Extract query request from line and convert to int */
@@ -261,13 +281,14 @@ int main(int argc, char *argv[]) {
             }
 
             #ifdef GENERATE_SOLUTION
-            /* Print current ordered list of keywords and queries */
-            cout << "Ordered list of keywords and queries at current query: " ;
+            /* Print current ordered list of keywords and frequencies and
+               increase query counter by one */
             cout << endl ;
-            for (rit = sol_map.rbegin(); rit != sol_map.rend(); ++rit) {
-                cout << rit->first << ", " << rit->second << endl ;
+            cout << "Ordered list of keywords and frequencies at query " ;
+            cout << ++GS_query_num << ": " << endl ;
+            for (GS_rit = GS_sol_map.rbegin(); GS_rit != GS_sol_map.rend(); ++GS_rit) {
+                cout << "  " << GS_rit->second << ", " << GS_rit->first << endl ;
             }
-            cout << endl ;
             #endif
         }
 
