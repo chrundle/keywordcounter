@@ -2,6 +2,7 @@
 #include <fstream>
 #include <queue>
 #include <utility>
+#include <map>
 
 
 /* Test function to print all top level keywords and queries for unit tests */
@@ -100,6 +101,13 @@ int main(int argc, char *argv[]) {
     string line, keyword ;
     Node *max = new Node() ;
 
+    #ifdef GENERATE_SOLUTION
+    /* Initialize map to store keyword, query pairs in order */
+    map<string, long int> sol_map ;
+    map<string, long int>::iterator it ;
+    map<string, long int>::reverse_iterator rit ;
+    #endif
+
     /* Check if number of input arguments is correct */
     if (argc != 2) {
         /* Program requires file of queries to run */
@@ -148,13 +156,13 @@ int main(int argc, char *argv[]) {
     #endif
 
     /* Initialize main FibonacciHeap and backup */
-    FibonacciHeap fheap, temp_heap ;
+    FibonacciHeap fheap ;
 
     /* Get first line from qfile */
     getline (qfile, line) ;
 
     /* Pass through input file extracting current line at each pass */
-    while (line.compare("stop")) {/* Compore current line to stop command */
+    while (line.compare("stop")) {/* Compare current line to stop command */
         #ifdef DEBUG_MAIN
         /* Print current line in input file */
         cout << "main::DEBUG: Current line in file: " << line << endl ;
@@ -178,6 +186,19 @@ int main(int argc, char *argv[]) {
 
             /* Update keyword and frequency in heap */
             fheap.insert(keyword, frequency) ;
+
+            #ifdef GENERATE_SOLUTION
+            /* Check if keyword already in map */
+            it = sol_map.find(keyword) ;
+            if (it != sol_map.end()) {/* keyword already in map */
+                /* Update key value in map */
+                sol_map[keyword] += query ;
+            }
+            else {/* keyword not in map */
+                /* Insert keyword, query pair in map */
+                sol_map[keyword] = query ;
+            }
+            #endif
         }
         else {/* Received query request */
             /* Extract query request from line and convert to int */
@@ -238,6 +259,16 @@ int main(int argc, char *argv[]) {
                 /* Pop keyword,query pair from FIFO queue */
                 removed_pairs.pop() ;
             }
+
+            #ifdef GENERATE_SOLUTION
+            /* Print current ordered list of keywords and queries */
+            cout << "Ordered list of keywords and queries at current query: " ;
+            cout << endl ;
+            for (rit = sol_map.rbegin(); rit != sol_map.rend(); ++rit) {
+                cout << rit->first << ", " << rit->second << endl ;
+            }
+            cout << endl ;
+            #endif
         }
 
         #ifdef DEBUG_MAIN
