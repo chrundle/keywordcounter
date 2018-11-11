@@ -1,0 +1,132 @@
+\documentclass[12pt, reqno]{amsart}
+
+\textwidth = 7.0 in
+\textheight = 9.0 in
+\oddsidemargin = -0.2 in
+\evensidemargin = -0.2 in
+\topmargin = -0.3 in
+\headheight = 0.0 in
+\headsep = 0.3 in
+\parskip = 0.05 in
+\parindent = 0.3 in
+
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{bm}
+\usepackage{multirow}
+%\usepackage{bbm}
+\def\cc{\color{blue}}
+\usepackage[normalem]{ulem}
+
+\def\avint{\mathop{\,\rlap{--}\!\!\int}\nolimits}
+
+\title{COP 5536 - Project Report}
+\author[James Diffenderfer]{James Diffenderfer \\ jdiffen1@ufl.edu \\ UFID: 6191-4098}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Introduction}
+
+Here we include all function prototypes for this implementation of the Fibonacci heap.
+
+\section*{Node Class}
+In this section, we provide the contents and functions used for the \emph{Node} class. We first provide the contents of each node followed by the function prototypes in the \emph{Node} class. 
+
+\noindent {\bfseries Class Contents:}
+\begin{center}
+    \begin{tabular}{| l | l | p{11cm} |}
+    \hline
+    {\bfseries Parameters} & {\bfseries Type} & {\bfseries Description} \\ \hline
+    data & \texttt{long int} & Data in node (keyword frequency) \\ \hline
+    degree & \texttt{long int} & Degree of node (number of children) \\ \hline
+    keyword & \texttt{string} & Keyword at node \\ \hline
+    childcut & \texttt{bool} & Indicates whether node has lost child since becoming child of current parent \\ \hline
+    child & \texttt{Node *} & Child pointer \\ \hline
+    lsibling & \texttt{Node *} & Left sibling pointer \\ \hline
+    rsibling & \texttt{Node *} & Right sibling pointer \\ \hline
+    parent & \texttt{Node *} & Parent pointer \\ \hline
+    \end{tabular}
+\end{center}
+\vspace{2mm}
+
+\noindent {\bfseries Function Prototypes:}
+
+{\large \texttt{void merge(Node *nd)}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Void function which makes tree rooted at given node a subtree of the current node.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to root of tree which is to be made subtree of current node \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No values are returned} \\ \hline
+    \end{tabular}
+\end{center}
+
+\newpage
+\section*{Fibonacci Heap Class}
+
+\noindent {\bfseries Class Contents:}
+\begin{center}
+    \begin{tabular}{| l | l | p{6.8cm} |}
+    \hline
+    {\bfseries Parameters} & {\bfseries Type} & {\bfseries Description} \\ \hline
+    n & \texttt{long int} & Number of nodes in fibonacci heap \\ \hline
+    max & \texttt{Node *} & Pointer to node containing the max key \\ \hline
+    hashmap & \texttt{unordered\_map<string, Node*>} & Hash table for keywords mapped to node pointer \\ \hline
+    \end{tabular}
+\end{center}
+\vspace{2mm}
+
+\noindent {\bfseries Function Prototypes:}
+
+\end{document}
+
+%% For function prototypes
+\texttt{void merge(Node *nd)}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Void function which makes tree rooted at given node a subtree of the current node.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to root of tree which is to be made subtree of current node \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No values are returned} \\ \hline
+    \end{tabular}
+\end{center}
+
+
+
+
+
+%% Scalar form of Epanechnikov kernel
+Here, $\bm{y}_1, \ldots, \bm{y}_n$ denote the centers of our clusters and we start with $\bm{y}_j^{0} = \bm{x}_j$, for $1 \leq j \leq n$. Using the Epanechnikov kernel $K_h (\bm{z}) = c \left[ 1 - \frac{\| \bm{z} \|^2}{2 h^2} \right]_+$, we have that
+\begin{displaymath}
+K_h'(\bm{z}) = \left\{
+\begin{array}{cr}
+\displaystyle - \frac{c}{h^2} \bm{z}^T & : \| \bm{z} \|^2 < 2 h^2 \vspace{2mm} \\
+0 & : \| \bm{z} \|^2 \geq 2 h^2
+\end{array}
+\right.
+\end{displaymath}
+Hence, denoting the indicator function for the set $\{ \bm{z} : \| \bm{z} \|^2 < 2 h^2 \}$ by
+\begin{displaymath}
+\mathbbm{1}_{\{ \| \bm{z} \|^2 < 2 h^2 \}} = \left\{
+\begin{array}{cr}
+1 & : \| \bm{z} \|^2 < 2 h^2 \vspace{2mm} \\
+0 & : \| \bm{z} \|^2 \geq 2 h^2
+\end{array},
+\right.
+
+
+
+\begin{displaymath}
+\phi(s) = \left\{
+\begin{array}{lr}
+\phi_1 (s) = (\alpha_j + s)^2 + (\beta_j + s)^2 & : s \in (- \infty, h_j - x_j - \beta_j)\\
+\phi_2 (s) = (\alpha_j + s)^2 + (h_j - x_j)^2 & : s \in [h_j - x_j - \beta_j, x_j - \ell_j - \alpha_j]\\
+\phi_3 (s) = (x_j - \ell_j)^2 - (h_j - x_j)^2 & : s \in (\ell_j - x_j - \alpha_j, \infty)
+\end{array}
+\right.
+\end{displaymath}
+\grid
