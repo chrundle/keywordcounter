@@ -31,10 +31,10 @@
 
 \section*{Introduction}
 
-Here we include all function prototypes for this implementation of the Fibonacci heap.
+Here we include all function prototypes for this implementation of the Fibonacci heap. The two classes defined for this implementation of the Fibonacci heap are a \emph{Node} class and the \emph{Fibonacci Heap} class.
 
 \section*{Node Class}
-In this section, we provide the contents and functions used for the \emph{Node} class. We first provide the contents of each node followed by the function prototypes in the \emph{Node} class. 
+In this section, we provide the contents and functions used for the \emph{Node} class which are used as nodes for the Fibonacci heap implementation. We first provide the contents of each node followed by the function prototypes in the \emph{Node} class. 
 
 \noindent {\bfseries Class Contents:}
 \begin{center}
@@ -51,7 +51,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     parent & \texttt{Node *} & Parent pointer \\ \hline
     \end{tabular}
 \end{center}
-\vspace{2mm}
+\vspace{5mm}
 
 \noindent {\bfseries Function Prototypes:}
 
@@ -67,6 +67,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
 
 \newpage
 \section*{Fibonacci Heap Class}
+In this section, we provide the contents and functions used for the \emph{Fibonacci Heap} class. We first provide the contents of each Fibonacci heap followed by the function prototypes in the \emph{Fibonacci Heap} class.
 
 \noindent {\bfseries Class Contents:}
 \begin{center}
@@ -78,7 +79,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     hashmap & \texttt{unordered\_map<string, Node*>} & Hash table for keywords mapped to node pointer \\ \hline
     \end{tabular}
 \end{center}
-\vspace{2mm}
+\vspace{5mm}
 
 \noindent {\bfseries Function Prototypes:}
 
@@ -90,7 +91,8 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to node to check if it has siblings. \\ \hline
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns TRUE if given node is only child FALSE if given node has at least one sibling.} \\ \hline
     \end{tabular}
-\end{center}    
+\end{center} 
+\vspace{3mm}   
 
 {\large \texttt{bool barren(Node *nd)}}
 \begin{center}
@@ -101,6 +103,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns TRUE if given node has no children and FALSE if given node has at least one child.} \\ \hline
     \end{tabular}
 \end{center}    
+\vspace{3mm}   
 
 {\large \texttt{Node *orphan(Node *nd)}}
 \begin{center}
@@ -111,6 +114,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{If the given node has no parent, it returns NULL. If given node has a parent, it returns the pointer \texttt{nd->parent->child}.} \\ \hline
     \end{tabular}
 \end{center}    
+\vspace{3mm}   
 
 {\large \texttt{long int rank\_bound()}}
 \begin{center}
@@ -121,6 +125,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns bound on rank for rank tree.} \\ \hline
     \end{tabular}
 \end{center}    
+\vspace{3mm}   
 
 {\large \texttt{void meld(Node *nd)}}
 \begin{center}
@@ -131,7 +136,8 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
     \end{tabular}
 \end{center}  
- 
+\vspace{3mm}   
+
 {\large \texttt{void PrintRootLtoR()}}
 \begin{center}
     \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
@@ -141,6 +147,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
     \end{tabular}
 \end{center}
+\vspace{3mm}   
 
 {\large \texttt{long int number\_of\_nodes()}}
 \begin{center}
@@ -151,6 +158,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Number of nodes in Fibonacci heap is returned.} \\ \hline
     \end{tabular}
 \end{center}
+\vspace{3mm}   
 
 {\large \texttt{Node *find\_max()}}
 \begin{center}
@@ -161,6 +169,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns pointer to node containing maximum value in Fibonacci heap.} \\ \hline
     \end{tabular}
 \end{center}
+\vspace{3mm}   
 
 {\large \texttt{void insert(string keyword, long int frequency)}}
 \begin{center}
@@ -172,6 +181,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
     \end{tabular}
 \end{center}
+\vspace{3mm}   
     
 {\large \texttt{void remove\_max()}}
 \begin{center}
@@ -182,6 +192,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
     \end{tabular}
 \end{center}
+\vspace{3mm}   
 
 {\large \texttt{bool remove(Node *nd)}}
 \begin{center}
@@ -192,6 +203,7 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns FALSE if childcut of parent was not changed from TRUE and returns TRUE if childcut of parent node was TRUE.} \\ \hline
     \end{tabular}
 \end{center}
+\vspace{3mm}   
     
 {\large \texttt{void increase\_key(string keyword, long int amount)}}
 \begin{center}
@@ -216,29 +228,6 @@ In this section, we provide the contents and functions used for the \emph{Node} 
     {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No values are returned} \\ \hline
     \end{tabular}
 \end{center}
-
-
-
-
-
-%% Scalar form of Epanechnikov kernel
-Here, $\bm{y}_1, \ldots, \bm{y}_n$ denote the centers of our clusters and we start with $\bm{y}_j^{0} = \bm{x}_j$, for $1 \leq j \leq n$. Using the Epanechnikov kernel $K_h (\bm{z}) = c \left[ 1 - \frac{\| \bm{z} \|^2}{2 h^2} \right]_+$, we have that
-\begin{displaymath}
-K_h'(\bm{z}) = \left\{
-\begin{array}{cr}
-\displaystyle - \frac{c}{h^2} \bm{z}^T & : \| \bm{z} \|^2 < 2 h^2 \vspace{2mm} \\
-0 & : \| \bm{z} \|^2 \geq 2 h^2
-\end{array}
-\right.
-\end{displaymath}
-Hence, denoting the indicator function for the set $\{ \bm{z} : \| \bm{z} \|^2 < 2 h^2 \}$ by
-\begin{displaymath}
-\mathbbm{1}_{\{ \| \bm{z} \|^2 < 2 h^2 \}} = \left\{
-\begin{array}{cr}
-1 & : \| \bm{z} \|^2 < 2 h^2 \vspace{2mm} \\
-0 & : \| \bm{z} \|^2 \geq 2 h^2
-\end{array},
-\right.
 
 
 
