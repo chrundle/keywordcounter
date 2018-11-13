@@ -1,6 +1,7 @@
 $facebook 5
 $google 20
 $facebook 2
+2
 $duckduckgo 1
 $pinterest 32
 $dog 12
@@ -12,5 +13,4 @@ $firefox 100
 3
 $facebook 12
 $dog 10
-5
 stop

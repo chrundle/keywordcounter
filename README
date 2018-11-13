@@ -1,1 +1,6 @@
 Implementation of Fibonacci heap for Data Structures Assignment
+
+Type "make" in this directory to compile the executable "keywordcounter".
+The executable requires one input argument: A file containing keywords and
+frequencies together with queries and a stop request. Some sample files can
+be found in the "Test-Problems" directory.

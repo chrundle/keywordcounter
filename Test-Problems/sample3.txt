@@ -28,5 +28,5 @@ $jumping_jack 45
 $big$$$ 79
 $To4d029 7
 $-djA+nfj" 34
-7
+9
 stop

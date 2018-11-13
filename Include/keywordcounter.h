@@ -241,19 +241,19 @@ class FibonacciHeap {
     /* -------------------------------------------------------------- */
     /* Meld list of nodes at root level.                              */
     void meld_list(Node *nd) {
-        /* ---- Insert nd into linked list with max node ---- */
-#if 0
-    /* This operation is done in remove() */
-        nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
-#endif
+	    Node *t ;
+        /* -- Set all childcut values to false from melded list -- */
+		nd->childcut = FALSE ;
+		t = nd->rsibling ;
+		while (t != nd) {
+			t->childcut = FALSE ;
+			t = t->rsibling ;
+		}
         /* -- Insert nd to right of max node -- */
         max->rsibling->lsibling = nd->lsibling ; /* Set nd lsib right of max */
         nd->lsibling->rsibling = max->rsibling ; /* Set nd lsib right of max */
         nd->lsibling = max ; /* Insert nd to right of max */
         max->rsibling = nd ; /* Insert nd to right of max */
-        /* -- Set childcut to FALSE for given node as it is now in root -- */
-        nd->childcut = FALSE ; 
-            /* TODO: NEED TO SET ALL childcut VALUES TO FALSE FROM MELDED HEAP */
         /* -- Check if max pointer needs to be updated -- */
         if(max->data < nd->data) {
             /* Set max pointer to pointer of new node */
@@ -502,7 +502,14 @@ class FibonacciHeap {
                 #endif
 
                 /* In this case, heap was single max node */
-                /* FIX: NEED TO DEAL WITH THIS CASE */
+
+                /* Erase max element from hashmap */
+                hashmap.erase(max->keyword) ;
+				/* Set max ptr to NULL */
+				max = NULL ;
+                /* Decrease total number of nodes by 1 since max has been removed */
+                n -= 1 ;
+
                 return ;
             }
             else {/* max has at least one child */
@@ -613,14 +620,6 @@ class FibonacciHeap {
         #ifdef DBUG_PRINT
         cout << "DEBUG::remove_max(): Determine new max" << endl ;
         #endif
-
-        /* Check if number of nodes in heap is now zero */
-        if (n == 0) {/* No nodes left in heap */
-            /* Set max equal to NULL pointer */
-            max = NULL ;
-            /* Exit program */
-            return ;
-        }
 
         /* Set s to current max */
         s = max ;
