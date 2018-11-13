@@ -237,31 +237,6 @@ class FibonacciHeap {
     }
 
     /* -------------------------------------------------------------- */
-    /* ------------------------ meld_list() ------------------------- */
-    /* -------------------------------------------------------------- */
-    /* Meld list of nodes at root level.                              */
-    void meld_list(Node *nd) {
-	    Node *t ;
-        /* -- Set all childcut values to false from melded list -- */
-		nd->childcut = FALSE ;
-		t = nd->rsibling ;
-		while (t != nd) {
-			t->childcut = FALSE ;
-			t = t->rsibling ;
-		}
-        /* -- Insert nd to right of max node -- */
-        max->rsibling->lsibling = nd->lsibling ; /* Set nd lsib right of max */
-        nd->lsibling->rsibling = max->rsibling ; /* Set nd lsib right of max */
-        nd->lsibling = max ; /* Insert nd to right of max */
-        max->rsibling = nd ; /* Insert nd to right of max */
-        /* -- Check if max pointer needs to be updated -- */
-        if(max->data < nd->data) {
-            /* Set max pointer to pointer of new node */
-            max = nd ;
-        }
-    }
-
-    /* -------------------------------------------------------------- */
     /* --------------------- PrintRootLtoR() ------------------------ */
     /* -------------------------------------------------------------- */
     /* Print root level nodes starting with max and moving to right.  */       
@@ -889,16 +864,5 @@ class FibonacciHeap {
                 meld(t) ;
             }
         }
-    }
-
-    /* -------------------------------------------------------------- */
-    /* ------------------------- combine() -------------------------- */
-    /* -------------------------------------------------------------- */
-    /* Given a fib heap, combine its top level with this fib heap. */
-    void combine(Node *fheap, long int size) {
-        /* Meld root level of given heap to current heap */
-        this->meld_list(fheap) ;
-        /* Increase number of elements in current heap */
-        n += size ;
     }
 } ;

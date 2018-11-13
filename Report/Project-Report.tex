@@ -82,6 +82,138 @@ In this section, we provide the contents and functions used for the \emph{Node} 
 
 \noindent {\bfseries Function Prototypes:}
 
+{\large \texttt{bool only\_child(Node *nd)}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Boolean function which checks if node has any siblings.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to node to check if it has siblings. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns TRUE if given node is only child FALSE if given node has at least one sibling.} \\ \hline
+    \end{tabular}
+\end{center}    
+
+{\large \texttt{bool barren(Node *nd)}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Boolean function which checks if node has any children.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to node to check if it has children. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns TRUE if given node has no children and FALSE if given node has at least one child.} \\ \hline
+    \end{tabular}
+\end{center}    
+
+{\large \texttt{Node *orphan(Node *nd)}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Function which checks if node has a parent.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to node to check if it has a parent. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{If the given node has no parent, it returns NULL. If given node has a parent, it returns the pointer \texttt{nd->parent->child}.} \\ \hline
+    \end{tabular}
+\end{center}    
+
+{\large \texttt{long int rank\_bound()}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Compute bound on rank based on current number of nodes.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & -- & No inputs. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns bound on rank for rank tree.} \\ \hline
+    \end{tabular}
+\end{center}    
+
+{\large \texttt{void meld(Node *nd)}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Meld single node at root level.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to node to be melded to root of Fibonacci heap. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
+    \end{tabular}
+\end{center}  
+
+{\large \texttt{void meld\_list(Node *nd)}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Meld node and all siblings at root level.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to node for which it and all of its current siblings are melded to root of Fibonacci heap. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
+    \end{tabular}
+\end{center}
+ 
+{\large \texttt{void PrintRootLtoR()}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Print root level nodes of Fibonacci heap starting with max and moving to right.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & -- & No inputs. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
+    \end{tabular}
+\end{center}
+
+{\large \texttt{long int number\_of\_nodes()}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Return number of nodes in Fibonacci heap.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & -- & No inputs. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Number of nodes in Fibonacci heap is returned.} \\ \hline
+    \end{tabular}
+\end{center}
+
+{\large \texttt{Node *find\_max()}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Find and return pointer to node containing maximum value in heap.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & -- & No inputs. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns pointer to node containing maximum value in Fibonacci heap.} \\ \hline
+    \end{tabular}
+\end{center}
+
+{\large \texttt{void insert(string keyword, long int frequency)}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Insert node into heap. If node containing keyword is already in heap, the frequency in the Fibonacci heap is increased by the input frequency amount.} \\ \hline
+    \multirow{2}{*}{\bfseries Parameters} & keyword & Keyword to store in heap. \\ \cline{2-3}
+    & frequency & Frequency of keyword \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
+    \end{tabular}
+\end{center}
+    
+{\large \texttt{void remove\_max()}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Remove max node from heap.} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & -- & No inputs. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
+    \end{tabular}
+\end{center}
+
+{\large \texttt{bool remove(Node *nd)}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Remove node from heap given pointer to node. Updates childcut of input parent node (if necessary).} \\ \hline
+    \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to node to be removed from Fibonacci heap. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{Returns FALSE if childcut of parent was not changed from TRUE and returns TRUE if childcut of parent node was TRUE.} \\ \hline
+    \end{tabular}
+\end{center}
+    
+{\large \texttt{void increase\_key(string keyword, long int amount)}}
+\begin{center}
+    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
+    \hline
+    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Given a node, increase its frequency value by a given amount.} \\ \hline
+    \multirow{2}{*}{\bfseries Parameters} & keyword & Keyword for which frequency is increased. \\ \cline{2-3}
+    & frequency & Amount to increase frequency of keyword. \\ \hline
+    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No value is returned.} \\ \hline
+    \end{tabular}
+\end{center}
+
 \end{document}
 
 %% For function prototypes
