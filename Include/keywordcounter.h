@@ -369,6 +369,23 @@ class FibonacciHeap {
     }
 
     /* -------------------------------------------------------------- */
+    /* ------------------------- Destructor ------------------------- */
+    /* -------------------------------------------------------------- */
+    ~FibonacciHeap() {
+		/* Initialize iterator for hashmap */
+		unordered_map<string, Node *>::iterator it = hashmap.begin() ;
+		/* Iterate through elements in hashmap and free memory */
+		while (it != hashmap.end()) {/* Have not reached end of hashmap */
+			/* Delete current element from hashmap */
+		    delete hashmap[it->first] ;
+			/* Move iterator forward */
+			it++ ;
+		}
+		/* Clear hashmap */
+		hashmap.clear() ;
+    }
+
+    /* -------------------------------------------------------------- */
     /* --------------------- number_of_nodes() ---------------------- */
     /* -------------------------------------------------------------- */
     /* Return number of nodes in heap. */
@@ -451,6 +468,7 @@ class FibonacciHeap {
         /* Initialize variables */
         long int i, k, degree ;
         Node *t, *s, *ndmin, *ndmax ;
+		string tmp_str ;
 
         #ifdef DBUG_PRINT
         cout << "DEBUG::remove_max(): In remove_max()" << endl ;
@@ -465,6 +483,9 @@ class FibonacciHeap {
         }
 
         /* ------ Step 1: Delete max from heap ------ */
+		/* Set temp string to keyword in max node */
+		tmp_str = max->keyword ;
+
         /* Check if max has no siblings */
         if (only_child(max)) {/* max has no siblings */
             #ifdef DBUG_PRINT
@@ -478,8 +499,10 @@ class FibonacciHeap {
 
                 /* In this case, heap was single max node */
 
-                /* Erase max element from hashmap */
-                hashmap.erase(max->keyword) ;
+                /* Free memory and erase max element from hashmap */
+				delete hashmap[max->keyword] ;
+                hashmap.erase(tmp_str) ;
+
 				/* Set max ptr to NULL */
 				max = NULL ;
                 /* Decrease total number of nodes by 1 since max has been removed */
@@ -506,9 +529,6 @@ class FibonacciHeap {
                     s = s->rsibling ;
                 }
 
-                /* Erase max element from hashmap */
-                hashmap.erase(max->keyword) ;
-
                 /* Set max pointer to any child of current max */
                 max = t ;
             }
@@ -534,9 +554,6 @@ class FibonacciHeap {
                 s->rsibling = t ;
                 /* Set left sibling of t to s */
                 t->lsibling = s ;
-
-                /* Erase max element from hashmap */
-                hashmap.erase(max->keyword) ;
 
                 /* Set max pointer to any sibling of current max */
                 max = t ;
@@ -581,13 +598,13 @@ class FibonacciHeap {
                 /* Set left sibling of s to left sibling of max node */
                 s->lsibling = max->lsibling ;
 
-                /* Erase max element from hashmap */
-                hashmap.erase(max->keyword) ;
-
                 /* Set max pointer to any child of current max */
                 max = t ;
             }
         }
+        /* Free memory and erase max element from hashmap */
+		delete hashmap[tmp_str] ;
+        hashmap.erase(tmp_str) ;
         /* Decrease total number of nodes by 1 since max has been removed */
         n -= 1 ;
 

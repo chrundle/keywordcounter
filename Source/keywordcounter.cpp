@@ -99,7 +99,7 @@ int main(int argc, char *argv[]) {
     ifstream qfile ;
     ofstream outfile ;
     string line, keyword ;
-    Node *max = new Node() ;
+    Node *max ;
 
     #ifdef GENERATE_SOLUTION
     /* Initialize map to store keyword, query pairs in order */
@@ -266,7 +266,6 @@ int main(int argc, char *argv[]) {
 
             /* Update keyword and frequency in heap */
             fheap.insert(keyword, frequency) ;
-
         }
         else {/* Received query request */
             /* Extract query request from line and convert to int */
@@ -318,7 +317,7 @@ int main(int argc, char *argv[]) {
                 #ifdef DEBUG_MAIN
                 /* Print pair to be reinserted */
                 cout << "main::DEBUG: Reinserting keyword, query pair: " ;
-		cout << key_query_pair.first << ", " ;
+				cout << key_query_pair.first << ", " ;
                 cout << key_query_pair.second << endl ;
                 #endif
 

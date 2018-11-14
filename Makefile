@@ -7,6 +7,7 @@ default: keywordcounter
 I = -IInclude
 
 C = g++ -std=c++11 $(I)
+VALGRIND_C = g++ -std=c++11 -g -O0 $(I)
 
 INCLUDE = Include/keywordcounter.h
 
@@ -28,6 +29,13 @@ $(OBJ): $(INCLUDE)
 
 keywordcounter: $(INCLUDE) Source/keywordcounter.cpp
 	$(C) -o keywordcounter Source/keywordcounter.cpp
+
+#----------------------------------------------------------
+# keywordcounter object file with valgrind
+#----------------------------------------------------------
+
+use_valgrind: $(INCLUDE) Source/keywordcounter.cpp
+	$(VALGRIND_C) -o keywordcounter Source/keywordcounter.cpp
 
 #----------------------------------------------------------
 # keywordcounter object file with debug info printing
