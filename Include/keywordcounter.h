@@ -372,6 +372,7 @@ class FibonacciHeap {
     /* ------------------------- Destructor ------------------------- */
     /* -------------------------------------------------------------- */
     ~FibonacciHeap() {
+	    cout << "Fibonacci Heap Destructor called" << endl ;
 		/* Initialize iterator for hashmap */
 		unordered_map<string, Node *>::iterator it = hashmap.begin() ;
 		/* Iterate through elements in hashmap and free memory */

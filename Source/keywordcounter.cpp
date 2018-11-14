@@ -6,17 +6,17 @@
 
 
 /* Test function to print all top level keywords and queries for unit tests */
-void PrintKeysAndQueriesLtoR(FibonacciHeap fheap) {
+void PrintKeysAndQueriesLtoR(FibonacciHeap *fheap) {
     /* Node for checking find_max */
     Node *node = new Node() ;
     Node *max = new Node() ;
 
     /* Find maximum value in heap */
-    max = fheap.find_max() ;
+    max = fheap->find_max() ;
 
     /* Print max node keyword and query */
     cout << endl ;
-    cout << "Total number of nodes: " << fheap.number_of_nodes() << endl ;
+    cout << "Total number of nodes: " << fheap->number_of_nodes() << endl ;
     cout << "Printing root keys, queries, degrees, childcut, and parent " ;
     cout << "thru right siblings: " << endl ;
     cout << "Max: " << max->keyword << ", " << max->data ;
@@ -48,17 +48,17 @@ void PrintKeysAndQueriesLtoR(FibonacciHeap fheap) {
 }
 
 /* Test function to print all top level keywords and queries for unit tests */
-void PrintKeysAndQueriesRtoL(FibonacciHeap fheap) {
+void PrintKeysAndQueriesRtoL(FibonacciHeap *fheap) {
     /* Node for checking find_max */
     Node *node = new Node() ;
     Node *max = new Node() ;
 
     /* Find maximum value in heap */
-    max = fheap.find_max() ;
+    max = fheap->find_max() ;
 
     /* Print max node keyword and query */
     cout << endl ;
-    cout << "Total number of nodes: " << fheap.number_of_nodes() << endl ;
+    cout << "Total number of nodes: " << fheap->number_of_nodes() << endl ;
     cout << "Printing root keys, queries, degrees, childcut, and parent " ;
     cout << "thru left siblings: " << endl ;
     cout << "Max: " << max->keyword << ", " << max->data ;
@@ -93,7 +93,7 @@ void PrintKeysAndQueriesRtoL(FibonacciHeap fheap) {
 int main(int argc, char *argv[]) {
     /* Initialize variables */
     int exit_status, space_num ;
-    long int frequency, query, data ;
+    long int frequency, query, data, tmp_data ;
     queue < pair<string, long int> > removed_pairs ;
     pair <string, long int> key_query_pair ;
     ifstream qfile ;
@@ -209,6 +209,11 @@ int main(int argc, char *argv[]) {
 
                 /* Set current frequency of keyword in fheap */
                 GS_data = GS_node->data ;
+                    #ifdef DEBUG_GENERATE_SOLUTION
+                    /* Print current keyword already in map */
+                    cout << "    main::GS: keyword " ;
+                    cout << keyword << " has frequency " << GS_data  << endl ;
+                    #endif
 
                 /* Determine position and length of string */
                 GS_position = GS_sol_map[GS_data].find(keyword) ;
@@ -223,7 +228,9 @@ int main(int argc, char *argv[]) {
                     #endif
 
                 /* Remove string from map with current frequency */
-                GS_sol_map[GS_data].erase(GS_position,GS_str_len) ;
+				if (GS_position != string::npos){
+	                GS_sol_map[GS_data].erase(GS_position,GS_str_len) ;
+				}
 #if 0
                 /* Check if GS_position indicates string was found */
 				if (GS_position != std::string::npos) {/* String was found */
@@ -280,14 +287,16 @@ int main(int argc, char *argv[]) {
             while (query > 1) {
                 /* Find maximum value in heap */
                 max = fheap.find_max() ;
-                /* Remove maximum value from heap */
-                fheap.remove_max() ;
                 /* Set keyword to current keyword */
                 keyword = max->keyword ;
+                /* Set keyword to current keyword */
+                tmp_data = max->data ;
+                /* Remove maximum value from heap */
+                fheap.remove_max() ;
                 /* Print 'keyword,' to output file */
                 outfile << keyword << "," ;
                 /* Insert keyword and query into FIFO queue */
-                removed_pairs.push(make_pair(keyword, max->data)) ;
+                removed_pairs.push(make_pair(keyword, tmp_data)) ;
                 /* Decrease query by one */
                 query-- ;
             }
@@ -295,18 +304,20 @@ int main(int argc, char *argv[]) {
             /* Repeat operations for final query */
             /* Find maximum value in heap */
             max = fheap.find_max() ;
-            /* Remove maximum value from heap */
-            fheap.remove_max() ;
             /* Set keyword to current keyword */
             keyword = max->keyword ;
-            /* Print 'keyword\n' to output file */
+            /* Set keyword to current keyword */
+            tmp_data = max->data ;
+            /* Remove maximum value from heap */
+            fheap.remove_max() ;
+            /* Print 'keyword,' to output file */
             outfile << keyword << endl ;
             /* Insert keyword and query into FIFO queue */
-            removed_pairs.push(make_pair(keyword, max->data)) ;
+            removed_pairs.push(make_pair(keyword, tmp_data)) ;
 
             #ifdef DEBUG_MAIN
             /* Print Keys and Queries */
-            PrintKeysAndQueriesLtoR(fheap) ;
+            PrintKeysAndQueriesLtoR(&fheap) ;
             #endif
              
             /* -- Insert removed elements back into fheap -- */
@@ -341,7 +352,7 @@ int main(int argc, char *argv[]) {
 
         #ifdef DEBUG_MAIN
         /* Print Keys and Queries */
-        PrintKeysAndQueriesLtoR(fheap) ;
+        PrintKeysAndQueriesLtoR(&fheap) ;
         #endif
 
         /* Get next line and break if no next line */

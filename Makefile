@@ -12,6 +12,8 @@ VALGRIND_C = g++ -std=c++11 -g -O0 $(I)
 INCLUDE = Include/keywordcounter.h
 
 DEBUG_FLAGS = -DDBUG_PRINT -DDEBUG_MAIN
+SOL_FLAGS = -DDEBUG_MAIN -DGENERATE_SOLUTION -DDEBUG_GENERATE_SOLUTION
+
 
 #----------------------------------------------------------
 # OBJECTS
