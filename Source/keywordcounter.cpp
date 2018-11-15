@@ -279,8 +279,8 @@ int main(int argc, char *argv[]) {
             query = stoi(line) ;
 
             #ifdef DEBUG_MAIN
-            /* Print current query number */
-            cout << "main::DEBUG: Current query: " << query << endl ;
+            /* Print that query request received */
+            cout << "main::DEBUG: Query request received: " << query << endl ;
             #endif
 
             /* -- Remove requested number of elements from fheap and print -- */
@@ -353,6 +353,18 @@ int main(int argc, char *argv[]) {
         #ifdef DEBUG_MAIN
         /* Print Keys and Queries */
         PrintKeysAndQueriesLtoR(&fheap) ;
+        #endif
+
+        #ifdef DEBUG_MAIN
+        /* CHECKING BUG IN SPECIFIC PROBLEM */
+        if (fheap.hashmap["jump"] != NULL) {
+	        cout << "\n\n\n  jump Lsib = " << fheap.hashmap["jump"]->lsibling->keyword	<< endl ;
+	        cout << "  jump Lsib's Rsib = " << fheap.hashmap["jump"]->lsibling->rsibling->keyword	<< endl ;
+            if (fheap.hashmap["jump"]->lsibling->rsibling != fheap.hashmap["jump"]) {
+	            cout << "\n\n\n  FATAL ERROR: Doubly linked list failed." <<  endl ;
+				return -1 ;
+			}
+		}
         #endif
 
         /* Get next line and break if no next line */

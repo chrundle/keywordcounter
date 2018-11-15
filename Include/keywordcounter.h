@@ -71,6 +71,8 @@ class Node {
         child = NULL ;
         /* Set degree to zero */
         degree = 0 ;
+        /* Set childcut to FALSE */
+        childcut = FALSE ;
 
         /* Set keyword to input string key */
         keyword = key ;
@@ -122,6 +124,15 @@ class Node {
             nd->lsibling = nd ; 
             /* -- Update degree of root node -- */
             degree += 1 ;
+            #ifdef DBUG_PRINT
+		    t = nd->rsibling ;
+            cout << "\n  DEBUG::merge(): degree = 0."  << endl ;
+            cout << "\n  DEBUG::merge(): Checking that children are correct."  << endl ;
+		    while (t != nd) {
+                cout << "DEBUG::merge(): next keyword = " << t->keyword << endl ;
+		    	t = t->rsibling ;
+		    }
+            #endif
         }
         else if (degree >= 1) {/* Merge one level down if degree >= 1 */
             /* -- Remove nd from root linked list -- */
@@ -133,16 +144,43 @@ class Node {
             t = child ;   /* Set t to child of this node */
 
             #ifdef DBUG_PRINT
+            cout << "DEBUG::merge(): nd: " << nd->keyword << endl ;
             cout << "DEBUG::merge(): Child: " << t->keyword << endl ;
             cout << "DEBUG::merge(): Rsib of child: " << t->rsibling->keyword << endl ;
+            cout << "DEBUG::merge(): Lsib of child: " << t->lsibling->keyword << endl ;
+            cout << "DEBUG::merge(): Rsib of child's Lsib: " << t->lsibling->rsibling->keyword << endl ;
             #endif
 
             t->rsibling->lsibling = nd ; /* Insert nd to right of t */
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::merge(): Child->rsibling->lsibling: " << t->rsibling->lsibling->keyword << endl ;
+            #endif
             nd->rsibling = t->rsibling ; /* Insert nd to right of t */
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::merge(): nd->rsibling: " << nd->rsibling->keyword << endl ;
+            #endif
             nd->lsibling = t ; /* Insert nd to right of t */
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::merge(): nd->lsibling: " << nd->lsibling->keyword << endl ;
+            #endif
             t->rsibling = nd ; /* Insert nd to right of t */
             /* -- Update degree of root node -- */
             degree += 1 ;
+
+            #ifdef DBUG_PRINT
+            cout << "DEBUG::merge(): Child->rsibling: " << t->rsibling->keyword << endl ;
+            #endif
+
+            #ifdef DBUG_PRINT
+            cout << "\n  DEBUG::merge(): degree >= 1."  << endl ;
+            cout << "\n  DEBUG::merge(): Checking that children are correct."  << endl ;
+            cout << "DEBUG::merge(): Lsib of child keyword = " << child->lsibling->keyword << endl ;
+			t = child->lsibling->lsibling ;
+			while (t != child->lsibling) {
+                cout << "DEBUG::merge(): next keyword = " << t->keyword << endl ;
+				t = t->lsibling ;
+			}
+            #endif
         }
         else {/* Degree was somehow set to negative which is illegal */
             /* Print error message */
@@ -217,23 +255,40 @@ class FibonacciHeap {
     /* -------------------------------------------------------------- */
     /* Meld single node at root level.                                */
     void meld(Node *nd) {
+	    /* Initialize variables */
+		Node *t ;
         /* ---- Insert nd into linked list with max node ---- */
 #if 0
     /* This operation is done in remove() */
         nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
+#endif
+        /* -- Set childcut to FALSE for all nodes in given list as in root -- */
+        nd->childcut = FALSE ; 
+#if 0
+		t = nd->rsibling ;
+		while (t != nd) {/* Loop over all nodes in list setting childcut to F */
+            t->childcut = FALSE ;
+            t = t->rsibling ;
+		}
 #endif
         /* -- Insert nd to right of max node -- */
         max->rsibling->lsibling = nd ; /* Insert nd to right of max */
         nd->rsibling = max->rsibling ; /* Insert nd to right of max */
         nd->lsibling = max ; /* Insert nd to right of max */
         max->rsibling = nd ; /* Insert nd to right of max */
-        /* -- Set childcut to FALSE for given node as it is now in root -- */
-        nd->childcut = FALSE ; 
         /* -- Check if max pointer needs to be updated -- */
         if(max->data < nd->data) {
             /* Set max pointer to pointer of new node */
             max = nd ;
         }
+        #ifdef DBUG_PRINT
+		t = nd->rsibling ;
+        cout << "\n  DEBUG::meld(): Checking that children are correct."  << endl ;
+		while (t != nd) {
+            cout << "DEBUG::meld(): t->keyword = " << t->keyword << endl ;
+			t = t->rsibling ;
+		}
+        #endif
     }
 
     /* -------------------------------------------------------------- */
@@ -372,7 +427,6 @@ class FibonacciHeap {
     /* ------------------------- Destructor ------------------------- */
     /* -------------------------------------------------------------- */
     ~FibonacciHeap() {
-	    cout << "Fibonacci Heap Destructor called" << endl ;
 		/* Initialize iterator for hashmap */
 		unordered_map<string, Node *>::iterator it = hashmap.begin() ;
 		/* Iterate through elements in hashmap and free memory */
@@ -446,6 +500,16 @@ class FibonacciHeap {
                 /* Set max pointer to pointer of new node */
                 max = hashmap[keyword] ;
             }
+            #ifdef DBUG_PRINT
+		    Node *t ;
+		    t = hashmap[keyword]->rsibling ;
+            cout << "\n  DEBUG::insert(): Case with n > 0."  << endl ;
+            cout << "\n  DEBUG::insert(): Checking that children are correct."  << endl ;
+		    while (t != hashmap[keyword]) {
+                cout << "DEBUG::insert(): t->keyword = " << t->keyword << endl ;
+		    	t = t->rsibling ;
+		    }
+            #endif
         }
         else {
             #ifdef DBUG_PRINT
@@ -572,11 +636,19 @@ class FibonacciHeap {
                 s = t->rsibling ;
 
                 /* ---- Change parent pointers of all children to NULL ---- */
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::remove_max(): t = " << t->keyword << "\n\n\n" ;
+                #endif
                 while (s != t) {
                     /* Set parent of s to NULL */
                     s->parent = NULL ;
                     /* Set s to s's right sibling */
                     s = s->rsibling ;
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::remove_max(): s = " << s->keyword << "\n\n" ;
+                std::chrono::milliseconds dura( 50);
+                std::this_thread::sleep_for( dura );
+                #endif
                 }
 
                 /* ---- Add children to root linked list ---- */
@@ -631,8 +703,12 @@ class FibonacciHeap {
         }
 
         #ifdef DBUG_PRINT
-        cout << endl << "DEBUG::remove_max(): Root after removing max" ;
-        PrintRootLtoR() ;
+        cout << endl << "DEBUG::remove_max(): Root after removing max and " ;
+        cout << "before consolidating trees at root level." ;
+	#if 0
+    PrintRootLtoR() ;
+    PrintRootRtoL() ;
+	#endif
         #endif
 
         /* ---- Step 3: Consolidate trees so no two roots have same rank ---- */
@@ -715,7 +791,9 @@ class FibonacciHeap {
     
                     #ifdef DBUG_PRINT
                     cout << "DEBUG::remove_max(): Root after merge" << endl ;
+					#if 0
                     PrintRootLtoR() ;
+					#endif
                     #endif
     
                     /* Update pointers in rank_tree as ranks have changed */
@@ -772,7 +850,7 @@ class FibonacciHeap {
             return FALSE ;
         }
         else {/* Node to remove does not contain max key */
-            /* ---- Insert nd into linked list with 'this' node ---- */
+            /* ---- Insert nd into root linked list ---- */
             par = nd->parent ;    /* Store parent pointer of nd */
             nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
 #if 0
@@ -783,7 +861,7 @@ class FibonacciHeap {
             /* -- Decrease value of degree for parent node by 1 -- */
             par->degree -= 1 ;
 
-            /* -- Update child pointer for par node -- */
+            /* -- Update child pointer for parent node and remove nd -- */
             /* Check if nd is child of nd parent */
             if (par->child == nd) {/* nd == nd->parent->child */
                 /* Check if nd has siblings */
@@ -794,13 +872,22 @@ class FibonacciHeap {
                 else {/* nd has at least one sibling */
                     /* Set child pointer to right sibling of nd */
                     par->child = nd->rsibling ;
+					/* Remove nd from linked list */
+					nd->lsibling->rsibling = nd->rsibling ;
+					nd->rsibling->lsibling = nd->lsibling ;
+					nd->lsibling = nd ;
+					nd->rsibling = nd ;
                 }
             }
             else {/* nd != nd->parent->child */
-                /* Nothing to be done */
+				/* Remove nd from linked list */
+				nd->lsibling->rsibling = nd->rsibling ;
+				nd->rsibling->lsibling = nd->lsibling ;
+				nd->lsibling = nd ;
+				nd->rsibling = nd ;
             }
 
-            /* -- Update value of childcut for 'this' node -- */
+            /* -- Update value of childcut for parent of nd -- */
             /* Store output value */
             output = par->childcut ;
             /* Check if 'this' node is not at root level */
@@ -862,25 +949,39 @@ class FibonacciHeap {
 
             /* Check if nd data is less than parent data */
             if(nd->data < nd->parent->data) {
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::increase_key(): " << nd->keyword ;
+                cout << "->data = " << nd->data << " < " ;
+				cout << nd->parent->data << " = " << nd->parent->keyword ;
+				cout << "->data" << endl ;
+                #endif
                 /* Nothing else to be done. Exit program. */
                 return ;
             }
+			else {
+                #ifdef DBUG_PRINT
+                cout << "DEBUG::increase_key(): " << nd->keyword ;
+                cout << "->data = " << nd->data << " >= " ;
+			    cout << nd->parent->data << " = " << nd->parent->keyword ;
+			    cout << "->data" << endl ;
+                #endif
 
-            /* Set s to nd (necessary for beginning of while loop) */
-            s = nd ;
-            /* Initialize childcut to TRUE (necessary to enter while loop) */
-            childcut = TRUE ;
-            /* Move up subtree from nd until childcut is FALSE */
-            while (childcut) {
-                /* Set t to s */
-                t = s ;
-                /* Set s to t->parent */
-                s = t->parent ;
-                /* Remove node nd from fibonacci heap */
-                childcut = remove(t) ;
-                /* Insert subtree with nd at root level */
-                meld(t) ;
-            }
+                /* Set s to nd (necessary for beginning of while loop) */
+                s = nd ;
+                /* Initialize childcut to TRUE (necessary to enter while loop) */
+                childcut = TRUE ;
+                /* Move up subtree from nd until childcut is FALSE */
+                while (childcut) {
+                    /* Set t to s */
+                    t = s ;
+                    /* Set s to t->parent */
+                    s = t->parent ;
+                    /* Remove node nd from fibonacci heap */
+                    childcut = remove(t) ;
+                    /* Insert subtree with nd at root level */
+                    meld(t) ;
+                }
+			}
         }
     }
 } ;

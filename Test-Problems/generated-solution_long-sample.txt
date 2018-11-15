@@ -1,0 +1,2890 @@
+
+Ordered list of keywords and frequencies at query 1: 
+  aromatic , 1924
+  test , 1547
+  angry , 1432
+  spiky , 1321
+  tick , 1173
+  six , 1053
+  watch , 996
+  apparel , 995
+  vacation , 988
+  lip , 985
+  part , 983
+  drip , 982
+  driving , 973
+  letters , 972
+  oil halting , 969
+  miniature , 958
+  wrestle , 955
+  adjoining , 945
+  kiss , 944
+  descriptive , 938
+  glamorous , 925
+  blue , 923
+  deep , 916
+  mute , 911
+  face , 910
+  fit soup , 909
+  star , 908
+  edge , 905
+  nutty , 900
+  apologise , 898
+  heal , 890
+  secretary , 889
+  familiar , 887
+  frame , 882
+  unequal , 879
+  stone , 876
+  grip , 875
+  gifted , 868
+  error , 867
+  eminent , 866
+  careful guttural , 860
+  cloistered , 859
+  event , 858
+  jail , 857
+  muscle , 854
+  shock , 850
+  structure , 846
+  puny , 842
+  snow , 837
+  sturdy bleach , 836
+  slimy , 833
+  jump , 832
+  turn , 831
+  advertisement , 829
+  sulky , 825
+  last , 823
+  noisy , 820
+  earthy , 808
+  massive , 807
+  stitch , 799
+  woman , 798
+  stir , 795
+  disgusted , 794
+  point , 786
+  sloppy , 771
+  lean , 764
+  steep , 763
+  friction , 762
+  pie , 748
+  turkey , 746
+  nauseating , 739
+  brave , 737
+  preserve , 734
+  complete , 733
+  hook devilish , 726
+  vagabond , 721
+  adorable , 709
+  placid , 707
+  paper , 705
+  enchanted quirky low , 704
+  tow , 697
+  wave , 693
+  caption , 692
+  word , 688
+  spot , 687
+  rampant , 677
+  lying , 675
+  search , 671
+  chin , 664
+  measure , 660
+  exercise , 658
+  oatmeal waiting , 651
+  horses shoes , 649
+  bird , 648
+  uneven , 647
+  sniff married , 642
+  advise , 641
+  maid , 637
+  fall , 629
+  collar , 627
+  stiff dirt , 624
+  entertain memorise , 620
+  talented , 616
+  pale , 614
+  illustrious , 611
+  embarrassed , 610
+  perfect , 606
+  meal , 605
+  nimble , 598
+  giant , 594
+  accept , 585
+  form , 584
+  spotted , 583
+  fire , 573
+  soothe shop , 569
+  cannon , 560
+  wooden unbecoming , 545
+  quiver , 543
+  beginner mountainous , 541
+  clear , 540
+  attraction , 539
+  harbor , 538
+  fretful , 534
+  arrest , 532
+  roll , 527
+  doubt , 525
+  brown fear , 520
+  suppose , 519
+  milk , 509
+  super , 507
+  remember rail , 505
+  strengthen , 503
+  undress ducks , 502
+  outgoing , 493
+  gamy , 492
+  hum , 491
+  bent , 488
+  pine , 487
+  abaft , 485
+  hilarious , 475
+  zoo , 474
+  time , 473
+  key , 466
+  continue , 459
+  van salty , 454
+  beneficial , 453
+  animated , 449
+  enjoy , 448
+  tongue , 447
+  obsolete , 438
+  barbarous , 435
+  fallacious , 428
+  envious lyrical , 425
+  delicate manage , 424
+  faded , 422
+  cable , 421
+  mindless , 417
+  ceaseless , 414
+  open , 413
+  flag , 408
+  tan , 405
+  impartial , 404
+  end , 402
+  explain , 400
+  gate , 396
+  buzz swanky , 394
+  bikes , 393
+  capable , 386
+  maddening strap , 385
+  object , 384
+  describe , 379
+  signal , 361
+  tank , 360
+  wall , 358
+  work , 357
+  governor , 356
+  spray , 355
+  automatic , 351
+  dance , 348
+  donkey , 347
+  wren , 346
+  nation grass , 339
+  pail , 334
+  bat linen , 330
+  ajar , 327
+  greet , 324
+  shelter , 323
+  peck jar , 318
+  attempt , 316
+  chicken , 312
+  right , 311
+  shelf , 305
+  tame , 303
+  spell idea , 296
+  private , 293
+  sense , 285
+  subsequent , 276
+  dizzy , 270
+  numberless , 268
+  channel , 252
+  ocean , 243
+  terrific , 240
+  minute , 234
+  perform , 226
+  plant , 224
+  obeisant , 221
+  acid , 220
+  limping , 219
+  slope , 213
+  high-pitched , 209
+  slim , 203
+  new , 201
+  periodic , 199
+  arm , 197
+  amuck , 190
+  old-fashioned , 181
+  stroke , 176
+  roomy , 174
+  industry , 172
+  warm , 171
+  record , 168
+  enthusiastic , 165
+  oafish , 151
+  squalid , 147
+  capricious wobble , 144
+  straight , 143
+  education , 141
+  head , 134
+  powerful , 126
+  cabbage , 125
+  can , 121
+  wonder , 118
+  unadvised , 117
+  thankful , 116
+  sister , 115
+  ambiguous paint , 109
+  month deranged , 102
+  tired , 97
+  mean , 95
+  home underwear , 92
+  bury , 91
+  mind , 82
+  assorted , 77
+  fancy defective support , 68
+  thread , 67
+  deafening , 65
+  rude , 52
+  men , 48
+  sip , 35
+  include , 33
+  letter , 29
+  concern , 23
+  fragile , 22
+  incompetent passenger , 9
+  romantic , 8
+
+Ordered list of keywords and frequencies at query 2: 
+  frame , 2236
+  hook , 2204
+  shock , 2061
+  attraction , 2007
+  wary , 1926
+  aromatic , 1924
+  plantation , 1857
+  thunder , 1844
+  joyous , 1792
+  anger , 1702
+  flow , 1677
+  trains , 1676
+  snow , 1595
+  embarrassed , 1592
+  test , 1547
+  rhythm , 1517
+  shiny , 1483
+  fall , 1479
+  soup , 1478
+  exercise , 1462
+  angry , 1432
+  enjoy , 1425
+  twist , 1378
+  lying , 1373
+  ceaseless , 1367
+  apologise , 1364
+  dangerous , 1346
+  bear , 1331
+  spiky , 1321
+  barbarous , 1308
+  grip , 1292
+  obeisant , 1287
+  vest , 1283
+  stitch , 1227
+  flagrant , 1223
+  stir , 1194
+  tick , 1173
+  end , 1168
+  squash , 1167
+  motionless , 1154
+  dance , 1145
+  abaft , 1101
+  shaky , 1093
+  six , 1053
+  abundant , 1033
+  cabbage , 1018
+  subsequent , 1003
+  watch , 996
+  apparel , 995
+  peep , 991
+  veil , 990
+  ten , 989
+  mark vacation , 988
+  noxious , 987
+  precede , 986
+  roll lip , 985
+  ambiguous part , 983
+  lie drip , 982
+  blush , 979
+  brush , 978
+  vacuous , 977
+  efficient , 976
+  identify , 975
+  knowing , 974
+  erect driving , 973
+  letters , 972
+  smelly oil halting , 969
+  excite guide , 960
+  useful work , 959
+  undress story miniature , 958
+  wrestle , 955
+  regret hateful , 953
+  cars , 950
+  correct , 946
+  adjoining , 945
+  worried kiss , 944
+  slip , 943
+  rain , 942
+  overrated shelter , 940
+  supply , 939
+  descriptive , 938
+  fry , 937
+  slimy , 935
+  heavenly , 933
+  steer , 931
+  idiotic , 929
+  aggressive , 926
+  addition glamorous , 925
+  blue , 923
+  ashamed silk , 919
+  agreeable , 918
+  cave , 917
+  deep , 916
+  mass wiggly rinse , 913
+  mute , 911
+  nice face , 910
+  fit , 909
+  star , 908
+  confess , 906
+  edge , 905
+  festive , 904
+  nutty , 900
+  meaty , 899
+  heal , 890
+  secretary , 889
+  blue-eyed familiar , 887
+  earth , 886
+  doctor , 883
+  unequal , 879
+  collect , 878
+  rightful stone , 876
+  tame , 872
+  extend gifted , 868
+  addicted error , 867
+  eminent , 866
+  aspiring loose careful guttural , 860
+  five cloistered , 859
+  event , 858
+  jail , 857
+  tub , 855
+  food muscle , 854
+  serve , 849
+  finger , 848
+  amusing , 847
+  scratch structure , 846
+  sisters bit dock puny , 842
+  miscreant , 839
+  spring sturdy bleach , 836
+  side jump , 832
+  turn , 831
+  advertisement , 829
+  note , 827
+  tumble , 826
+  wound sulky , 825
+  thought , 824
+  crabby last , 823
+  receptive , 821
+  noisy , 820
+  earthy , 808
+  sand massive , 807
+  woman , 798
+  float , 797
+  thundering , 795
+  disgusted , 794
+  club , 790
+  secret , 788
+  unused , 787
+  chubby point , 786
+  thirsty , 783
+  pedal , 776
+  hat toothbrush , 772
+  sloppy , 771
+  disastrous , 770
+  lean , 764
+  steep , 763
+  laughable friction , 762
+  abashed thankful , 761
+  key , 759
+  stew , 758
+  harass , 756
+  island , 754
+  grieving pie , 748
+  abstracted , 747
+  turkey , 746
+  gabby , 743
+  preach , 742
+  nauseating , 739
+  shop , 738
+  brave , 737
+  preserve , 734
+  complete , 733
+  puffy , 732
+  wrap , 731
+  tin beautiful devilish , 726
+  vagabond , 721
+  scold , 720
+  nostalgic flowery , 719
+  languid , 718
+  arrest scary , 717
+  sign , 714
+  ticket , 712
+  adorable , 709
+  stick , 708
+  placid , 707
+  ajar rule paper , 705
+  annoying enchanted quirky low , 704
+  animated , 703
+  trick , 700
+  worry , 699
+  delay , 698
+  tow , 697
+  dam , 694
+  wave , 693
+  caption , 692
+  word , 688
+  phone spot , 687
+  tearful , 686
+  listen rely , 682
+  glass , 679
+  want , 678
+  rampant , 677
+  sofa , 672
+  search , 671
+  groovy , 668
+  print , 667
+  notebook bedroom chin , 664
+  measure , 660
+  stretch appliance , 658
+  foolish , 654
+  radiate religion , 653
+  auspicious , 652
+  oatmeal waiting , 651
+  fax , 650
+  horses shoes , 649
+  bird , 648
+  uneven , 647
+  meddle sniff married , 642
+  approve limit advise , 641
+  succinct , 638
+  maid , 637
+  hate , 636
+  crime bushes , 635
+  warm , 634
+  chase , 630
+  collar , 627
+  dead , 625
+  stiff dirt , 624
+  wise , 623
+  jolly , 622
+  entertain memorise , 620
+  pack , 618
+  talented , 616
+  pale , 614
+  illustrious , 611
+  shade , 607
+  perfect , 606
+  meal , 605
+  angle , 601
+  nimble , 598
+  legs fumbling , 596
+  unite grotesque giant , 594
+  way wrong , 591
+  amusement gray , 588
+  neat use accept , 585
+  form , 584
+  spotted , 583
+  hole , 582
+  relation , 580
+  fanatical , 579
+  offend , 577
+  recondite , 576
+  fool front , 575
+  toothpaste view , 574
+  fire , 573
+  bruise , 572
+  science , 570
+  humorous screw soothe , 569
+  bite-sized , 567
+  girl plug , 566
+  permissible drain , 565
+  youthful , 563
+  cannon , 560
+  attach , 558
+  futuristic , 557
+  humor thank , 553
+  uttermost introduce , 546
+  nerve wooden unbecoming , 545
+  magenta , 544
+  quiver , 543
+  beginner mountainous , 541
+  clear , 540
+  harbor , 538
+  hideous , 536
+  house , 535
+  fretful , 534
+  summer , 530
+  channel actually bright , 527
+  doubt , 525
+  wax , 523
+  kind , 521
+  brown fear , 520
+  boiling suppose , 519
+  influence , 515
+  tenuous egg , 513
+  heat , 510
+  milk , 509
+  dull damp super , 507
+  shut crate , 506
+  remember rail , 505
+  cough , 504
+  strengthen , 503
+  grease ducks , 502
+  cluttered , 501
+  outgoing , 493
+  overt gamy , 492
+  hum , 491
+  kettle , 489
+  wool childlike icicle bent , 488
+  pine , 487
+  taboo , 480
+  selective , 476
+  toe hilarious , 475
+  van zoo , 474
+  time , 473
+  injure , 469
+  measly , 465
+  mice , 461
+  strip , 460
+  continue , 459
+  mature , 456
+  spectacular , 455
+  salty , 454
+  beneficial , 453
+  include believe , 451
+  tongue , 447
+  tacit inexpensive , 446
+  accidental , 444
+  sour , 443
+  rings , 439
+  obsolete , 438
+  strong , 430
+  fallacious , 428
+  envious lyrical , 425
+  delicate manage , 424
+  smooth , 423
+  faded , 422
+  cable , 421
+  belief instrument , 419
+  air , 418
+  theory mindless , 417
+  sail , 415
+  open , 413
+  flag , 408
+  oranges tan , 405
+  proud guitar greedy impartial , 404
+  cry explain , 400
+  arrange , 398
+  gate , 396
+  order , 395
+  wash buzz swanky , 394
+  bikes , 393
+  impolite , 391
+  capable , 386
+  maddening strap , 385
+  object , 384
+  visit , 380
+  honorable describe , 379
+  scattered , 375
+  attractive , 374
+  yard , 368
+  direful , 367
+  signal , 361
+  tank , 360
+  wall , 358
+  governor , 356
+  spray , 355
+  lacking automatic , 351
+  racial donkey , 347
+  mitten wren , 346
+  garrulous , 342
+  pail meek nation grass , 339
+  past , 337
+  nasty , 336
+  multiply dizzy , 332
+  zipper bat linen , 330
+  greet , 324
+  vague , 319
+  box peck jar , 318
+  wail claim , 317
+  attempt , 316
+  difficult change , 314
+  numerous chicken , 312
+  right , 311
+  far , 306
+  shelf , 305
+  muddle , 298
+  disillusioned spell idea , 296
+  mouth , 294
+  private , 293
+  reign , 287
+  orange sense , 285
+  crack , 279
+  wistful , 278
+  torpid , 274
+  crowd , 269
+  numberless , 268
+  verdant , 261
+  psychotic , 258
+  camp , 255
+  scandalous , 245
+  yarn , 244
+  ocean , 243
+  easy terrific , 240
+  division , 237
+  minute , 234
+  acidic realise smoke , 228
+  perform , 226
+  plant , 224
+  insurance , 223
+  level , 222
+  acid , 220
+  education limping , 219
+  seashore , 216
+  slope , 213
+  trace , 210
+  high-pitched , 209
+  efficacious , 206
+  harm found , 205
+  marvelous , 204
+  slim , 203
+  fluttering new , 201
+  colossal , 200
+  periodic , 199
+  flashy , 198
+  phobic arm , 197
+  connection , 196
+  macho , 194
+  stupendous , 192
+  amuck , 190
+  branch old-fashioned , 181
+  untidy , 180
+  stroke , 176
+  roomy , 174
+  acceptable industry , 172
+  record , 168
+  enthusiastic , 165
+  thoughtful , 162
+  cherry , 159
+  righteous hollow , 156
+  teeny-tiny , 152
+  oafish , 151
+  mundane volcano , 148
+  eggs expensive squalid , 147
+  spiteful , 146
+  flood , 145
+  capricious wobble , 144
+  straight , 143
+  train , 142
+  polish , 141
+  minor , 139
+  raspy , 136
+  head , 134
+  unnatural rub , 133
+  table , 132
+  powerful , 126
+  available , 122
+  tired can , 121
+  wonder , 118
+  wealthy unadvised , 117
+  slow sister , 115
+  first , 112
+  book , 110
+  sea horn paint , 109
+  bone , 103
+  month deranged , 102
+  number , 101
+  group church , 97
+  fascinated mean , 95
+  various , 94
+  pour home underwear , 92
+  smiling bury , 91
+  abortive , 85
+  mind , 82
+  destroy , 79
+  fix , 78
+  assorted , 77
+  ordinary , 73
+  freezing , 72
+  squeal , 71
+  fancy defective support , 68
+  thread , 67
+  skip deafening , 65
+  troubled luxuriant , 63
+  bubble tail , 59
+  balance , 58
+  teeny , 57
+  water , 54
+  rude , 52
+  hesitant , 50
+  men , 48
+  holiday , 43
+  canvas , 39
+  sip , 35
+  spade middle , 30
+  letter , 29
+  concern , 23
+  fragile , 22
+  profuse , 19
+  lopsided , 18
+  incompetent passenger , 9
+  romantic , 8
+  dirty , 1
+
+Ordered list of keywords and frequencies at query 3: 
+  attraction , 2933
+  aromatic , 2836
+  thunder , 2680
+  frame , 2236
+  hook , 2204
+  bedroom , 2198
+  mute , 2105
+  barbarous , 2087
+  end , 2062
+  shock , 2061
+  rare , 1945
+  wary , 1926
+  grip , 1906
+  plantation , 1857
+  worried , 1846
+  joyous , 1792
+  ajar , 1791
+  receptive , 1779
+  friction , 1723
+  anger , 1702
+  twist , 1688
+  slip , 1681
+  flow , 1677
+  trains , 1676
+  identify , 1667
+  appliance , 1653
+  snow , 1595
+  embarrassed , 1592
+  float , 1584
+  correct , 1573
+  screw , 1548
+  thundering test , 1547
+  rhythm , 1517
+  club , 1513
+  bite-sized , 1512
+  shiny , 1483
+  fall , 1479
+  soup , 1478
+  heavenly , 1471
+  exercise , 1462
+  angry , 1432
+  veil , 1427
+  enjoy , 1425
+  watch , 1416
+  outgoing , 1401
+  silk , 1389
+  worry , 1384
+  precede , 1381
+  lying , 1373
+  ceaseless , 1367
+  apologise , 1364
+  dangerous , 1346
+  noxious , 1342
+  wrathful , 1339
+  bear , 1331
+  wooden , 1330
+  legs , 1328
+  spiky , 1321
+  obeisant , 1287
+  van , 1285
+  vest , 1283
+  limit , 1231
+  stitch , 1227
+  flagrant , 1223
+  hate , 1210
+  trip ticket , 1209
+  stir , 1194
+  quiver , 1183
+  tame , 1180
+  mice , 1177
+  hideous , 1176
+  tick , 1173
+  squash , 1167
+  motionless , 1154
+  dance , 1145
+  connection marble , 1128
+  wave , 1124
+  unnatural , 1122
+  abaft , 1101
+  shaky , 1093
+  wren , 1091
+  succinct , 1078
+  guttural horn , 1075
+  windy , 1056
+  six , 1053
+  jolly , 1052
+  inexpensive , 1049
+  support , 1048
+  nebulous , 1046
+  abundant , 1033
+  grass , 1030
+  regret , 1028
+  cabbage , 1018
+  tranquil , 1016
+  sea , 1007
+  toad , 1005
+  rub subsequent , 1003
+  attempt , 996
+  volcano apparel , 995
+  breakable round , 994
+  peep , 991
+  ten , 989
+  mark vacation , 988
+  roll lip , 985
+  ambiguous part , 983
+  illegal lie drip , 982
+  busy , 980
+  blush , 979
+  brush , 978
+  vacuous , 977
+  efficient , 976
+  magic knowing , 974
+  stocking dependent erect driving , 973
+  letters , 972
+  smelly oil halting , 969
+  questionable , 963
+  thrill , 961
+  excite guide , 960
+  useful work , 959
+  undress story miniature , 958
+  wrestle , 955
+  hateful , 953
+  cars , 950
+  laugh , 948
+  quirky loud , 946
+  adjoining , 945
+  kiss , 944
+  sturdy rain , 942
+  successful overrated shelter , 940
+  fat supply , 939
+  descriptive , 938
+  fry , 937
+  common slimy , 935
+  nippy , 933
+  home steer , 931
+  bite idiotic , 929
+  design , 927
+  company aggressive , 926
+  addition glamorous , 925
+  clip rebel blue , 923
+  fairies , 922
+  sky , 920
+  ashamed , 919
+  agreeable , 918
+  cave , 917
+  foolish deep , 916
+  mass wiggly rinse , 913
+  used satisfy umbrella , 911
+  present nice face , 910
+  fit , 909
+  star , 908
+  arrive confess , 906
+  edge , 905
+  festive , 904
+  nutty , 900
+  meaty , 899
+  left , 894
+  price , 892
+  heal , 890
+  secretary , 889
+  blue-eyed familiar , 887
+  earth , 886
+  boot , 885
+  doctor , 883
+  cultured , 882
+  unequal , 879
+  collect , 878
+  cure rightful stone , 876
+  ground , 875
+  elastic , 872
+  extend gifted , 868
+  addicted error , 867
+  eminent , 866
+  aspiring loose careful , 860
+  late five cloistered , 859
+  event , 858
+  jail , 857
+  extra-small , 856
+  tub , 855
+  food muscle , 854
+  request smoke , 853
+  tiresome , 851
+  smell serve , 849
+  finger , 848
+  acoustic amusing , 847
+  cactus scratch structure , 846
+  cable , 843
+  line sisters bit dock puny , 842
+  miscreant , 839
+  spring bleach , 836
+  side jump , 832
+  turn , 831
+  flowers advertisement , 829
+  flame note , 827
+  tumble , 826
+  wound sulky , 825
+  thought , 824
+  eager crabby last , 823
+  slow noisy , 820
+  channel , 816
+  rail , 814
+  earthy , 808
+  sand massive , 807
+  milky , 799
+  woman , 798
+  disgusted , 794
+  elated , 793
+  cooing , 792
+  mailbox , 789
+  secret , 788
+  unused , 787
+  chubby point , 786
+  public , 785
+  ice , 784
+  literate thirsty , 783
+  doubtful , 781
+  pedal , 776
+  hat toothbrush , 772
+  sloppy , 771
+  disastrous , 770
+  lean , 764
+  shut steep , 763
+  laughable , 762
+  root abashed thankful , 761
+  key , 759
+  stew , 758
+  gather , 757
+  harass , 756
+  island , 754
+  dislike , 752
+  touch , 749
+  grieving pie , 748
+  abstracted , 747
+  turkey , 746
+  sin , 745
+  gabby , 743
+  preach , 742
+  fancy , 741
+  nauseating , 739
+  shop , 738
+  count hands brave , 737
+  preserve , 734
+  complete , 733
+  puffy , 732
+  realise wrap , 731
+  vegetable , 728
+  tin beautiful devilish , 726
+  acidic , 723
+  vagabond , 721
+  scold , 720
+  nostalgic flowery , 719
+  languid , 718
+  arrest scary , 717
+  mighty , 716
+  sign , 714
+  adorable , 709
+  stick , 708
+  placid , 707
+  rule paper , 705
+  government annoying enchanted low , 704
+  animated , 703
+  wish , 702
+  eight trick , 700
+  delay , 698
+  tow , 697
+  dad dam , 694
+  caption , 692
+  word , 688
+  phone spot , 687
+  tearful , 686
+  listen rely , 682
+  attach , 681
+  rhyme glass , 679
+  want , 678
+  rampant , 677
+  horrible , 676
+  sofa , 672
+  search , 671
+  groovy , 668
+  print , 667
+  cow , 666
+  notebook chin , 664
+  merciful , 663
+  measure , 660
+  befitting stretch , 658
+  available , 656
+  radiate religion , 653
+  auspicious , 652
+  men oatmeal waiting , 651
+  fax , 650
+  horses shoes , 649
+  bird , 648
+  material uneven , 647
+  aberrant , 646
+  meddle sniff married , 642
+  approve advise , 641
+  distribution , 638
+  substance maid , 637
+  crime bushes , 635
+  warm , 634
+  chase , 630
+  bee , 628
+  collar , 627
+  dead , 625
+  stiff dirt , 624
+  gaze wise , 623
+  airplane , 621
+  entertain memorise , 620
+  pack , 618
+  talented , 616
+  pale , 614
+  ripe , 612
+  illustrious , 611
+  shade , 607
+  perfect , 606
+  inject meal , 605
+  angle , 601
+  nimble , 598
+  fumbling , 596
+  unite grotesque giant , 594
+  way wrong , 591
+  amusement gray , 588
+  rock , 587
+  lively , 586
+  neat use accept , 585
+  form , 584
+  spotted , 583
+  hole , 582
+  relation , 580
+  library fanatical , 579
+  expensive offend , 577
+  pin recondite , 576
+  fool front , 575
+  toothpaste view , 574
+  fire , 573
+  bruise , 572
+  science , 570
+  humorous soothe , 569
+  girl plug , 566
+  permissible drain , 565
+  youthful , 563
+  unbecoming cannon , 560
+  futuristic , 557
+  humor thank , 553
+  precious , 552
+  tidy uttermost introduce , 546
+  nerve , 545
+  magenta , 544
+  beginner mountainous , 541
+  clear , 540
+  harbor , 538
+  house , 535
+  fretful , 534
+  unwritten , 533
+  summer , 530
+  tent , 529
+  actually bright , 527
+  doubt , 525
+  wax , 523
+  kind , 521
+  brown fear , 520
+  boiling suppose , 519
+  influence , 515
+  historical , 514
+  tenuous egg , 513
+  heat , 510
+  milk , 509
+  dull damp super , 507
+  crate , 506
+  remember , 505
+  cough , 504
+  strengthen , 503
+  grease ducks , 502
+  cluttered , 501
+  eggs , 500
+  grey , 493
+  overt gamy , 492
+  hum , 491
+  kettle , 489
+  wool childlike icicle bent , 488
+  pine , 487
+  balance , 485
+  taboo , 480
+  snakes , 479
+  selective , 476
+  toe hilarious , 475
+  zoo , 474
+  billowy dream time , 473
+  injure , 469
+  handle , 466
+  measly , 465
+  strip , 460
+  continue , 459
+  rustic , 457
+  mature , 456
+  spectacular , 455
+  salty , 454
+  beneficial , 453
+  include believe , 451
+  wacky , 448
+  tongue , 447
+  tacit , 446
+  accidental , 444
+  sour , 443
+  rings , 439
+  obsolete , 438
+  mouth , 436
+  aboriginal , 435
+  rich , 432
+  wistful astonishing , 431
+  strong , 430
+  fallacious , 428
+  envious lyrical , 425
+  delicate manage , 424
+  smooth , 423
+  faded , 422
+  unable spooky , 420
+  belief instrument , 419
+  air , 418
+  theory mindless , 417
+  fixed sail , 415
+  open , 413
+  flag , 408
+  oranges tan , 405
+  proud guitar greedy impartial , 404
+  creepy cry explain , 400
+  expansion , 399
+  arrange , 398
+  gate , 396
+  order , 395
+  wash buzz swanky , 394
+  bikes , 393
+  dress , 392
+  impolite , 391
+  song , 388
+  capable , 386
+  maddening strap , 385
+  object , 384
+  visit , 380
+  honorable describe , 379
+  scattered , 375
+  attractive , 374
+  yard , 368
+  direful , 367
+  reminiscent , 365
+  agreement well-to-do , 362
+  signal , 361
+  tank , 360
+  vessel , 359
+  wall , 358
+  governor , 356
+  spray , 355
+  writer , 354
+  lacking automatic , 351
+  unruly , 348
+  racial donkey , 347
+  mitten , 346
+  garrulous , 342
+  abrasive , 340
+  optimal pail meek nation , 339
+  past , 337
+  nasty , 336
+  pancake , 333
+  multiply dizzy , 332
+  man zipper bat linen , 330
+  planes , 327
+  sick tightfisted remind , 325
+  greet , 324
+  yielding , 323
+  raise , 322
+  spell , 321
+  vague , 319
+  slap box peck jar , 318
+  wail claim , 317
+  blade , 315
+  spill long-term difficult change , 314
+  numerous chicken , 312
+  right , 311
+  far , 306
+  shelf , 305
+  knit frighten , 303
+  muddle , 298
+  disillusioned idea , 296
+  honey private , 293
+  basin , 290
+  tramp , 289
+  reign , 287
+  orange sense , 285
+  crack , 279
+  torpid , 274
+  crowd , 269
+  numberless , 268
+  cheat , 267
+  verdant , 261
+  psychotic , 258
+  camp , 255
+  itchy handsomely , 250
+  crook , 249
+  scandalous , 245
+  yarn , 244
+  ocean , 243
+  easy terrific , 240
+  division , 237
+  minute , 234
+  agree , 232
+  perform , 226
+  committee , 225
+  plant , 224
+  insurance , 223
+  level , 222
+  acid , 220
+  fantastic education limping , 219
+  seashore , 216
+  curvy toy huge slope , 213
+  trace , 210
+  electric high-pitched , 209
+  sheet , 207
+  efficacious , 206
+  harm found , 205
+  marvelous , 204
+  slim , 203
+  fluttering new , 201
+  colossal , 200
+  peel periodic , 199
+  discussion flashy , 198
+  phobic arm , 197
+  modern , 196
+  macho , 194
+  stupendous , 192
+  grape certain amuck , 190
+  ban , 187
+  branch old-fashioned , 181
+  untidy , 180
+  stroke , 176
+  switch roomy , 174
+  carpenter , 173
+  acceptable industry , 172
+  endurable , 169
+  record , 168
+  enthusiastic , 165
+  thoughtful , 162
+  cherry , 159
+  spoil , 157
+  righteous hollow , 156
+  wasteful , 154
+  teeny-tiny , 152
+  pink oafish , 151
+  mundane , 148
+  squalid , 147
+  spiteful , 146
+  flood , 145
+  capricious wobble , 144
+  straight , 143
+  train , 142
+  crow polish , 141
+  decide minor , 139
+  coil , 138
+  raspy , 136
+  head , 134
+  table , 132
+  vigorous , 130
+  mine , 127
+  powerful , 126
+  towering , 123
+  tired can , 121
+  example , 120
+  wonder , 118
+  wealthy unadvised , 117
+  temper sister , 115
+  disappear first , 112
+  bone book , 110
+  painstaking paint , 109
+  paddle , 108
+  sweet , 105
+  normal , 104
+  month deranged , 102
+  number , 101
+  group church , 97
+  mom fascinated mean , 95
+  amuse overwrought various , 94
+  pour underwear , 92
+  smiling bury , 91
+  abortive , 85
+  mist mind , 82
+  destroy , 79
+  fix , 78
+  assorted , 77
+  ordinary , 73
+  freezing , 72
+  squeal , 71
+  quizzical defective , 68
+  thread , 67
+  skip deafening , 65
+  art , 64
+  troubled luxuriant , 63
+  bubble tail , 59
+  teeny , 57
+  eye water , 54
+  rude , 52
+  war hesitant , 50
+  snotty , 48
+  station heap , 46
+  holiday , 43
+  canvas , 39
+  move , 37
+  sip , 35
+  spade middle , 30
+  letter , 29
+  moldy , 27
+  concern , 23
+  fragile , 22
+  sneaky , 21
+  profuse , 19
+  lopsided , 18
+  parched , 15
+  incompetent passenger , 9
+  romantic , 8
+  mate , 2
+  dirty , 1
+
+Ordered list of keywords and frequencies at query 4: 
+  aromatic , 3660
+  rare , 3094
+  thunder , 3077
+  attraction , 2933
+  twist , 2676
+  frame , 2576
+  angry , 2370
+  hook , 2204
+  embarrassed , 2202
+  bedroom , 2198
+  trip , 2194
+  ticket , 2170
+  mute , 2105
+  barbarous , 2087
+  end , 2062
+  shock , 2061
+  suggestion , 1971
+  beneficial , 1932
+  wary , 1926
+  grip , 1906
+  club , 1890
+  stir , 1887
+  plantation , 1857
+  worried , 1846
+  joyous , 1792
+  ajar , 1791
+  undress , 1787
+  part , 1780
+  receptive , 1779
+  man , 1763
+  work , 1751
+  nebulous , 1730
+  hands , 1725
+  friction , 1723
+  wrestle , 1708
+  anger , 1702
+  elated , 1697
+  slip , 1681
+  flow , 1677
+  trains , 1676
+  silk , 1672
+  rampant , 1668
+  identify , 1667
+  note , 1656
+  scold , 1654
+  appliance , 1653
+  addition , 1651
+  attach , 1641
+  like , 1619
+  wrathful , 1618
+  succinct , 1599
+  snow , 1595
+  steer , 1587
+  float , 1584
+  apparel , 1574
+  correct , 1573
+  screw , 1548
+  smash thundering test , 1547
+  hunt , 1537
+  shade , 1536
+  bruise , 1534
+  horn , 1518
+  rhythm , 1517
+  mass , 1514
+  bite-sized , 1512
+  clammy , 1497
+  slimy , 1493
+  shiny , 1483
+  roomy , 1480
+  fall , 1479
+  soup , 1478
+  doubtful , 1476
+  library sturdy , 1475
+  bright , 1472
+  heavenly , 1471
+  exercise , 1462
+  subsequent veil , 1427
+  enjoy , 1425
+  thought , 1423
+  watch , 1416
+  outgoing , 1401
+  stretch , 1389
+  worry , 1384
+  precede , 1381
+  public , 1377
+  lying , 1373
+  ceaseless , 1367
+  apologise , 1364
+  dangerous , 1346
+  hilarious noxious , 1342
+  rely , 1332
+  bear , 1331
+  wooden , 1330
+  legs , 1328
+  spiky , 1321
+  dam , 1318
+  drain , 1298
+  disastrous , 1295
+  obeisant , 1287
+  marble van , 1285
+  vest , 1283
+  brush , 1279
+  rain , 1271
+  rub , 1260
+  change , 1249
+  steam word , 1248
+  limit , 1231
+  writer , 1229
+  stitch , 1227
+  flagrant , 1223
+  hate , 1210
+  spooky , 1190
+  face , 1187
+  quiver , 1183
+  tame , 1180
+  mice , 1177
+  hideous , 1176
+  tick , 1173
+  squash , 1167
+  thankful , 1162
+  call , 1158
+  motionless , 1154
+  amuck , 1151
+  descriptive , 1150
+  dance , 1145
+  connection , 1128
+  wave , 1124
+  adjoining unnatural , 1122
+  smile , 1103
+  abaft , 1101
+  level , 1100
+  shaky , 1093
+  wren , 1091
+  guttural , 1075
+  bit , 1070
+  waste , 1069
+  influence , 1064
+  humor , 1057
+  windy , 1056
+  six , 1053
+  jolly , 1052
+  inexpensive , 1049
+  support , 1048
+  illustrious , 1047
+  fascinated , 1043
+  kiss abundant , 1033
+  grass , 1030
+  regret , 1028
+  cabbage , 1018
+  tranquil , 1016
+  meek , 1014
+  jump , 1011
+  sea , 1007
+  toad , 1005
+  attempt , 996
+  volcano , 995
+  breakable round , 994
+  oceanic , 993
+  peep , 991
+  ten , 989
+  mark vacation , 988
+  roll lip , 985
+  ambiguous , 983
+  clean illegal lie drip , 982
+  busy , 980
+  blush , 979
+  smooth , 978
+  vacuous , 977
+  efficient , 976
+  magic knowing , 974
+  stocking dependent erect driving , 973
+  letters , 972
+  dolls smelly oil halting , 969
+  enchanted remove , 967
+  probable , 964
+  questionable , 963
+  taboo , 962
+  thrill , 961
+  excite guide , 960
+  useful , 959
+  story miniature , 958
+  hateful , 953
+  mouth , 952
+  stuff cars , 950
+  describe laugh , 948
+  quirky loud , 946
+  successful overrated shelter , 940
+  fat supply , 939
+  fry , 937
+  common , 935
+  nippy , 933
+  unlock sleet , 932
+  home , 931
+  bite idiotic , 929
+  design , 927
+  company aggressive , 926
+  glamorous , 925
+  saw , 924
+  clip rebel blue , 923
+  fairies , 922
+  abhorrent sky , 920
+  raspy ashamed , 919
+  agreeable , 918
+  cave , 917
+  hissing foolish deep , 916
+  wet wiggly rinse , 913
+  used satisfy umbrella , 911
+  suspect present nice , 910
+  fit , 909
+  star , 908
+  arrive confess , 906
+  left edge , 905
+  festive , 904
+  cellar , 902
+  desert , 901
+  nutty , 900
+  meaty , 899
+  discreet punch , 897
+  price , 892
+  stereotyped heal , 890
+  secretary , 889
+  blue-eyed familiar , 887
+  jelly earth , 886
+  boot , 885
+  doctor , 883
+  bag cultured , 882
+  hollow , 881
+  show unequal , 879
+  collect , 878
+  cure rightful stone , 876
+  ground , 875
+  march , 873
+  elastic , 872
+  extend gifted , 868
+  addicted error , 867
+  eminent , 866
+  shame , 862
+  angle , 861
+  aspiring loose careful , 860
+  late five cloistered , 859
+  branch event , 858
+  jail , 857
+  extra-small , 856
+  tub , 855
+  food muscle , 854
+  self request smoke , 853
+  testy tiresome , 851
+  smell serve , 849
+  finger , 848
+  acoustic amusing , 847
+  cactus scratch structure , 846
+  hill cable , 843
+  line sisters dock puny , 842
+  miscreant , 839
+  fragile , 838
+  greasy , 837
+  spring bleach , 836
+  side , 832
+  outrageous turn , 831
+  gold , 830
+  blade flowers advertisement , 829
+  flame , 827
+  tumble , 826
+  wound sulky , 825
+  eager crabby last , 823
+  slow noisy , 820
+  teeny , 819
+  refuse , 817
+  channel , 816
+  rail , 814
+  alarm , 809
+  lucky earthy , 808
+  confuse sand massive , 807
+  ray , 806
+  wish , 802
+  milky , 799
+  woman , 798
+  sail , 795
+  screeching disgusted , 794
+  loss , 793
+  load cooing , 792
+  macho puzzling , 791
+  reading , 790
+  mailbox , 789
+  secret , 788
+  unused , 787
+  chubby point , 786
+  frequent , 785
+  ice , 784
+  literate thirsty , 783
+  wide-eyed , 779
+  rude , 777
+  pedal , 776
+  hat toothbrush , 772
+  sloppy , 771
+  poised , 770
+  lace , 767
+  tooth lean , 764
+  meal shut steep , 763
+  laughable , 762
+  root abashed , 761
+  key , 759
+  stew , 758
+  gather , 757
+  harass , 756
+  island , 754
+  dislike , 752
+  curve touch , 749
+  average grieving pie , 748
+  limping abstracted , 747
+  turkey , 746
+  sin , 745
+  gabby , 743
+  preach , 742
+  unkempt fancy , 741
+  nauseating , 739
+  shop , 738
+  count brave , 737
+  preserve , 734
+  complete , 733
+  puffy , 732
+  realise wrap , 731
+  obtain , 729
+  vegetable , 728
+  tin beautiful devilish , 726
+  panicky , 725
+  acidic , 723
+  vagabond , 721
+  agreement , 720
+  unknown nostalgic flowery , 719
+  languid , 718
+  arrest scary , 717
+  mighty , 716
+  meeting , 715
+  sign , 714
+  church , 711
+  sip adorable , 709
+  stick , 708
+  writing placid , 707
+  rule paper , 705
+  government annoying low , 704
+  jagged animated , 703
+  eight trick , 700
+  delay , 698
+  tow , 697
+  pickle , 695
+  dad , 694
+  thaw caption , 692
+  phone spot , 687
+  tearful , 686
+  lamentable , 684
+  listen , 682
+  rhyme glass , 679
+  want , 678
+  bumpy horrible , 676
+  sofa , 672
+  search , 671
+  young , 669
+  expensive groovy , 668
+  print , 667
+  cow , 666
+  notebook chin , 664
+  clever merciful , 663
+  gentle measure , 660
+  befitting , 658
+  available , 656
+  radiate religion , 653
+  auspicious , 652
+  men oatmeal waiting , 651
+  fax , 650
+  horses shoes , 649
+  bird , 648
+  material uneven , 647
+  aberrant , 646
+  play anxious meddle sniff married , 642
+  approve advise , 641
+  distribution , 638
+  substance maid , 637
+  plucky , 636
+  crime bushes , 635
+  warm , 634
+  railway , 631
+  mother chase , 630
+  quick , 629
+  bee , 628
+  consist stroke collar , 627
+  dead , 625
+  stiff dirt , 624
+  gaze wise , 623
+  rate airplane , 621
+  entertain memorise , 620
+  pack , 618
+  talented , 616
+  conscious pale , 614
+  ripe , 612
+  three , 610
+  perfect , 606
+  confused inject , 605
+  strip , 603
+  nimble , 598
+  fumbling , 596
+  unite grotesque giant , 594
+  crow , 593
+  way wrong , 591
+  boorish , 590
+  amusement gray , 588
+  rock , 587
+  lively , 586
+  kind neat use accept , 585
+  deserted form , 584
+  abusive spotted , 583
+  hole , 582
+  desire , 581
+  relation , 580
+  fanatical , 579
+  offend , 577
+  cats pin recondite , 576
+  fool front , 575
+  market toothpaste view , 574
+  fire , 573
+  science , 570
+  humorous soothe , 569
+  girl plug , 566
+  permissible , 565
+  sedate , 564
+  youthful , 563
+  obnoxious , 562
+  unbecoming cannon , 560
+  futuristic , 557
+  thank , 553
+  precious , 552
+  move , 547
+  tidy uttermost introduce , 546
+  nerve , 545
+  magenta , 544
+  sun , 542
+  beginner mountainous , 541
+  clear , 540
+  harbor , 538
+  possible house , 535
+  fretful , 534
+  unwritten , 533
+  act , 531
+  summer , 530
+  tent , 529
+  bashful park actually , 527
+  mask doubt , 525
+  cruel wax , 523
+  brown fear , 520
+  boiling suppose , 519
+  silver , 516
+  historical , 514
+  label tenuous egg , 513
+  heat , 510
+  milk , 509
+  number , 508
+  dull damp super , 507
+  crate , 506
+  remember , 505
+  cough , 504
+  lovely strengthen , 503
+  soft grease ducks , 502
+  cluttered , 501
+  eggs , 500
+  cynical , 499
+  grey , 493
+  longing overt gamy , 492
+  subtract hum , 491
+  kettle , 489
+  wool childlike icicle bent , 488
+  burst pine , 487
+  balance , 485
+  towering , 483
+  snakes , 479
+  selective , 476
+  hope toe , 475
+  zoo , 474
+  billowy dream time , 473
+  injure , 469
+  handle , 466
+  measly , 465
+  continue , 459
+  jumbled , 458
+  rustic , 457
+  mature , 456
+  spectacular , 455
+  glorious salty , 454
+  plant , 453
+  murder , 452
+  include believe , 451
+  pigs wacky , 448
+  shrill tongue , 447
+  tacit , 446
+  jam , 445
+  accidental , 444
+  sour , 443
+  rings , 439
+  obsolete , 438
+  cows aboriginal , 435
+  nasty , 434
+  rich , 432
+  wistful astonishing , 431
+  strong , 430
+  unruly , 429
+  fallacious , 428
+  envious lyrical , 425
+  delicate manage , 424
+  servant , 423
+  faded , 422
+  unable , 420
+  belief instrument , 419
+  air , 418
+  blind theory mindless , 417
+  fixed , 415
+  open , 413
+  flag , 408
+  dress oranges tan , 405
+  difficult proud guitar greedy impartial , 404
+  toes , 402
+  invent , 401
+  creepy cry explain , 400
+  expansion , 399
+  arrange , 398
+  gate , 396
+  order , 395
+  wash buzz swanky , 394
+  bikes , 393
+  quiet , 392
+  impolite , 391
+  song , 388
+  capable , 386
+  maddening strap , 385
+  object , 384
+  hulking , 383
+  visit , 380
+  honorable , 379
+  drag , 378
+  treat , 376
+  scattered , 375
+  attractive , 374
+  lame , 371
+  broad , 370
+  yard , 368
+  direful , 367
+  reminiscent , 365
+  well-to-do , 362
+  signal , 361
+  tank , 360
+  vessel , 359
+  wall , 358
+  governor , 356
+  spray , 355
+  reduce , 354
+  lacking automatic , 351
+  voiceless , 349
+  racial donkey , 347
+  mitten , 346
+  hellish garrulous , 342
+  abrasive , 340
+  optimal pail nation , 339
+  past , 337
+  shave , 334
+  pancake , 333
+  multiply dizzy , 332
+  zipper bat linen , 330
+  paint , 328
+  planes , 327
+  crack talk sick tightfisted remind , 325
+  greet , 324
+  yielding , 323
+  raise , 322
+  spell , 321
+  vague , 319
+  slap box peck jar , 318
+  wail claim , 317
+  save , 315
+  spill long-term , 314
+  numerous chicken , 312
+  right , 311
+  tip , 308
+  normal , 307
+  far , 306
+  shelf , 305
+  knit frighten , 303
+  thoughtless nose , 302
+  perform , 300
+  muddle , 298
+  disillusioned idea , 296
+  educate , 294
+  honey private , 293
+  arch nut , 292
+  basin , 290
+  well-groomed tramp , 289
+  reign , 287
+  distinct orange sense , 285
+  wakeful , 283
+  temporary , 278
+  hover torpid , 274
+  crowd , 269
+  numberless , 268
+  cheat , 267
+  yellow , 262
+  verdant , 261
+  team psychotic , 258
+  tail , 256
+  camp , 255
+  embarrass , 254
+  animal , 253
+  nifty , 252
+  itchy handsomely , 250
+  absorbing crook , 249
+  scandalous , 245
+  yarn , 244
+  ocean , 243
+  easy terrific , 240
+  division , 237
+  communicate minute , 234
+  agree , 232
+  underwear , 231
+  dashing , 228
+  committee , 225
+  insurance , 223
+  feeling acid , 220
+  fantastic education , 219
+  seashore , 216
+  imported curvy toy huge slope , 213
+  trace , 210
+  electric high-pitched , 209
+  sheet , 207
+  efficacious , 206
+  rose harm found , 205
+  marvelous , 204
+  squeamish slim , 203
+  fluttering new , 201
+  trade sugar colossal , 200
+  peel periodic , 199
+  discussion flashy , 198
+  phobic arm , 197
+  modern , 196
+  prevent , 193
+  encouraging stupendous , 192
+  grape certain , 190
+  ban , 187
+  powder , 183
+  old-fashioned , 181
+  untidy , 180
+  hurried , 176
+  brainy decorate , 175
+  tempt switch , 174
+  carpenter , 173
+  acceptable industry , 172
+  endurable , 169
+  record , 168
+  enthusiastic , 165
+  thoughtful , 162
+  cherry , 159
+  tender spoil , 157
+  righteous , 156
+  silent , 155
+  wasteful , 154
+  teeny-tiny , 152
+  pink oafish , 151
+  mundane , 148
+  squalid , 147
+  spiteful , 146
+  flood , 145
+  capricious wobble , 144
+  straight , 143
+  train , 142
+  polish , 141
+  decide minor , 139
+  coil , 138
+  ruin , 137
+  head , 134
+  scale , 133
+  table , 132
+  savory , 131
+  vigorous , 130
+  mine , 127
+  powerful , 126
+  tired can , 121
+  bare example , 120
+  wonder , 118
+  wealthy unadvised , 117
+  temper sister , 115
+  well-made disappear first , 112
+  bone book , 110
+  painstaking , 109
+  paddle , 108
+  sweet , 105
+  faulty month deranged , 102
+  health , 99
+  group , 97
+  mom mean , 95
+  amuse overwrought various , 94
+  graceful , 93
+  pour , 92
+  smiling bury , 91
+  intelligent , 90
+  abortive , 85
+  haircut , 84
+  mist mind , 82
+  destroy , 79
+  fix , 78
+  fireman assorted , 77
+  obscene , 76
+  ordinary , 73
+  freezing , 72
+  squeal , 71
+  quizzical defective , 68
+  thread , 67
+  skip deafening , 65
+  art , 64
+  liquid troubled luxuriant , 63
+  sore , 62
+  chivalrous bubble , 59
+  bump , 57
+  daily eye water , 54
+  sweater , 53
+  blow war hesitant , 50
+  bang , 49
+  snotty , 48
+  station heap , 46
+  degree , 45
+  rot holiday , 43
+  canvas , 39
+  spade , 36
+  middle , 30
+  letter , 29
+  moldy , 27
+  absent , 26
+  concern , 23
+  sneaky , 21
+  profuse , 19
+  lopsided , 18
+  parched , 15
+  incompetent passenger , 9
+  romantic , 8
+  carriage mate , 2
+  dirty , 1
+
+Ordered list of keywords and frequencies at query 5: 
+  aromatic , 3660
+  rare , 3319
+  thunder , 3077
+  attraction , 2933
+  shock , 2867
+  trip , 2723
+  twist , 2676
+  frame , 2576
+  angry , 2370
+  hook , 2204
+  embarrassed , 2202
+  bedroom , 2198
+  ticket , 2170
+  mute , 2105
+  barbarous , 2087
+  test , 2086
+  end , 2062
+  like , 1981
+  suggestion , 1971
+  beneficial , 1932
+  wary , 1926
+  grip , 1906
+  club , 1890
+  stir , 1887
+  plantation , 1857
+  slip , 1852
+  worried , 1846
+  joyous , 1792
+  ajar , 1791
+  undress , 1787
+  part , 1780
+  receptive , 1779
+  man , 1763
+  work , 1751
+  nebulous , 1730
+  hands , 1725
+  friction , 1723
+  wren , 1716
+  agreement wrestle , 1708
+  anger , 1702
+  complete , 1700
+  elated , 1697
+  ten , 1690
+  flow , 1677
+  trains , 1676
+  silk , 1672
+  rampant , 1668
+  identify , 1667
+  amusing , 1666
+  note , 1656
+  scold , 1654
+  appliance , 1653
+  smell , 1652
+  addition , 1651
+  attach , 1641
+  placid , 1639
+  wrathful , 1618
+  mark , 1605
+  succinct , 1599
+  event , 1597
+  snow , 1595
+  steer , 1587
+  float , 1584
+  apparel , 1574
+  correct , 1573
+  screw , 1548
+  smash thundering , 1547
+  hunt , 1537
+  shade , 1536
+  bruise , 1534
+  giant , 1521
+  horn , 1518
+  rhythm , 1517
+  mass , 1514
+  bite-sized , 1512
+  clammy , 1497
+  slimy , 1493
+  sofa , 1487
+  shiny , 1483
+  roomy , 1480
+  fall , 1479
+  soup , 1478
+  doubtful , 1476
+  library sturdy , 1475
+  bright , 1472
+  heavenly , 1471
+  exercise , 1462
+  subsequent veil , 1427
+  enjoy , 1425
+  literate thought , 1423
+  unknown , 1418
+  watch , 1416
+  foolish , 1408
+  outgoing , 1401
+  stretch , 1389
+  worry , 1384
+  gabby , 1383
+  precede , 1381
+  public , 1377
+  lying , 1373
+  ceaseless , 1367
+  apologise , 1364
+  thankful dangerous , 1346
+  hilarious noxious , 1342
+  rely , 1332
+  bear , 1331
+  wooden , 1330
+  legs , 1328
+  spiky , 1321
+  dam , 1318
+  request , 1303
+  drain , 1298
+  disastrous , 1295
+  obeisant , 1287
+  marble van , 1285
+  vest , 1283
+  object , 1280
+  brush , 1279
+  rain , 1271
+  rub , 1260
+  change , 1249
+  steam word , 1248
+  limit , 1231
+  writer , 1229
+  stitch , 1227
+  flagrant , 1223
+  hate , 1210
+  reading , 1207
+  spooky , 1190
+  spring , 1189
+  face , 1187
+  quiver , 1183
+  tame , 1180
+  mice , 1177
+  hideous , 1176
+  tick , 1173
+  brainy squash , 1167
+  squeamish , 1166
+  call , 1158
+  motionless , 1154
+  amuck , 1151
+  descriptive , 1150
+  dance , 1145
+  connection , 1128
+  wave , 1124
+  adjoining unnatural , 1122
+  kind , 1106
+  smile , 1103
+  abaft , 1101
+  level , 1100
+  shaky , 1093
+  devilish , 1082
+  pigs , 1080
+  guttural , 1075
+  gaze , 1074
+  bit , 1070
+  waste , 1069
+  influence , 1064
+  humor , 1057
+  windy , 1056
+  six , 1053
+  jolly , 1052
+  inexpensive , 1049
+  support , 1048
+  illustrious , 1047
+  fascinated , 1043
+  kiss abundant , 1033
+  grass , 1030
+  regret , 1028
+  cabbage , 1018
+  tranquil , 1016
+  meek , 1014
+  jump , 1011
+  sea , 1007
+  toad , 1005
+  machine , 998
+  attempt , 996
+  walk volcano , 995
+  breakable round , 994
+  oceanic , 993
+  goofy peep , 991
+  pets , 990
+  vacation , 988
+  fancy roll lip , 985
+  ambiguous , 983
+  clean illegal lie drip , 982
+  busy , 980
+  blush , 979
+  smooth , 978
+  vacuous , 977
+  efficient , 976
+  magic knowing , 974
+  stocking dependent erect driving , 973
+  letters , 972
+  dolls smelly oil halting , 969
+  enchanted remove , 967
+  argument , 966
+  probable , 964
+  questionable , 963
+  taboo , 962
+  thrill , 961
+  excite guide , 960
+  useful , 959
+  story miniature , 958
+  elite , 954
+  farm hateful , 953
+  mouth , 952
+  stuff cars , 950
+  describe laugh , 948
+  quirky loud , 946
+  successful overrated shelter , 940
+  follow fat supply , 939
+  arithmetic fry , 937
+  common , 935
+  nippy , 933
+  small unlock sleet , 932
+  home , 931
+  bite idiotic , 929
+  design , 927
+  company aggressive , 926
+  furtive glamorous , 925
+  saw , 924
+  clip rebel blue , 923
+  fairies , 922
+  abhorrent sky , 920
+  raspy ashamed , 919
+  agreeable , 918
+  cave , 917
+  hissing deep , 916
+  wet wiggly rinse , 913
+  used satisfy umbrella , 911
+  suspect present nice , 910
+  fit , 909
+  star , 908
+  secret , 907
+  arrive confess , 906
+  save left edge , 905
+  erratic faulty festive , 904
+  cellar , 902
+  desert , 901
+  nutty , 900
+  meaty , 899
+  discreet punch , 897
+  ethereal , 894
+  price , 892
+  stereotyped heal , 890
+  secretary , 889
+  ablaze blue-eyed familiar , 887
+  jelly earth , 886
+  boot , 885
+  cuddly , 884
+  doctor , 883
+  bag cultured , 882
+  hollow , 881
+  show unequal , 879
+  collect , 878
+  cure rightful stone , 876
+  ground , 875
+  march , 873
+  elastic , 872
+  need , 869
+  extend gifted , 868
+  addicted error , 867
+  eminent , 866
+  shame , 862
+  angle , 861
+  aspiring loose careful , 860
+  late five cloistered , 859
+  airport oranges branch , 858
+  jail , 857
+  extra-small , 856
+  tub , 855
+  food muscle , 854
+  self smoke , 853
+  testy tiresome , 851
+  serve , 849
+  finger , 848
+  acoustic , 847
+  cactus scratch structure , 846
+  scorch hill cable , 843
+  line sisters dock puny , 842
+  miscreant , 839
+  fragile , 838
+  greasy , 837
+  bleach , 836
+  side , 832
+  outrageous turn , 831
+  gold , 830
+  blade flowers advertisement , 829
+  flame , 827
+  cracker snails tumble , 826
+  wound sulky , 825
+  eager crabby last , 823
+  slow noisy , 820
+  teeny , 819
+  refuse , 817
+  channel , 816
+  rail , 814
+  duck , 813
+  guarantee , 811
+  alarm , 809
+  lucky earthy , 808
+  confuse sand massive , 807
+  ray , 806
+  wish , 802
+  milky , 799
+  woman , 798
+  sail , 795
+  screeching disgusted , 794
+  loss , 793
+  load cooing , 792
+  macho puzzling , 791
+  mailbox , 789
+  unused , 787
+  chubby point , 786
+  frequent , 785
+  ice , 784
+  thirsty , 783
+  wide-eyed , 779
+  rude , 777
+  pedal , 776
+  teaching hat toothbrush , 772
+  sloppy , 771
+  poised , 770
+  lace , 767
+  own , 766
+  tent tooth lean , 764
+  meal shut steep , 763
+  laughable , 762
+  amount root abashed , 761
+  key , 759
+  regular stew , 758
+  gather , 757
+  harass , 756
+  island , 754
+  dislike , 752
+  curve touch , 749
+  average grieving pie , 748
+  limping abstracted , 747
+  turkey , 746
+  sin , 745
+  preach , 742
+  unkempt , 741
+  wriggle nauseating , 739
+  shop , 738
+  superb count brave , 737
+  fantastic , 735
+  preserve , 734
+  puffy , 732
+  realise wrap , 731
+  obtain , 729
+  vegetable , 728
+  tin beautiful , 726
+  panicky , 725
+  acidic , 723
+  vagabond , 721
+  nostalgic flowery , 719
+  staking languid , 718
+  arrest scary , 717
+  mighty , 716
+  meeting , 715
+  sign , 714
+  church , 711
+  sip adorable , 709
+  stick , 708
+  writing , 707
+  rule paper , 705
+  government annoying low , 704
+  jagged animated , 703
+  eight trick , 700
+  delay , 698
+  tow , 697
+  pickle , 695
+  dad , 694
+  thaw caption , 692
+  phone spot , 687
+  tearful , 686
+  lamentable , 684
+  order , 683
+  listen , 682
+  rhyme glass , 679
+  want , 678
+  bumpy horrible , 676
+  maddening search , 671
+  young , 669
+  expensive groovy , 668
+  print , 667
+  cow , 666
+  notebook chin , 664
+  clever merciful , 663
+  remain wood , 661
+  gentle measure , 660
+  befitting , 658
+  available , 656
+  radiate religion , 653
+  auspicious , 652
+  men oatmeal waiting , 651
+  fax , 650
+  horses shoes , 649
+  bird , 648
+  material uneven , 647
+  aberrant , 646
+  play anxious meddle sniff married , 642
+  approve advise , 641
+  distribution , 638
+  substance maid , 637
+  plucky , 636
+  crime bushes , 635
+  warm , 634
+  airplane , 633
+  railway , 631
+  mother chase , 630
+  quick , 629
+  bee , 628
+  consist stroke collar , 627
+  dead , 625
+  stiff dirt , 624
+  wise , 623
+  rate , 621
+  entertain memorise , 620
+  pack , 618
+  talented , 616
+  conscious pale , 614
+  ripe , 612
+  three , 610
+  perfect , 606
+  confused inject , 605
+  strip , 603
+  nimble , 598
+  fumbling , 596
+  unite grotesque , 594
+  crow , 593
+  lick way wrong , 591
+  boorish , 590
+  amusement gray , 588
+  rock , 587
+  lively , 586
+  neat use accept , 585
+  deserted form , 584
+  abusive spotted , 583
+  battle hole , 582
+  desire , 581
+  relation , 580
+  fanatical , 579
+  offend , 577
+  cats pin recondite , 576
+  fool front , 575
+  market toothpaste view , 574
+  fire , 573
+  science , 570
+  humorous soothe , 569
+  girl plug , 566
+  permissible , 565
+  sedate , 564
+  youthful , 563
+  obnoxious , 562
+  unbecoming cannon , 560
+  wistful , 559
+  futuristic , 557
+  thank , 553
+  precious , 552
+  move , 547
+  tidy uttermost introduce , 546
+  nerve , 545
+  magenta , 544
+  sun , 542
+  beginner mountainous , 541
+  clear , 540
+  harbor , 538
+  possible house , 535
+  fretful , 534
+  unwritten , 533
+  act , 531
+  summer , 530
+  gorgeous bashful park actually , 527
+  mask doubt , 525
+  cruel wax , 523
+  brown fear , 520
+  boiling suppose , 519
+  silver , 516
+  historical , 514
+  label tenuous egg , 513
+  heat , 510
+  milk , 509
+  number , 508
+  dull damp super , 507
+  crate , 506
+  decision remember , 505
+  cough , 504
+  lovely strengthen , 503
+  soft grease ducks , 502
+  cluttered , 501
+  eggs , 500
+  cynical , 499
+  grey , 493
+  longing overt gamy , 492
+  toy subtract hum , 491
+  kettle , 489
+  wool childlike icicle bent , 488
+  burst pine , 487
+  balance , 485
+  towering , 483
+  snakes , 479
+  selective , 476
+  hope toe , 475
+  zoo , 474
+  billowy dream time , 473
+  injure , 469
+  handle , 466
+  measly , 465
+  continue , 459
+  jumbled , 458
+  bath rustic , 457
+  mature , 456
+  spectacular , 455
+  glorious salty , 454
+  plant , 453
+  murder , 452
+  include believe , 451
+  wacky , 448
+  shrill tongue , 447
+  tacit , 446
+  jam , 445
+  accidental , 444
+  sour , 443
+  rings , 439
+  obsolete , 438
+  cows aboriginal , 435
+  nasty , 434
+  grandiose , 433
+  stop rich , 432
+  astonishing , 431
+  strong , 430
+  unruly , 429
+  fallacious , 428
+  envious lyrical , 425
+  delicate manage , 424
+  servant , 423
+  faded , 422
+  dare , 421
+  unable , 420
+  belief instrument , 419
+  air , 418
+  blind theory mindless , 417
+  rabid fixed , 415
+  tremble open , 413
+  verdant , 412
+  flag , 408
+  dress tan , 405
+  difficult proud guitar greedy impartial , 404
+  toes , 402
+  drag invent , 401
+  creepy cry explain , 400
+  expansion , 399
+  arrange , 398
+  gate , 396
+  wash buzz swanky , 394
+  bikes , 393
+  quiet , 392
+  impolite , 391
+  song , 388
+  capable , 386
+  strap , 385
+  hulking , 383
+  visit , 380
+  honorable , 379
+  treat , 376
+  scattered , 375
+  attractive , 374
+  lame , 371
+  broad , 370
+  yard , 368
+  vague direful , 367
+  reminiscent , 365
+  peel , 364
+  bad well-to-do , 362
+  signal , 361
+  tank , 360
+  vessel , 359
+  wall , 358
+  governor , 356
+  spray , 355
+  reduce , 354
+  lacking automatic , 351
+  voiceless , 349
+  racial donkey , 347
+  mitten , 346
+  hellish garrulous , 342
+  abrasive , 340
+  optimal pail nation , 339
+  past , 337
+  shave , 334
+  pancake , 333
+  multiply dizzy , 332
+  zipper bat linen , 330
+  paint , 328
+  planes , 327
+  daughter , 326
+  crack talk sick tightfisted remind , 325
+  greet , 324
+  yielding , 323
+  raise , 322
+  spell , 321
+  slap box peck jar , 318
+  wail claim , 317
+  spill long-term , 314
+  numerous chicken , 312
+  right , 311
+  tip , 308
+  normal , 307
+  far , 306
+  shelf , 305
+  knit frighten , 303
+  thoughtless nose , 302
+  stare , 301
+  perform , 300
+  muddle , 298
+  disillusioned idea , 296
+  educate , 294
+  honey private , 293
+  arch nut , 292
+  basin , 290
+  short well-groomed tramp , 289
+  reign , 287
+  month distinct orange sense , 285
+  wakeful , 283
+  temporary , 278
+  hover torpid , 274
+  crowd , 269
+  numberless , 268
+  paddle cheat , 267
+  yellow , 262
+  crowded , 260
+  team psychotic , 258
+  tail , 256
+  camp , 255
+  embarrass , 254
+  animal , 253
+  nifty , 252
+  itchy handsomely , 250
+  absorbing crook , 249
+  scandalous , 245
+  yarn , 244
+  ocean , 243
+  easy terrific , 240
+  discover long division , 237
+  communicate minute , 234
+  agree , 232
+  underwear , 231
+  skip dashing , 228
+  committee , 225
+  insurance , 223
+  feeling acid , 220
+  education , 219
+  whispering , 217
+  seashore , 216
+  prefer , 215
+  imported curvy huge slope , 213
+  trace , 210
+  electric high-pitched , 209
+  sheet , 207
+  efficacious , 206
+  rose harm found , 205
+  marvelous , 204
+  slim , 203
+  fluttering new , 201
+  trade sugar colossal , 200
+  periodic , 199
+  discussion flashy , 198
+  phobic arm , 197
+  modern , 196
+  prevent , 193
+  sneeze encouraging stupendous , 192
+  grape certain , 190
+  ban , 187
+  powder , 183
+  old-fashioned , 181
+  untidy , 180
+  hurried , 176
+  decorate , 175
+  tempt switch , 174
+  carpenter , 173
+  acceptable industry , 172
+  endurable , 169
+  fail record , 168
+  enthusiastic , 165
+  gullible thoughtful , 162
+  cherry , 159
+  tender spoil , 157
+  righteous , 156
+  silent , 155
+  wasteful , 154
+  teeny-tiny , 152
+  pink oafish , 151
+  brake , 149
+  mundane , 148
+  squalid , 147
+  spiteful , 146
+  flood , 145
+  capricious wobble , 144
+  straight , 143
+  train , 142
+  polish , 141
+  decide minor , 139
+  coil , 138
+  ruin , 137
+  head , 134
+  scale , 133
+  table , 132
+  savory , 131
+  vigorous , 130
+  mine , 127
+  powerful , 126
+  tired can , 121
+  quarrelsome bare example , 120
+  wonder , 118
+  wealthy unadvised , 117
+  temper sister , 115
+  well-made disappear first , 112
+  bone book , 110
+  painstaking , 109
+  sweet , 105
+  deranged , 102
+  fuel , 101
+  look health , 99
+  group , 97
+  mom mean , 95
+  amuse overwrought various , 94
+  graceful , 93
+  pour , 92
+  smiling bury , 91
+  intelligent , 90
+  abortive , 85
+  haircut , 84
+  settle , 83
+  mist mind , 82
+  destroy , 79
+  fix , 78
+  fireman assorted , 77
+  obscene , 76
+  ordinary , 73
+  freezing , 72
+  squeal , 71
+  quizzical defective , 68
+  thread , 67
+  deafening , 65
+  art , 64
+  sprout liquid troubled luxuriant , 63
+  sore , 62
+  chivalrous bubble , 59
+  bump , 57
+  daily eye water , 54
+  different sweater , 53
+  blow war hesitant , 50
+  bang , 49
+  snotty , 48
+  station heap , 46
+  degree , 45
+  rot holiday , 43
+  canvas , 39
+  spade , 36
+  middle , 30
+  letter , 29
+  moldy , 27
+  absent , 26
+  concern , 23
+  sneaky , 21
+  profuse , 19
+  lopsided , 18
+  parched , 15
+  incompetent passenger , 9
+  romantic , 8
+  carriage mate , 2
+  dirty , 1
