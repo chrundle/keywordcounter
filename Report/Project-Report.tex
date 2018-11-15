@@ -31,7 +31,7 @@
 
 \section*{Introduction}
 
-Here we include all function prototypes for this implementation of the Fibonacci heap. The two classes defined for this implementation of the Fibonacci heap are a \emph{Node} class and the \emph{Fibonacci Heap} class.
+Here we include all function prototypes for this implementation of a max Fibonacci heap. The two classes defined for this implementation of a max Fibonacci heap are a \emph{Node} class and the \emph{Fibonacci Heap} class. Both of these classes are defined in the header file \texttt{keywordcounter.h} located in the \texttt{Include} directory. Following our presentation of the function prototypes for these classes, we briefly hightlight some information about the main function which is defined in the file \texttt{keywordcounter.cpp} and is located in the \texttt{Source} directory.
 
 \section*{Node Class}
 In this section, we provide the contents and functions used for the \emph{Node} class which are used as nodes for the Fibonacci heap implementation. We first provide the contents of each node followed by the function prototypes in the \emph{Node} class. 
@@ -216,28 +216,12 @@ In this section, we provide the contents and functions used for the \emph{Fibona
     \end{tabular}
 \end{center}
 
+
+\newpage
+\section*{Main Function and Other Information}
+The main function that is compiled and can be called as an executable is defined in the file \texttt{keywordcounter.cpp} and is located in the \texttt{Source} directory. The main function was fairly straightforward. For every line containing a pair (\emph{keyword}, \emph{frequency}), the pair was inserted into the max Fibonacci heap by calling the function \texttt{insert()}. Note that the \texttt{insert()} function defined above handles the case for when the \emph{keyword} is already in the heap and internally triggers a call to \texttt{increase\_key()} instead of inserting the pair as a new element of the heap. When a query is requested, say for $n$ elements, the main function calls \texttt{remove\_max()} $n$ times in a row. After each \texttt{remove\_max()} call, the removed pair (\emph{keyword}, \emph{frequency}) is pushed onto a FIFO queue and the \emph{keyword} is printed to the file \texttt{output\_file.txt}. This process is repeated until the $n$ maximum elements have been removed from the max Fibonacci heap. At this time, the elements are popped off of the FIFO queue and reinserted into the max Fibonacci heap one at a time. When a stop command is received the main function frees all alocated memory and exits the program. Checks for memory leaks were performed using \emph{Valgrind}. The file containing the solution, \texttt{output\_file.txt}, can be found in the same directory as the executable.
+
+There are several make options defined in the \texttt{Makefile}. The default executable can be compiled by typing \texttt{make} in the main directory. There are also compiler options set to compile for use with \emph{Valgrind}, to print extra information while running the program (which was primarily used during the debugging phase), and to generate an ordered list of all keywords and frequencies at each query request using standard library functions (which was used to check if a solution for a problem was valid). These various modes can be compiled by typing \texttt{make use\_valgrind}, \texttt{make debug}, and \texttt{make generate\_solution}, respectively. 
+
+
 \end{document}
-
-%% For function prototypes
-\texttt{void merge(Node *nd)}
-\begin{center}
-    \begin{tabular}{| l | p{2.5cm} | p{9.5cm} |}
-    \hline
-    {\bfseries Description} & \multicolumn{2}{p{12.5cm}|}{Void function which makes tree rooted at given node a subtree of the current node.} \\ \hline
-    \multirow{1}{*}{\bfseries Parameters} & nd & Pointer to root of tree which is to be made subtree of current node \\ \hline
-    {\bfseries Return value} & \multicolumn{2}{p{12.5cm}|}{No values are returned} \\ \hline
-    \end{tabular}
-\end{center}
-
-
-
-\begin{displaymath}
-\phi(s) = \left\{
-\begin{array}{lr}
-\phi_1 (s) = (\alpha_j + s)^2 + (\beta_j + s)^2 & : s \in (- \infty, h_j - x_j - \beta_j)\\
-\phi_2 (s) = (\alpha_j + s)^2 + (h_j - x_j)^2 & : s \in [h_j - x_j - \beta_j, x_j - \ell_j - \alpha_j]\\
-\phi_3 (s) = (x_j - \ell_j)^2 - (h_j - x_j)^2 & : s \in (\ell_j - x_j - \alpha_j, \infty)
-\end{array}
-\right.
-\end{displaymath}
-\grid
