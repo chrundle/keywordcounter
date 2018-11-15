@@ -1,0 +1,24 @@
+
+Ordered list of keywords and frequencies at query 1: 
+  firefox , 100
+  pinterest , 32
+  google , 20
+  weather , 17
+  dog , 12
+  hogwarts , 10
+  facebook , 7
+  reddit , 6
+  edge , 3
+  duckduckgo , 1
+
+Ordered list of keywords and frequencies at query 2: 
+  firefox , 100
+  pinterest , 32
+  dog , 22
+  google , 20
+  facebook , 19
+  weather , 17
+  hogwarts , 10
+  reddit , 6
+  edge , 3
+  duckduckgo , 1

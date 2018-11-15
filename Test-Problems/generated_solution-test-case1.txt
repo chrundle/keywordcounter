@@ -1,0 +1,19 @@
+
+Ordered list of keywords and frequencies at query 1: 
+  facebook , 33
+  youtube , 22
+  amazon , 8
+  gmail , 4
+  news ebay weather , 2
+
+Ordered list of keywords and frequencies at query 2: 
+  facebook , 45
+  youtube , 22
+  gmail , 19
+  ebay , 14
+  amazon , 10
+  netflix , 6
+  cnn , 5
+  playing , 4
+  drawing stop , 3
+  news weather , 2

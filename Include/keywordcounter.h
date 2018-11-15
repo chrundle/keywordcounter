@@ -377,17 +377,17 @@ class FibonacciHeap {
     /* ------------------------- Destructor ------------------------- */
     /* -------------------------------------------------------------- */
     ~FibonacciHeap() {
-		/* Initialize iterator for hashmap */
-		unordered_map<string, Node *>::iterator it = hashmap.begin() ;
-		/* Iterate through elements in hashmap and free memory */
-		while (it != hashmap.end()) {/* Have not reached end of hashmap */
-			/* Delete current element from hashmap */
-		    delete hashmap[it->first] ;
-			/* Move iterator forward */
-			it++ ;
-		}
-		/* Clear hashmap */
-		hashmap.clear() ;
+        /* Initialize iterator for hashmap */
+        unordered_map<string, Node *>::iterator it = hashmap.begin() ;
+        /* Iterate through elements in hashmap and free memory */
+        while (it != hashmap.end()) {/* Have not reached end of hashmap */
+            /* Delete current element from hashmap */
+            delete hashmap[it->first] ;
+            /* Move iterator forward */
+            it++ ;
+        }
+        /* Clear hashmap */
+        hashmap.clear() ;
     }
 
     /* -------------------------------------------------------------- */
@@ -473,7 +473,7 @@ class FibonacciHeap {
         /* Initialize variables */
         long int i, k, degree ;
         Node *t, *s, *ndmin, *ndmax ;
-		string tmp_str ;
+        string tmp_str ;
 
         #ifdef DBUG_PRINT
         cout << "DEBUG::remove_max(): In remove_max()" << endl ;
@@ -488,8 +488,8 @@ class FibonacciHeap {
         }
 
         /* ------ Step 1: Delete max from heap ------ */
-		/* Set temp string to keyword in max node */
-		tmp_str = max->keyword ;
+        /* Set temp string to keyword in max node */
+        tmp_str = max->keyword ;
 
         /* Check if max has no siblings */
         if (only_child(max)) {/* max has no siblings */
@@ -505,11 +505,11 @@ class FibonacciHeap {
                 /* In this case, heap was single max node */
 
                 /* Free memory and erase max element from hashmap */
-				delete hashmap[max->keyword] ;
+                delete hashmap[max->keyword] ;
                 hashmap.erase(tmp_str) ;
 
-				/* Set max ptr to NULL */
-				max = NULL ;
+                /* Set max ptr to NULL */
+                max = NULL ;
                 /* Decrease total number of nodes by 1 since max has been removed */
                 n -= 1 ;
 
@@ -608,7 +608,7 @@ class FibonacciHeap {
             }
         }
         /* Free memory and erase max element from hashmap */
-		delete hashmap[tmp_str] ;
+        delete hashmap[tmp_str] ;
         hashmap.erase(tmp_str) ;
         /* Decrease total number of nodes by 1 since max has been removed */
         n -= 1 ;
@@ -623,13 +623,15 @@ class FibonacciHeap {
         /* Set t to right sibling of max */
         t = s->rsibling ;
 
-        /* Loop through sibling list and check if each one is max */
+        /* Loop through sibling list, checking for max and reset childcut */
         while (t != s) {
             /* Check if data at t is larger than max data */
             if (max->data < t->data) {
                 /* Set max to t */
                 max = t ;
             }
+            /* Set childcut to FALSE */
+            t->childcut = FALSE ;
             /* Set t to next sibling in linked list */
             t = t->rsibling ;
         }
@@ -799,19 +801,19 @@ class FibonacciHeap {
                 else {/* nd has at least one sibling */
                     /* Set child pointer to right sibling of nd */
                     par->child = nd->rsibling ;
-					/* Remove nd from linked list */
-					nd->lsibling->rsibling = nd->rsibling ;
-					nd->rsibling->lsibling = nd->lsibling ;
-					nd->lsibling = nd ;
-					nd->rsibling = nd ;
+                    /* Remove nd from linked list */
+                    nd->lsibling->rsibling = nd->rsibling ;
+                    nd->rsibling->lsibling = nd->lsibling ;
+                    nd->lsibling = nd ;
+                    nd->rsibling = nd ;
                 }
             }
             else {/* nd != nd->parent->child */
-				/* Remove nd from linked list */
-				nd->lsibling->rsibling = nd->rsibling ;
-				nd->rsibling->lsibling = nd->lsibling ;
-				nd->lsibling = nd ;
-				nd->rsibling = nd ;
+                /* Remove nd from linked list */
+                nd->lsibling->rsibling = nd->rsibling ;
+                nd->rsibling->lsibling = nd->lsibling ;
+                nd->lsibling = nd ;
+                nd->rsibling = nd ;
             }
 
             /* -- Update value of childcut for parent of nd -- */
@@ -879,7 +881,7 @@ class FibonacciHeap {
                 /* Nothing else to be done. Exit program. */
                 return ;
             }
-			else {
+            else {
                 /* Set s to nd (necessary for beginning of while loop) */
                 s = nd ;
                 /* Initialize childcut to TRUE (necessary to enter while loop) */
@@ -895,7 +897,7 @@ class FibonacciHeap {
                     /* Insert subtree with nd at root level */
                     meld(t) ;
                 }
-			}
+            }
         }
     }
 } ;
