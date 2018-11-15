@@ -124,15 +124,6 @@ class Node {
             nd->lsibling = nd ; 
             /* -- Update degree of root node -- */
             degree += 1 ;
-            #ifdef DBUG_PRINT
-		    t = nd->rsibling ;
-            cout << "\n  DEBUG::merge(): degree = 0."  << endl ;
-            cout << "\n  DEBUG::merge(): Checking that children are correct."  << endl ;
-		    while (t != nd) {
-                cout << "DEBUG::merge(): next keyword = " << t->keyword << endl ;
-		    	t = t->rsibling ;
-		    }
-            #endif
         }
         else if (degree >= 1) {/* Merge one level down if degree >= 1 */
             /* -- Remove nd from root linked list -- */
@@ -152,35 +143,11 @@ class Node {
             #endif
 
             t->rsibling->lsibling = nd ; /* Insert nd to right of t */
-            #ifdef DBUG_PRINT
-            cout << "DEBUG::merge(): Child->rsibling->lsibling: " << t->rsibling->lsibling->keyword << endl ;
-            #endif
             nd->rsibling = t->rsibling ; /* Insert nd to right of t */
-            #ifdef DBUG_PRINT
-            cout << "DEBUG::merge(): nd->rsibling: " << nd->rsibling->keyword << endl ;
-            #endif
             nd->lsibling = t ; /* Insert nd to right of t */
-            #ifdef DBUG_PRINT
-            cout << "DEBUG::merge(): nd->lsibling: " << nd->lsibling->keyword << endl ;
-            #endif
             t->rsibling = nd ; /* Insert nd to right of t */
             /* -- Update degree of root node -- */
             degree += 1 ;
-
-            #ifdef DBUG_PRINT
-            cout << "DEBUG::merge(): Child->rsibling: " << t->rsibling->keyword << endl ;
-            #endif
-
-            #ifdef DBUG_PRINT
-            cout << "\n  DEBUG::merge(): degree >= 1."  << endl ;
-            cout << "\n  DEBUG::merge(): Checking that children are correct."  << endl ;
-            cout << "DEBUG::merge(): Lsib of child keyword = " << child->lsibling->keyword << endl ;
-			t = child->lsibling->lsibling ;
-			while (t != child->lsibling) {
-                cout << "DEBUG::merge(): next keyword = " << t->keyword << endl ;
-				t = t->lsibling ;
-			}
-            #endif
         }
         else {/* Degree was somehow set to negative which is illegal */
             /* Print error message */
@@ -255,22 +222,13 @@ class FibonacciHeap {
     /* -------------------------------------------------------------- */
     /* Meld single node at root level.                                */
     void meld(Node *nd) {
-	    /* Initialize variables */
-		Node *t ;
         /* ---- Insert nd into linked list with max node ---- */
 #if 0
     /* This operation is done in remove() */
         nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
 #endif
-        /* -- Set childcut to FALSE for all nodes in given list as in root -- */
+        /* -- Set childcut to FALSE as it is now in root -- */
         nd->childcut = FALSE ; 
-#if 0
-		t = nd->rsibling ;
-		while (t != nd) {/* Loop over all nodes in list setting childcut to F */
-            t->childcut = FALSE ;
-            t = t->rsibling ;
-		}
-#endif
         /* -- Insert nd to right of max node -- */
         max->rsibling->lsibling = nd ; /* Insert nd to right of max */
         nd->rsibling = max->rsibling ; /* Insert nd to right of max */
@@ -281,14 +239,6 @@ class FibonacciHeap {
             /* Set max pointer to pointer of new node */
             max = nd ;
         }
-        #ifdef DBUG_PRINT
-		t = nd->rsibling ;
-        cout << "\n  DEBUG::meld(): Checking that children are correct."  << endl ;
-		while (t != nd) {
-            cout << "DEBUG::meld(): t->keyword = " << t->keyword << endl ;
-			t = t->rsibling ;
-		}
-        #endif
     }
 
     /* -------------------------------------------------------------- */
@@ -500,16 +450,6 @@ class FibonacciHeap {
                 /* Set max pointer to pointer of new node */
                 max = hashmap[keyword] ;
             }
-            #ifdef DBUG_PRINT
-		    Node *t ;
-		    t = hashmap[keyword]->rsibling ;
-            cout << "\n  DEBUG::insert(): Case with n > 0."  << endl ;
-            cout << "\n  DEBUG::insert(): Checking that children are correct."  << endl ;
-		    while (t != hashmap[keyword]) {
-                cout << "DEBUG::insert(): t->keyword = " << t->keyword << endl ;
-		    	t = t->rsibling ;
-		    }
-            #endif
         }
         else {
             #ifdef DBUG_PRINT
@@ -636,19 +576,11 @@ class FibonacciHeap {
                 s = t->rsibling ;
 
                 /* ---- Change parent pointers of all children to NULL ---- */
-                #ifdef DBUG_PRINT
-                cout << "DEBUG::remove_max(): t = " << t->keyword << "\n\n\n" ;
-                #endif
                 while (s != t) {
                     /* Set parent of s to NULL */
                     s->parent = NULL ;
                     /* Set s to s's right sibling */
                     s = s->rsibling ;
-                #ifdef DBUG_PRINT
-                cout << "DEBUG::remove_max(): s = " << s->keyword << "\n\n" ;
-                std::chrono::milliseconds dura( 50);
-                std::this_thread::sleep_for( dura );
-                #endif
                 }
 
                 /* ---- Add children to root linked list ---- */
@@ -705,10 +637,7 @@ class FibonacciHeap {
         #ifdef DBUG_PRINT
         cout << endl << "DEBUG::remove_max(): Root after removing max and " ;
         cout << "before consolidating trees at root level." ;
-	#if 0
-    PrintRootLtoR() ;
-    PrintRootRtoL() ;
-	#endif
+        PrintRootLtoR() ;
         #endif
 
         /* ---- Step 3: Consolidate trees so no two roots have same rank ---- */
@@ -791,9 +720,7 @@ class FibonacciHeap {
     
                     #ifdef DBUG_PRINT
                     cout << "DEBUG::remove_max(): Root after merge" << endl ;
-					#if 0
                     PrintRootLtoR() ;
-					#endif
                     #endif
     
                     /* Update pointers in rank_tree as ranks have changed */
@@ -850,7 +777,7 @@ class FibonacciHeap {
             return FALSE ;
         }
         else {/* Node to remove does not contain max key */
-            /* ---- Insert nd into root linked list ---- */
+            /* ---- Get parent information for nd ---- */
             par = nd->parent ;    /* Store parent pointer of nd */
             nd->parent = NULL ;   /* Set parent pointer of nd to NULL */
 #if 0
@@ -949,23 +876,10 @@ class FibonacciHeap {
 
             /* Check if nd data is less than parent data */
             if(nd->data < nd->parent->data) {
-                #ifdef DBUG_PRINT
-                cout << "DEBUG::increase_key(): " << nd->keyword ;
-                cout << "->data = " << nd->data << " < " ;
-				cout << nd->parent->data << " = " << nd->parent->keyword ;
-				cout << "->data" << endl ;
-                #endif
                 /* Nothing else to be done. Exit program. */
                 return ;
             }
 			else {
-                #ifdef DBUG_PRINT
-                cout << "DEBUG::increase_key(): " << nd->keyword ;
-                cout << "->data = " << nd->data << " >= " ;
-			    cout << nd->parent->data << " = " << nd->parent->keyword ;
-			    cout << "->data" << endl ;
-                #endif
-
                 /* Set s to nd (necessary for beginning of while loop) */
                 s = nd ;
                 /* Initialize childcut to TRUE (necessary to enter while loop) */

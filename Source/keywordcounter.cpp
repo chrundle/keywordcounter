@@ -228,15 +228,15 @@ int main(int argc, char *argv[]) {
                     #endif
 
                 /* Remove string from map with current frequency */
-				if (GS_position != string::npos){
-	                GS_sol_map[GS_data].erase(GS_position,GS_str_len) ;
-				}
+                if (GS_position != string::npos){
+                    GS_sol_map[GS_data].erase(GS_position,GS_str_len) ;
+                }
 #if 0
                 /* Check if GS_position indicates string was found */
-				if (GS_position != std::string::npos) {/* String was found */
+                if (GS_position != std::string::npos) {/* String was found */
                     /* Remove string from map with current frequency */
                     GS_sol_map[GS_data].erase(GS_position,GS_str_len) ;
-				}
+                }
 #endif
 
                 /* If string is empty remove from map */
@@ -279,7 +279,7 @@ int main(int argc, char *argv[]) {
             query = stoi(line) ;
 
             #ifdef DEBUG_MAIN
-            /* Print that query request received */
+            /* Print notice that query request was received */
             cout << "main::DEBUG: Query request received: " << query << endl ;
             #endif
 
@@ -328,7 +328,7 @@ int main(int argc, char *argv[]) {
                 #ifdef DEBUG_MAIN
                 /* Print pair to be reinserted */
                 cout << "main::DEBUG: Reinserting keyword, query pair: " ;
-				cout << key_query_pair.first << ", " ;
+                cout << key_query_pair.first << ", " ;
                 cout << key_query_pair.second << endl ;
                 #endif
 
@@ -353,18 +353,6 @@ int main(int argc, char *argv[]) {
         #ifdef DEBUG_MAIN
         /* Print Keys and Queries */
         PrintKeysAndQueriesLtoR(&fheap) ;
-        #endif
-
-        #ifdef DEBUG_MAIN
-        /* CHECKING BUG IN SPECIFIC PROBLEM */
-        if (fheap.hashmap["jump"] != NULL) {
-	        cout << "\n\n\n  jump Lsib = " << fheap.hashmap["jump"]->lsibling->keyword	<< endl ;
-	        cout << "  jump Lsib's Rsib = " << fheap.hashmap["jump"]->lsibling->rsibling->keyword	<< endl ;
-            if (fheap.hashmap["jump"]->lsibling->rsibling != fheap.hashmap["jump"]) {
-	            cout << "\n\n\n  FATAL ERROR: Doubly linked list failed." <<  endl ;
-				return -1 ;
-			}
-		}
         #endif
 
         /* Get next line and break if no next line */
