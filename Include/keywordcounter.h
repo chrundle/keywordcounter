@@ -639,9 +639,7 @@ class FibonacciHeap {
         #ifdef DBUG_PRINT
         cout << endl << "DEBUG::remove_max(): Root after removing max and " ;
         cout << "before consolidating trees at root level." ;
-        #if 0
         PrintRootLtoR() ;
-        #endif
         #endif
 
         /* ---- Step 3: Consolidate trees so no two roots have same rank ---- */
@@ -679,12 +677,6 @@ class FibonacciHeap {
             cout << "DEBUG::remove_max(): Current degree = " << degree << endl ;
             #endif
 
-            /* TODO: If parent of max is not NULL an error has occurred */
-            if (s->parent != NULL) {
-                cout << "remove_max()::DEBUG: s has parent: " << s->parent->keyword << endl ;
-                return ;
-            }
-
             /* Check if degree of current node is not in rank_tree */
             if (rank_tree[degree] == NULL) {/* degree of s not in rank_tree */
                 /* Add degree of s to rank tree */
@@ -718,6 +710,9 @@ class FibonacciHeap {
                         ndmax = rank_tree[degree] ;
                     }
     
+                    /* FIX: If ndmin is the max node swap ndmin and ndmax */
+                    if (ndmin == max) { ndmin = ndmax ; ndmax = max ; }
+
                     #ifdef DBUG_PRINT
                     cout << "DEBUG::remove_max(): Keyword at top merge node: " ;
                     cout << ndmax->keyword << endl ;
@@ -730,9 +725,7 @@ class FibonacciHeap {
     
                     #ifdef DBUG_PRINT
                     cout << "DEBUG::remove_max(): Root after merge" << endl ;
-                    #if 0
                     PrintRootLtoR() ;
-                    #endif
                     #endif
     
                     /* Update pointers in rank_tree as ranks have changed */
@@ -746,12 +739,6 @@ class FibonacciHeap {
                    
                     /* Increase degree by one  */
                     degree += 1 ;
-                    
-                    /* FIX: If ndmin is the max node set new max to ndmax */
-                    if (ndmin == max) { 
-                        cout << "DEBUG::remove_max(): ndmin == max" << endl ;
-                        max = ndmax ;
-                    }
                 }
 
                 /* Set rank_tree[degree] = s */
