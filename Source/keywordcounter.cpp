@@ -168,7 +168,7 @@ int main(int argc, char *argv[]) {
     getline (qfile, line) ;
 
     /* Pass through input file extracting current line at each pass */
-    while (line.compare("stop")) {/* Compare current line to stop command */
+    while (line.compare("STOP")) {/* Compare current line to stop command */
         #ifdef DEBUG_MAIN
         /* Print current line in input file */
         cout << "main::DEBUG: Current line in file: " << line << endl ;
@@ -354,6 +354,14 @@ int main(int argc, char *argv[]) {
         /* Print Keys and Queries */
         PrintKeysAndQueriesLtoR(&fheap) ;
         #endif
+
+        /* If parent of max is not NULL an error has occurred */
+        if (fheap.hashmap["woollier"] != NULL) {
+            if (fheap.hashmap["woollier"]->parent != NULL) {
+                cout << "main::DEBUG: woollier has keyword: " << fheap.hashmap["woollier"]->keyword << endl ; 
+                cout << "main::DEBUG: woollier has parent: " << fheap.hashmap["woollier"]->parent->keyword << endl ; 
+            }
+        }
 
         /* Get next line and break if no next line */
         if (!getline (qfile, line)) {/* Error occured in getline */
